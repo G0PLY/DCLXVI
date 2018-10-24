@@ -10,4 +10,4 @@ DIABDAT.MPQ
 diabloui.dll
 SMACKW32.DLL
 STANDARD.snp
-Storm.dll
+Storm.dll (from Diablo CD)
