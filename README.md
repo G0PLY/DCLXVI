@@ -35,4 +35,5 @@ Modified weapon and armor requirements,
 Removed Multiplayer (black screen crash, MP currently loads singleplayer).
 
 Using devilution-nightly(10/20/18).
+Also for more information or more detailed instructions on installing see.
 https://github.com/diasurgical/devilution
