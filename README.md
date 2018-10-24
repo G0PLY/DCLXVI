@@ -1,14 +1,14 @@
 # DemonStrate
 Alpha Version 1.0a
+(You will need a Diablo CD to use this)
 
-Diablo 1 DCLXVI Mod Made using Devilution Project.
+Diablo 1 DCLXVI Mod made using Devilution Project.
 
 For Full Source Code:
 Download DCLXVI_FULL_SOURCE_CODE.7z
 
 Prebuilt Version:
 Download Diablo_DCLXVI.7z
-(You will need a Diablo CD to use this).
 
 Needed for Prebuilt or Source to work;
 The following files are not included in this download:
@@ -32,7 +32,7 @@ Lv 7 NM mode,
 Lv 11 Hell mode,
 Increased monster difficulty,
 Modified weapon and armor requirements,
-Removed Multiplayer (black screen crash).
+Removed Multiplayer (black screen crash, MP currently loads singleplayer).
 
 Using devilution-nightly(10/20/18).
 https://github.com/diasurgical/devilution
