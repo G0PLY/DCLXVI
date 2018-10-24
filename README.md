@@ -3,8 +3,6 @@ Alpha Version 1.0a (You will need a Diablo CD to use this)
 
 Diablo 1 DCLXVI Mod made using Devilution Project.
 
-For Full Source Code: Download DCLXVI_FULL_SOURCE_CODE.7z
-
 Prebuilt Version: Download Diablo_DCLXVI.7z
 
 Needed for Prebuilt or Source to work; 
