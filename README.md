@@ -21,5 +21,20 @@ SMACKW32.DLL
 STANDARD.snp
 Storm.dll (from Diablo CD)
 
+DemonStrate DCLXVI Features:
+Horadric Weapons (spells attached),
+Removed waypoint restrictions,
+Removed magic property restrictions,
+Witch is just North of town,
+Increased level cap (99),
+Reduced stat gain (3 per lv),
+Increased stat caps (primary stat still 250),
+Increased exp rates,
+Lv 7 NM mode,
+Lv 11 Hell mode,
+Increased monster difficulty,
+Modified weapon and armor requirements,
+Removed Multiplayer (black screen crash).
+
 Using devilution-nightly(10/20/18).
 https://github.com/diasurgical/devilution
