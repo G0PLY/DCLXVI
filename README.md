@@ -1,4 +1,6 @@
 # DemonStrate
+Source Code is coming soon...
+
 Diablo 1 DCLXVI Mod Made using Devilution Project.
 
 You will need Diablo CD to use this file.
