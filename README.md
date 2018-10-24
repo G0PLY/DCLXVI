@@ -8,7 +8,7 @@ Download DCLXVI_FULL_SOURCE_CODE.7z
 
 Prebuilt Version:
 Download Diablo_DCLXVI.7z
-You will need a Diablo CD to use this.
+(You will need a Diablo CD to use this).
 
 Needed for Prebuilt or Source to work;
 The following files are not included in this download:
