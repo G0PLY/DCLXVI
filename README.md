@@ -1,5 +1,5 @@
 # DemonStrate
-Source Code is coming soon...
+Alpha Version 1.0a
 
 Diablo 1 DCLXVI Mod Made using Devilution Project.
 
