@@ -20,3 +20,6 @@ diabloui.dll
 SMACKW32.DLL
 STANDARD.snp
 Storm.dll (from Diablo CD)
+
+Using devilution-nightly(10/20/18).
+https://github.com/diasurgical/devilution
