@@ -1,0 +1,4 @@
+﻿  storm.cpp
+storm.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+     Creating library .\WinDebug\Storm.lib and object .\WinDebug\Storm.exp
+  Storm.vcxproj -> Z:\DemonStrate\3rdParty\Storm\Source\.\WinDebug\Storm.dll
