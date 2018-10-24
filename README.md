@@ -8,7 +8,7 @@ Prebuilt Version: Download Diablo_DCLXVI.7z
 Needed for Prebuilt or Source to work; 
 The following files are not included in this download: 
 ddraw.dll (win7/10 graphics fix) 
-DIABDAT.MPQ diabloui.dll SMACKW32.DLLSTANDARD.snp Storm.dll (from Diablo CD)
+DIABDAT.MPQ diabloui.dll SMACKW32.DLL STANDARD.snp Storm.dll (from Diablo CD)
 
 DemonStrate DCLXVI Features: 
 Horadric Weapons (spells attached), 
