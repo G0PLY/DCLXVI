@@ -5,8 +5,8 @@ Diablo 1 DCLXVI Mod Made using Devilution Project.
 
 For Full Source Code:
 Download all the files and make a folder,
-unzip DCLXVI_SOURCE_CODE.7z into that folder.
-DCLXCI_SOURCE_CODE.7z does not include all needed source files...
+unzip DCLXVI_SOURCE_CODE.7z into that folder,
+(the folders inside the DCLXVI_SOURCE_CODE folder need to be moved out of that folder into DemonStrate-master).
 
 Prebuilt Version:
 Download Diablo_DCLXVI.7z.
