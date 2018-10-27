@@ -2679,7 +2679,7 @@ int __fastcall On_PLRLEVEL(struct TCmdParam1 *pCmd, int pnum)
 {
 	if (gbBufferMsgs == 1)
 		msg_send_packet(pnum, pCmd, sizeof(*pCmd));
-	else if (pCmd->wParam1 <= MAXCHARLEVEL && pnum != myplr)
+	else if (pCmd->wParam1 <= 99 && pnum != myplr)
 		plr[pnum]._pLevel = pCmd->wParam1;
 
 	return sizeof(*pCmd);

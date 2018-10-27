@@ -126,7 +126,7 @@ MonsterData monsterdata[112] = {
     {    160,  2120, "Monsters\\Black\\Black%c.CL2",    0, "Monsters\\Black\\Black%c%i.WAV",    0,         0, NULL,                              {  8,  8, 16,  4, 24,  0 }, { 2, 0, 0, 0, 0, 0 }, "Black Knight",            23,       27,     24,    300,    300, AI_SKELSD,   256,    0,  110,      8,         15,         20,     0,       0,           0,           0,          75, MC_DEMON,           69,         97,         0,        7,  13440 },
     {    160,  2120, "Monsters\\Black\\Black%c.CL2",    0, "Monsters\\Black\\Black%c%i.WAV",    0,         1, "Monsters\\Black\\BlkKntRT.TRN",   {  8,  8, 16,  4, 24,  0 }, { 2, 0, 0, 0, 0, 0 }, "Doom Guard",              25,       29,     26,    990,    990, AI_SKELSD,   256,    0,  130,      8,         18,         25,     0,       0,           0,           0,          75, MC_DEMON,           67,         81,         0,        7,  14600 },
     {    160,  2120, "Monsters\\Black\\Black%c.CL2",    0, "Monsters\\Black\\Black%c%i.WAV",    0,         1, "Monsters\\Black\\BlkKntBT.TRN",   {  8,  8, 16,  4, 24,  0 }, { 2, 0, 0, 0, 0, 0 }, "Steel Lord",              27,       30,     28,    1080,    1080, AI_SKELSD,   256,    1,  120,      8,         20,         30,     0,       0,           0,           0,          80, MC_DEMON,           85,         92,         0,        7,  17008 },
-    {    160,  2120, "Monsters\\Black\\Black%c.CL2",    0, "Monsters\\Black\\Black%c%i.WAV",    0,         1, "Monsters\\Black\\BlkKntBe.TRN",   {  8,  8, 16,  4, 24,  0 }, { 2, 0, 0, 0, 0, 0 }, "Blood Knight",            24,       26,     30,    1200,    1200, AI_SKELSD,   256,    1,  130,      8,         25,         35,     0,       0,           0,           0,          85, MC_DEMON,          106,        106,         0,        7,  25650 },
+    {    160,  2120, "Monsters\\Black\\Black%c.CL2",    0, "Monsters\\Black\\Black%c%i.WAV",    0,         1, "Monsters\\Black\\BlkKntBe.TRN",   {  8,  8, 16,  4, 24,  0 }, { 2, 0, 0, 0, 0, 0 }, "Blood Knight",            24,       26,     30,    1000,    1000, AI_SKELSD,   256,    1,  130,      14,         25,         35,     0,       0,           0,           0,          85, MC_DEMON,          106,        106,         0,        7,  25650 },
     {     96,   484, "Monsters\\Unrav\\Unrav%c.CL2",    0, "Monsters\\Acid\\Acid%c%i.WAV",      0,         0, NULL,                              { 10, 10, 12,  5, 16,  0 }, { 0, 0, 0, 0, 0, 0 }, "Unraveler",               26,       28,     25,     900,    900, AI_SKELSD,     0,    0,   75,      7,         10,         20,     0,       0,           0,           0,          70, MC_UNDEAD,         106,        106,         0,        3,  15248 },
     {     96,   484, "Monsters\\Unrav\\Unrav%c.CL2",    0, "Monsters\\Acid\\Acid%c%i.WAV",      0,         0, NULL,                              { 10, 10, 12,  5, 16,  0 }, { 0, 0, 0, 0, 0, 0 }, "Hollow One",              28,       30,     27,    1440,    1440, AI_SKELSD,     0,    1,   75,      7,         12,         24,     0,       0,           0,           0,          75, MC_UNDEAD,          92,         92,         0,        3,  17496 },
     {     96,   484, "Monsters\\Unrav\\Unrav%c.CL2",    0, "Monsters\\Acid\\Acid%c%i.WAV",      0,         0, NULL,                              { 10, 10, 12,  5, 16,  0 }, { 0, 0, 0, 0, 0, 0 }, "Pain Master",             27,       30,     29,    1200,    1200, AI_SKELSD,     0,    2,   80,      7,         16,         30,     0,       0,           0,           0,          80, MC_UNDEAD,          92,         92,         0,        3,  20588 },
@@ -138,9 +138,9 @@ MonsterData monsterdata[112] = {
     {    128,  2000, "Monsters\\Mage\\Mage%c.CL2",      1, "Monsters\\Mage\\Mage%c%i.WAV",      0,         0, NULL,                              { 12,  1, 20,  8, 28, 20 }, { 0, 0, 0, 0, 0, 0 }, "Counselor",               24,       26,     25,     420,     420, AI_COUNSLR,  512,    0,   90,      8,          8,         20,     0,       0,           0,           0,           0, MC_DEMON,            7,          7,         0,        7,  16280 },
     {    128,  2000, "Monsters\\Mage\\Mage%c.CL2",      1, "Monsters\\Mage\\Mage%c%i.WAV",      0,         1, "Monsters\\Mage\\Cnselg.TRN",      { 12,  1, 20,  8, 28, 20 }, { 0, 0, 0, 0, 0, 0 }, "Magistrate",              26,       28,     27,     510,     510, AI_COUNSLR,  512,    1,  100,      8,         10,         24,     0,       0,           0,           0,           0, MC_DEMON,           85,         92,         0,        7,  17912 },
     {    128,  2000, "Monsters\\Mage\\Mage%c.CL2",      1, "Monsters\\Mage\\Mage%c%i.WAV",      0,         1, "Monsters\\Mage\\Cnselgd.TRN",     { 12,  1, 20,  8, 28, 20 }, { 0, 0, 0, 0, 0, 0 }, "Cabalist",                28,       30,     29,    720,    720, AI_COUNSLR,  512,    2,  110,      8,         14,         30,     0,       0,           0,           0,           0, MC_DEMON,           99,        106,         0,        7,  19716 },
-    {    128,  2000, "Monsters\\Mage\\Mage%c.CL2",      1, "Monsters\\Mage\\Mage%c%i.WAV",      0,         1, "Monsters\\Mage\\Cnselbk.TRN",     { 12,  1, 20,  8, 28, 20 }, { 0, 0, 0, 0, 0, 0 }, "Advocate",                30,       30,     30,    870,    870, AI_COUNSLR,  512,    3,  120,      8,         15,         25,     0,       0,           0,           0,           0, MC_DEMON,          106,        120,         0,        7,  24840 },
+    {    128,  2000, "Monsters\\Mage\\Mage%c.CL2",      1, "Monsters\\Mage\\Mage%c%i.WAV",      0,         1, "Monsters\\Mage\\Cnselbk.TRN",     { 12,  1, 20,  8, 28, 20 }, { 0, 0, 0, 0, 0, 0 }, "Advocate",                30,       30,     30,    725,    725, AI_COUNSLR,  512,    3,  120,      14,         15,         25,     0,       0,           0,           0,           0, MC_DEMON,          106,        120,         0,        7,  24840 },
     {     96,   386, "Monsters\\Golem\\Golem%c.CL2",    1, "Monsters\\Golem\\Golm%c%i.WAV",     0,         0, NULL,                              {  0, 16, 12,  0, 12, 20 }, { 0, 0, 0, 0, 0, 0 }, "Golem",                    0,        0,     12,      2,      2, AI_GOLUM,    512,    0,    0,      7,          1,          1,     0,       0,           0,           0,           1, MC_DEMON,            0,          0,         0,        0,     0 },
-    {    160,  2000, "Monsters\\Diablo\\Diablo%c.CL2",  1, "Monsters\\Diablo\\Diablo%c%i.WAV",  1,         0, NULL,                              { 16,  6, 16,  6, 16, 16 }, { 0, 0, 0, 0, 0, 0 }, "The Dark Lord",           50,       50,     30,   9996,   9996, AI_DIABLO,   896,    3,  220,      4,         30,         60,     0,      11,           0,           0,          70, MC_DEMON,           78,         78,         0,        7, 31666 },
+    {    160,  2000, "Monsters\\Diablo\\Diablo%c.CL2",  1, "Monsters\\Diablo\\Diablo%c%i.WAV",  1,         0, NULL,                              { 16,  6, 16,  6, 16, 16 }, { 0, 0, 0, 0, 0, 0 }, "The Dark Lord",           50,       50,     30,   50666,   50666, AI_DIABLO,   896,    3,  220,      10,         30,         60,     0,      11,           0,           0,          70, MC_DEMON,           78,         78,         0,        7, 31666 },
     {    128,  1060, "Monsters\\DarkMage\\Dmage%c.CL2", 1, "Monsters\\DarkMage\\Dmag%c%i.WAV",  0,         0, NULL,                              {  6,  1, 21,  6, 23, 18 }, { 0, 0, 0, 0, 0, 0 }, "The Arch-Litch Malignus", 30,       30,     30,    960,    960, AI_COUNSLR,  512,    3,  120,      8,         20,         40,     0,       0,           0,           0,          70, MC_DEMON,           71,        120,         0,        7,  24840 }
             // flags, mType, GraphicType,             has_special, sndfile,                   snd_special, has_trans, TransFile,                         Frames[6],                  Rate[6],              mName,               mMinDLvl, mMaxDLvl, mLevel, mMinHP, mMaxHP, mAi,      mFlags, mInt, mHit, mAFNum, mMinDamage, mMaxDamage, mHit2, mAFNum2, mMinDamage2, mMaxDamage2, mArmorClass, mMonstClass, mMagicRes, mMagicRes2, mTreasure, mSelFlag,  mExp
     // clang-format on
@@ -179,103 +179,103 @@ unsigned char MonstAvailTbl[112] = {
 UniqMonstStruct UniqMonst[98] = {
     // clang-format off
     // mtype,       mName,                      mMode, mlevel, mmaxhp, mAi,      mint, mMinDamage, mMaxDamage, mMagicRes, mUnqAttr, mUnqVar1, mUnqVar2, mtalkmsg
-    {  MT_NGOATMC,  "Gharbad the Weak",         "BSDB",     4,    120, AI_GARBUD,   3,          8,         16,        96,        0,        0,        0, QUEST_GARBUD1  },
-    {  MT_SKING,    "Skeleton King",            "GENRL",    0,    240, AI_SKELKING, 3,          6,         16,        78,        1,        0,        0, 0              },
-    {  MT_COUNSLR,  "Zhar the Mad",             "GENERAL",  8,    360, AI_ZHAR,     3,         16,         40,        14,        0,        0,        0, QUEST_ZHAR1    },
-    {  MT_BFALLSP,  "Snotspill",                "BNG",      4,    220, AI_SNOTSPIL, 3,         10,         18,         4,        0,        0,        0, QUEST_BANNER10 },
-    {  MT_ADVOCATE, "Arch-Bishop Lazarus",      "GENERAL",  0,    600, AI_LAZURUS,  3,         30,         50,        78,        0,        0,        0, QUEST_VILE13   },
-    {  MT_HLSPWN,   "Red Vex",                  "REDV",     0,    400, AI_LAZHELP,  3,         30,         50,        74,        0,        0,        0, QUEST_VILE13   },
-    {  MT_HLSPWN,   "BlackJade",                "BLKJD",    0,    400, AI_LAZHELP,  3,         30,         50,        76,        0,        0,        0, QUEST_VILE13   },
-    {  MT_RBLACK,   "Lachdanan",                "BHKA",    14,    500, AI_LACHDAN,  3,          0,          0,         0,        0,        0,        0, QUEST_VEIL9    },
-    {  MT_BTBLACK,  "Warlord of Blood",         "GENERAL", 13,    850, AI_WARLORD,  3,         35,         50,       120,        0,        0,        0, QUEST_WARLRD9  },
-    {  MT_CLEAVER,  "The Butcher",              "GENRL",    0,    220, AI_CLEAVER,  3,          6,         12,        70,        0,        0,        0, 0              },
-    {  MT_TSKELAX,  "Bonehead Keenaxe",         "BHKA",     2,     91, AI_SKELSD,   2,          4,         10,        72,        7,      100,        0, 0              },
-    {  MT_RFALLSD,  "Bladeskin the Slasher",    "BSTS",     2,     51, AI_FALLEN,   0,          6,         18,         2,       11,       45,        0, 0              },
-    {  MT_NZOMBIE,  "Soulpus",                  "GENERAL",  2,    133, AI_ZOMBIE,   0,          4,          8,         6,        0,        0,        0, 0              },
-    {  MT_RFALLSP,  "Pukerat the Unclean",      "PTU",      2,     77, AI_FALLEN,   3,          1,          5,         2,        0,        0,        0, 0              },
-    {  MT_WSKELAX,  "Boneripper",               "BR",       2,     54, AI_BAT,      0,          6,         15,        88,        3,        0,        0, 0              },
-    {  MT_NZOMBIE,  "Rotfeast the Hungry",      "ETH",      2,     85, AI_SKELSD,   3,          4,         12,        72,        3,        0,        0, 0              },
-    {  MT_DFALLSD,  "Gutshank the Quick",       "GTQ",      3,     66, AI_BAT,      2,          6,         16,         2,        3,        0,        0, 0              },
-    {  MT_TSKELSD,  "Brokenhead Bangshield",    "BHBS",     3,    108, AI_SKELSD,   3,         12,         20,        76,        3,        0,        0, 0              },
-    {  MT_YFALLSP,  "Bongo",                    "BNG",      3,    178, AI_FALLEN,   3,          9,         21,         0,        3,        0,        0, 0              },
-    {  MT_BZOMBIE,  "Rotcarnage",               "RCRN",     3,    102, AI_ZOMBIE,   3,          9,         24,        76,       11,       45,        0, 0              },
-    {  MT_NSCAV,    "Shadowbite",               "SHBT",     2,     60, AI_SKELSD,   3,          3,         20,        16,        3,        0,        0, 0              },
-    {  MT_WSKELBW,  "Deadeye",                  "DE",       2,     49, AI_GOATBOW,  0,          6,          9,        74,        0,        0,        0, 0              },
-    {  MT_RSKELAX,  "Madeye the Dead",          "MTD",      4,     75, AI_BAT,      0,          9,         21,        24,       11,       30,        0, 0              },
-    {  MT_BSCAV,    "El Chupacabras",           "GENERAL",  3,    120, AI_GOATMC,   0,         10,         18,         2,        3,       30,        0, 0              },
-    {  MT_TSKELBW,  "Skullfire",                "SKFR",     3,    125, AI_GOATBOW,  1,          6,         10,        16,        0,      100,        0, 0              },
-    {  MT_SNEAK,    "Warpskull",                "TSPO",     3,    117, AI_SNEAK,    2,          6,         18,         6,        3,        0,        0, 0              },
-    {  MT_GZOMBIE,  "Goretongue",               "PMR",      3,    156, AI_SKELSD,   1,         15,         30,        72,        0,        0,        0, 0              },
-    {  MT_WSCAV,    "Pulsecrawler",             "BHKA",     4,    150, AI_SCAV,     0,         16,         20,        20,       11,       45,        0, 0              },
-    {  MT_BLINK,    "Moonbender",               "GENERAL",  4,    135, AI_BAT,      0,          9,         27,        16,        3,        0,        0, 0              },
-    {  MT_BLINK,    "Wrathraven",               "GENERAL",  5,    135, AI_BAT,      2,          9,         22,        16,        3,        0,        0, 0              },
-    {  MT_YSCAV,    "Spineeater",               "GENERAL",  4,    180, AI_SCAV,     1,         18,         25,        96,        3,        0,        0, 0              },
-    {  MT_RSKELBW,  "Blackash the Burning",     "BASHTB",   4,    120, AI_GOATBOW,  0,          6,         16,        24,        3,        0,        0, 0              },
-    {  MT_BFALLSD,  "Shadowcrow",               "GENERAL",  5,    270, AI_SNEAK,    2,         12,         25,         0,        3,        0,        0, 0              },
-    {  MT_LRDSAYTR, "Blightstone the Weak",     "BHKA",     4,    360, AI_SKELSD,   0,          4,         12,        12,        7,       70,        0, 0              },
-    {  MT_FAT,      "Bilefroth the Pit Master", "BFTP",     6,    210, AI_BAT,      1,         16,         23,        28,        3,        0,        0, 0              },
-    {  MT_NGOATBW,  "Bloodskin Darkbow",        "BSDB",     5,    207, AI_GOATBOW,  0,          3,         16,         6,       11,       55,        0, 0              },
-    {  MT_GLOOM,    "Foulwing",                 "DB",       5,    246, AI_RHINO,    3,         12,         28,         2,        3,        0,        0, 0              },
-    {  MT_XSKELSD,  "Shadowdrinker",            "SHDR",     5,    300, AI_SNEAK,    1,         18,         26,        78,        8,       45,        0, 0              },
-    {  MT_UNSEEN,   "Hazeshifter",              "BHKA",     5,    285, AI_SNEAK,    3,         18,         30,        96,        3,        0,        0, 0              },
-    {  MT_NACID,    "Deathspit",                "BFDS",     6,    303, AI_ACIDUNIQ, 0,         12,         32,         6,        3,        0,        0, 0              },
-    {  MT_RGOATMC,  "Bloodgutter",              "BGBL",     6,    315, AI_BAT,      1,         24,         34,        16,        3,        0,        0, 0              },
-    {  MT_BGOATMC,  "Deathshade Fleshmaul",     "DSFM",     6,    276, AI_RHINO,    0,         12,         24,        10,        8,       65,        0, 0              },
-    {  MT_WYRM,     "Warmaggot the Mad",        "GENERAL",  6,    246, AI_BAT,      3,         15,         30,         4,        3,        0,        0, 0              },
-    {  MT_STORM,    "Glasskull the Jagged",     "BHKA",     7,    354, AI_STORM,    0,         18,         30,        88,        3,        0,        0, 0              },
-    {  MT_RGOATBW,  "Blightfire",               "BLF",      7,    321, AI_SUCC,     2,         13,         21,        16,        3,        0,        0, 0              },
-    {  MT_GARGOYLE, "Nightwing the Cold",       "GENERAL",  7,    342, AI_BAT,      1,         18,         26,        76,        3,        0,        0, 0              },
-    {  MT_GGOATBW,  "Gorestone",                "GENERAL",  7,    303, AI_GOATBOW,  1,         15,         28,        68,        7,       70,        0, 0              },
-    {  MT_BMAGMA,   "Bronzefist Firestone",     "GENERAL",  8,    360, AI_MAGMA,    0,         30,         36,        10,        3,        0,        0, 0              },
-    {  MT_INCIN,    "Wrathfire the Doomed",     "WFTD",     8,    270, AI_SKELSD,   2,         20,         30,        14,        3,        0,        0, 0              },
-    {  MT_NMAGMA,   "Firewound the Grim",       "BHKA",     8,    303, AI_MAGMA,    0,         18,         22,        10,        3,        0,        0, 0              },
-    {  MT_MUDMAN,   "Baron Sludge",             "BSM",      8,    315, AI_SNEAK,    3,         25,         34,        78,       11,       75,        0, 0              },
-    {  MT_GGOATMC,  "Blighthorn Steelmace",     "BHSM",     7,    250, AI_RHINO,    0,         20,         28,         4,       11,       45,        0, 0              },
-    {  MT_RACID,    "Chaoshowler",              "GENERAL",  8,    240, AI_ACIDUNIQ, 0,         12,         20,         0,        3,        0,        0, 0              },
-    {  MT_REDDTH,   "Doomgrin the Rotting",     "GENERAL",  8,    405, AI_STORM,    3,         25,         50,        78,        3,        0,        0, 0              },
-    {  MT_FLAMLRD,  "Madburner",                "GENERAL",  9,    270, AI_STORM,    0,         20,         40,        56,        3,        0,        0, 0              },
-    {  MT_LTCHDMN,  "Bonesaw the Litch",        "GENERAL",  9,    495, AI_STORM,    2,         30,         55,        78,        3,        0,        0, 0              },
-    {  MT_MUDRUN,   "Breakspine",               "GENERAL",  9,    351, AI_RHINO,    0,         25,         34,         2,        3,        0,        0, 0              },
-    {  MT_REDDTH,   "Devilskull Sharpbone",     "GENERAL",  9,    444, AI_STORM,    1,         25,         40,        16,        3,        0,        0, 0              },
-    {  MT_STORM,    "Brokenstorm",              "GENERAL",  9,    411, AI_STORM,    2,         25,         36,        32,        3,        0,        0, 0              },
-    {  MT_RSTORM,   "Stormbane",                "GENERAL",  9,    555, AI_STORM,    3,         30,         30,        32,        3,        0,        0, 0              },
-    {  MT_TOAD,     "Oozedrool",                "GENERAL",  9,    483, AI_FAT,      3,         25,         30,         4,        3,        0,        0, 0              },
-    {  MT_BLOODCLW, "Goldblight of the Flame",  "GENERAL", 10,    405, AI_GARG,     0,         15,         35,        24,       11,       80,        0, 0              },
-    {  MT_OBLORD,   "Blackstorm",               "GENERAL", 10,    525, AI_RHINO,    3,         20,         40,        40,       11,       90,        0, 0              },
-    {  MT_RACID,    "Plaguewrath",              "GENERAL", 10,    450, AI_ACIDUNIQ, 2,         20,         30,        74,        3,        0,        0, 0              },
-    {  MT_RSTORM,   "The Flayer",               "GENERAL", 10,    501, AI_STORM,    1,         20,         35,        99,        3,        0,        0, 0              },
-    {  MT_FROSTC,   "Bluehorn",                 "GENERAL", 11,    477, AI_RHINO,    1,         25,         30,        10,       11,       90,        0, 0              },
-    {  MT_HELLBURN, "Warpfire Hellspawn",       "GENERAL", 11,    525, AI_FIREMAN,  3,         10,         40,        17,        3,        0,        0, 0              },
-    {  MT_NSNAKE,   "Fangspeir",                "GENERAL", 11,    444, AI_SKELSD,   1,         15,         32,        80,        3,        0,        0, 0              },
-    {  MT_UDEDBLRG, "Festerskull",              "GENERAL", 11,    600, AI_STORM,    2,         15,         30,        72,        3,        0,        0, 0              },
-    {  MT_NBLACK,   "Lionskull the Bent",       "GENERAL", 12,    525, AI_SKELSD,   2,         25,         25,       120,        3,        0,        0, 0              },
-    {  MT_COUNSLR,  "Blacktongue",              "GENERAL", 12,    360, AI_COUNSLR,  3,         15,         30,        66,        3,        0,        0, 0              },
-    {  MT_DEATHW,   "Viletouch",                "GENERAL", 12,    525, AI_GARG,     3,         20,         40,        96,        3,        0,        0, 0              },
-    {  MT_RSNAKE,   "Viperflame",               "GENERAL", 12,    570, AI_SKELSD,   1,         25,         35,        20,        3,        0,        0, 0              },
-    {  MT_BSNAKE,   "Fangskin",                 "BHKA",    14,    681, AI_SKELSD,   2,         15,         50,        12,        3,        0,        0, 0              },
-    {  MT_SUCCUBUS, "Witchfire the Unholy",     "GENERAL", 12,    444, AI_SUCC,     3,         10,         20,        28,        3,        0,        0, 0              },
-    {  MT_BALROG,   "Blackskull",               "BHKA",    13,    750, AI_SKELSD,   3,         25,         40,        12,        3,        0,        0, 0              },
-    {  MT_UNRAV,    "Soulslash",                "GENERAL", 12,    450, AI_SKELSD,   0,         25,         25,        72,        3,        0,        0, 0              },
-    {  MT_VTEXLRD,  "Windspawn",                "GENERAL", 12,    711, AI_SKELSD,   1,         35,         40,        24,        3,        0,        0, 0              },
-    {  MT_GSNAKE,   "Lord of the Pit",          "GENERAL", 13,    762, AI_SKELSD,   2,         25,         42,        66,        3,        0,        0, 0              },
-    {  MT_RTBLACK,  "Rustweaver",               "GENERAL", 13,    400, AI_SKELSD,   3,          1,         60,       120,        0,        0,        0, 0              },
-    {  MT_HOLOWONE, "Howlingire the Shade",     "GENERAL", 13,    450, AI_SKELSD,   2,         40,         75,         6,        3,        0,        0, 0              },
-    {  MT_MAEL,     "Doomcloud",                "GENERAL", 13,    612, AI_STORM,    1,          1,         60,        34,        0,        0,        0, 0              },
-    {  MT_PAINMSTR, "Bloodmoon Soulfire",       "GENERAL", 13,    684, AI_SKELSD,   1,         15,         40,        14,        3,        0,        0, 0              },
-    {  MT_SNOWWICH, "Witchmoon",                "GENERAL", 13,    310, AI_SUCC,     3,         30,         40,         4,        0,        0,        0, 0              },
-    {  MT_VTEXLRD,  "Gorefeast",                "GENERAL", 13,    771, AI_SKELSD,   3,         20,         55,        66,        0,        0,        0, 0              },
-    {  MT_RTBLACK,  "Graywar the Slayer",       "GENERAL", 14,    672, AI_SKELSD,   1,         30,         50,        68,        0,        0,        0, 0              },
-    {  MT_MAGISTR,  "Dreadjudge",               "GENERAL", 14,    540, AI_COUNSLR,  1,         30,         40,        14,        3,        0,        0, 0              },
-    {  MT_HLSPWN,   "Stareye the Witch",        "GENERAL", 14,    726, AI_SUCC,     2,         30,         50,        16,        0,        0,        0, 0              },
-    {  MT_BTBLACK,  "Steelskull the Hunter",    "GENERAL", 14,    831, AI_SKELSD,   3,         40,         50,        68,        0,        0,        0, 0              },
-    {  MT_RBLACK,   "Sir Gorash",               "GENERAL", 16,   1050, AI_SKELSD,   1,         20,         60,        64,        0,        0,        0, 0              },
-    {  MT_CABALIST, "The Vizier",               "GENERAL", 15,    850, AI_COUNSLR,  2,         25,         40,        16,        3,        0,        0, 0              },
-    {  MT_REALWEAV, "Zamphir",                  "GENERAL", 15,    891, AI_SKELSD,   2,         30,         50,        78,        3,        0,        0, 0              },
-    {  MT_HLSPWN,   "Bloodlust",                "GENERAL", 15,    825, AI_SUCC,     1,         20,         55,       104,        0,        0,        0, 0              },
-    {  MT_HLSPWN,   "Webwidow",                 "GENERAL", 16,    774, AI_SUCC,     1,         20,         50,        88,        0,        0,        0, 0              },
-    {  MT_SOLBRNR,  "Fleshdancer",              "GENERAL", 16,    999, AI_SUCC,     3,         30,         50,        74,        0,        0,        0, 0              },
-    {  MT_OBLORD,   "Grimspike",                "GENERAL", 19,    534, AI_SNEAK,    1,         25,         40,        74,        3,        0,        0, 0              },
-    {  MT_STORML,   "Doomlock",                 "GENERAL", 28,    534, AI_SNEAK,    1,         35,         55,        78,        3,        0,        0, 0              },
+    {  MT_NGOATMC,  "Gharbad the Weak",         "BSDB",     4,    480, AI_GARBUD,   3,          8,         16,        96,        0,        0,        0, QUEST_GARBUD1  },
+    {  MT_SKING,    "Skeleton King",            "GENRL",    0,    960, AI_SKELKING, 3,          6,         16,        78,        1,        0,        0, 0              },
+    {  MT_COUNSLR,  "Zhar the Mad",             "GENERAL",  8,    1440, AI_ZHAR,     3,         16,         40,        14,        0,        0,        0, QUEST_ZHAR1    },
+    {  MT_BFALLSP,  "Snotspill",                "BNG",      4,    880, AI_SNOTSPIL, 3,         10,         18,         4,        0,        0,        0, QUEST_BANNER10 },
+    {  MT_ADVOCATE, "Arch-Bishop Lazarus",      "GENERAL",  0,    2400, AI_LAZURUS,  3,         30,         50,        78,        0,        0,        0, QUEST_VILE13   },
+    {  MT_HLSPWN,   "Red Vex",                  "REDV",     0,    1600, AI_LAZHELP,  3,         30,         50,        74,        0,        0,        0, QUEST_VILE13   },
+    {  MT_HLSPWN,   "BlackJade",                "BLKJD",    0,    1600, AI_LAZHELP,  3,         30,         50,        76,        0,        0,        0, QUEST_VILE13   },
+    {  MT_RBLACK,   "Lachdanan",                "BHKA",    14,    2000, AI_LACHDAN,  3,          0,          0,         0,        0,        0,        0, QUEST_VEIL9    },
+    {  MT_BTBLACK,  "Warlord of Blood",         "GENERAL", 13,    3200, AI_WARLORD,  3,         35,         50,       120,        0,        0,        0, QUEST_WARLRD9  },
+    {  MT_CLEAVER,  "The Butcher",              "GENRL",    0,    880, AI_CLEAVER,  3,          6,         12,        70,        0,        0,        0, 0              },
+    {  MT_TSKELAX,  "Bonehead Keenaxe",         "BHKA",     2,     364, AI_SKELSD,   2,          4,         10,        72,        7,      100,        0, 0              },
+    {  MT_RFALLSD,  "Bladeskin the Slasher",    "BSTS",     2,     204, AI_FALLEN,   0,          6,         18,         2,       11,       45,        0, 0              },
+    {  MT_NZOMBIE,  "Soulpus",                  "GENERAL",  2,    532, AI_ZOMBIE,   0,          4,          8,         6,        0,        0,        0, 0              },
+    {  MT_RFALLSP,  "Pukerat the Unclean",      "PTU",      2,     308, AI_FALLEN,   3,          1,          5,         2,        0,        0,        0, 0              },
+    {  MT_WSKELAX,  "Boneripper",               "BR",       2,     216, AI_BAT,      0,          6,         15,        88,        3,        0,        0, 0              },
+    {  MT_NZOMBIE,  "Rotfeast the Hungry",      "ETH",      2,     320, AI_SKELSD,   3,          4,         12,        72,        3,        0,        0, 0              },
+    {  MT_DFALLSD,  "Gutshank the Quick",       "GTQ",      3,     324, AI_BAT,      2,          6,         16,         2,        3,        0,        0, 0              },
+    {  MT_TSKELSD,  "Brokenhead Bangshield",    "BHBS",     3,    432, AI_SKELSD,   3,         12,         20,        76,        3,        0,        0, 0              },
+    {  MT_YFALLSP,  "Bongo",                    "BNG",      3,    708, AI_FALLEN,   3,          9,         21,         0,        3,        0,        0, 0              },
+    {  MT_BZOMBIE,  "Rotcarnage",               "RCRN",     3,    408, AI_ZOMBIE,   3,          9,         24,        76,       11,       45,        0, 0              },
+    {  MT_NSCAV,    "Shadowbite",               "SHBT",     2,     240, AI_SKELSD,   3,          3,         20,        16,        3,        0,        0, 0              },
+    {  MT_WSKELBW,  "Deadeye",                  "DE",       2,     196, AI_GOATBOW,  0,          6,          9,        74,        0,        0,        0, 0              },
+    {  MT_RSKELAX,  "Madeye the Dead",          "MTD",      4,     300, AI_BAT,      0,          9,         21,        24,       11,       30,        0, 0              },
+    {  MT_BSCAV,    "El Chupacabras",           "GENERAL",  3,    480, AI_GOATMC,   0,         10,         18,         2,        3,       30,        0, 0              },
+    {  MT_TSKELBW,  "Skullfire",                "SKFR",     3,    500, AI_GOATBOW,  1,          6,         10,        16,        0,      100,        0, 0              },
+    {  MT_SNEAK,    "Warpskull",                "TSPO",     3,    468, AI_SNEAK,    2,          6,         18,         6,        3,        0,        0, 0              },
+    {  MT_GZOMBIE,  "Goretongue",               "PMR",      3,    624, AI_SKELSD,   1,         15,         30,        72,        0,        0,        0, 0              },
+    {  MT_WSCAV,    "Pulsecrawler",             "BHKA",     4,    600, AI_SCAV,     0,         16,         20,        20,       11,       45,        0, 0              },
+    {  MT_BLINK,    "Moonbender",               "GENERAL",  4,    540, AI_BAT,      0,          9,         27,        16,        3,        0,        0, 0              },
+    {  MT_BLINK,    "Wrathraven",               "GENERAL",  5,    540, AI_BAT,      2,          9,         22,        16,        3,        0,        0, 0              },
+    {  MT_YSCAV,    "Spineeater",               "GENERAL",  4,    720, AI_SCAV,     1,         18,         25,        96,        3,        0,        0, 0              },
+    {  MT_RSKELBW,  "Blackash the Burning",     "BASHTB",   4,    480, AI_GOATBOW,  0,          6,         16,        24,        3,        0,        0, 0              },
+    {  MT_BFALLSD,  "Shadowcrow",               "GENERAL",  5,    1080, AI_SNEAK,    2,         12,         25,         0,        3,        0,        0, 0              },
+    {  MT_LRDSAYTR, "Blightstone the Weak",     "BHKA",     4,    1440, AI_SKELSD,   0,          4,         12,        12,        7,       70,        0, 0              },
+    {  MT_FAT,      "Bilefroth the Pit Master", "BFTP",     6,    840, AI_BAT,      1,         16,         23,        28,        3,        0,        0, 0              },
+    {  MT_NGOATBW,  "Bloodskin Darkbow",        "BSDB",     5,    828, AI_GOATBOW,  0,          3,         16,         6,       11,       55,        0, 0              },
+    {  MT_GLOOM,    "Foulwing",                 "DB",       5,    984, AI_RHINO,    3,         12,         28,         2,        3,        0,        0, 0              },
+    {  MT_XSKELSD,  "Shadowdrinker",            "SHDR",     5,    1200, AI_SNEAK,    1,         18,         26,        78,        8,       45,        0, 0              },
+    {  MT_UNSEEN,   "Hazeshifter",              "BHKA",     5,    1140, AI_SNEAK,    3,         18,         30,        96,        3,        0,        0, 0              },
+    {  MT_NACID,    "Deathspit",                "BFDS",     6,    1212, AI_ACIDUNIQ, 0,         12,         32,         6,        3,        0,        0, 0              },
+    {  MT_RGOATMC,  "Bloodgutter",              "BGBL",     6,    1260, AI_BAT,      1,         24,         34,        16,        3,        0,        0, 0              },
+    {  MT_BGOATMC,  "Deathshade Fleshmaul",     "DSFM",     6,    1104, AI_RHINO,    0,         12,         24,        10,        8,       65,        0, 0              },
+    {  MT_WYRM,     "Warmaggot the Mad",        "GENERAL",  6,    984, AI_BAT,      3,         15,         30,         4,        3,        0,        0, 0              },
+    {  MT_STORM,    "Glasskull the Jagged",     "BHKA",     7,    1416, AI_STORM,    0,         18,         30,        88,        3,        0,        0, 0              },
+    {  MT_RGOATBW,  "Blightfire",               "BLF",      7,    1284, AI_SUCC,     2,         13,         21,        16,        3,        0,        0, 0              },
+    {  MT_GARGOYLE, "Nightwing the Cold",       "GENERAL",  7,    1368, AI_BAT,      1,         18,         26,        76,        3,        0,        0, 0              },
+    {  MT_GGOATBW,  "Gorestone",                "GENERAL",  7,    1212, AI_GOATBOW,  1,         15,         28,        68,        7,       70,        0, 0              },
+    {  MT_BMAGMA,   "Bronzefist Firestone",     "GENERAL",  8,    1440, AI_MAGMA,    0,         30,         36,        10,        3,        0,        0, 0              },
+    {  MT_INCIN,    "Wrathfire the Doomed",     "WFTD",     8,    1080, AI_SKELSD,   2,         20,         30,        14,        3,        0,        0, 0              },
+    {  MT_NMAGMA,   "Firewound the Grim",       "BHKA",     8,    1212, AI_MAGMA,    0,         18,         22,        10,        3,        0,        0, 0              },
+    {  MT_MUDMAN,   "Baron Sludge",             "BSM",      8,    1260, AI_SNEAK,    3,         25,         34,        78,       11,       75,        0, 0              },
+    {  MT_GGOATMC,  "Blighthorn Steelmace",     "BHSM",     7,    1000, AI_RHINO,    0,         20,         28,         4,       11,       45,        0, 0              },
+    {  MT_RACID,    "Chaoshowler",              "GENERAL",  8,    960, AI_ACIDUNIQ, 0,         12,         20,         0,        3,        0,        0, 0              },
+    {  MT_REDDTH,   "Doomgrin the Rotting",     "GENERAL",  8,    1620, AI_STORM,    3,         25,         50,        78,        3,        0,        0, 0              },
+    {  MT_FLAMLRD,  "Madburner",                "GENERAL",  9,    1080, AI_STORM,    0,         20,         40,        56,        3,        0,        0, 0              },
+    {  MT_LTCHDMN,  "Bonesaw the Litch",        "GENERAL",  9,    1980, AI_STORM,    2,         30,         55,        78,        3,        0,        0, 0              },
+    {  MT_MUDRUN,   "Breakspine",               "GENERAL",  9,    1404, AI_RHINO,    0,         25,         34,         2,        3,        0,        0, 0              },
+    {  MT_REDDTH,   "Devilskull Sharpbone",     "GENERAL",  9,    1776, AI_STORM,    1,         25,         40,        16,        3,        0,        0, 0              },
+    {  MT_STORM,    "Brokenstorm",              "GENERAL",  9,    1644, AI_STORM,    2,         25,         36,        32,        3,        0,        0, 0              },
+    {  MT_RSTORM,   "Stormbane",                "GENERAL",  9,    2220, AI_STORM,    3,         30,         30,        32,        3,        0,        0, 0              },
+    {  MT_TOAD,     "Oozedrool",                "GENERAL",  9,    1932, AI_FAT,      3,         25,         30,         4,        3,        0,        0, 0              },
+    {  MT_BLOODCLW, "Goldblight of the Flame",  "GENERAL", 10,    1620, AI_GARG,     0,         15,         35,        24,       11,       80,        0, 0              },
+    {  MT_OBLORD,   "Blackstorm",               "GENERAL", 10,    2100, AI_RHINO,    3,         20,         40,        40,       11,       90,        0, 0              },
+    {  MT_RACID,    "Plaguewrath",              "GENERAL", 10,    1800, AI_ACIDUNIQ, 2,         20,         30,        74,        3,        0,        0, 0              },
+    {  MT_RSTORM,   "The Flayer",               "GENERAL", 10,    2004, AI_STORM,    1,         20,         35,        99,        3,        0,        0, 0              },
+    {  MT_FROSTC,   "Bluehorn",                 "GENERAL", 11,    1908, AI_RHINO,    1,         25,         30,        10,       11,       90,        0, 0              },
+    {  MT_HELLBURN, "Warpfire Hellspawn",       "GENERAL", 11,    2100, AI_FIREMAN,  3,         10,         40,        17,        3,        0,        0, 0              },
+    {  MT_NSNAKE,   "Fangspeir",                "GENERAL", 11,    1776, AI_SKELSD,   1,         15,         32,        80,        3,        0,        0, 0              },
+    {  MT_UDEDBLRG, "Festerskull",              "GENERAL", 11,    2400, AI_STORM,    2,         15,         30,        72,        3,        0,        0, 0              },
+    {  MT_NBLACK,   "Lionskull the Bent",       "GENERAL", 12,    2100, AI_SKELSD,   2,         25,         25,       120,        3,        0,        0, 0              },
+    {  MT_COUNSLR,  "Blacktongue",              "GENERAL", 12,    1440, AI_COUNSLR,  3,         15,         30,        66,        3,        0,        0, 0              },
+    {  MT_DEATHW,   "Viletouch",                "GENERAL", 12,    2100, AI_GARG,     3,         20,         40,        96,        3,        0,        0, 0              },
+    {  MT_RSNAKE,   "Viperflame",               "GENERAL", 12,    2280, AI_SKELSD,   1,         25,         35,        20,        3,        0,        0, 0              },
+    {  MT_BSNAKE,   "Fangskin",                 "BHKA",    14,    2724, AI_SKELSD,   2,         15,         50,        12,        3,        0,        0, 0              },
+    {  MT_SUCCUBUS, "Witchfire the Unholy",     "GENERAL", 12,    1776, AI_SUCC,     3,         10,         20,        28,        3,        0,        0, 0              },
+    {  MT_BALROG,   "Blackskull",               "BHKA",    13,    3000, AI_SKELSD,   3,         25,         40,        12,        3,        0,        0, 0              },
+    {  MT_UNRAV,    "Soulslash",                "GENERAL", 12,    1800, AI_SKELSD,   0,         25,         25,        72,        3,        0,        0, 0              },
+    {  MT_VTEXLRD,  "Windspawn",                "GENERAL", 12,    2444, AI_SKELSD,   1,         35,         40,        24,        3,        0,        0, 0              },
+    {  MT_GSNAKE,   "Lord of the Pit",          "GENERAL", 13,    3048, AI_SKELSD,   2,         25,         42,        66,        3,        0,        0, 0              },
+    {  MT_RTBLACK,  "Rustweaver",               "GENERAL", 13,    1600, AI_SKELSD,   3,          1,         60,       120,        0,        0,        0, 0              },
+    {  MT_HOLOWONE, "Howlingire the Shade",     "GENERAL", 13,    1800, AI_SKELSD,   2,         40,         75,         6,        3,        0,        0, 0              },
+    {  MT_MAEL,     "Doomcloud",                "GENERAL", 13,    2448, AI_STORM,    1,          1,         60,        34,        0,        0,        0, 0              },
+    {  MT_PAINMSTR, "Bloodmoon Soulfire",       "GENERAL", 13,    2768, AI_SKELSD,   1,         15,         40,        14,        3,        0,        0, 0              },
+    {  MT_SNOWWICH, "Witchmoon",                "GENERAL", 13,    1240, AI_SUCC,     3,         30,         40,         4,        0,        0,        0, 0              },
+    {  MT_VTEXLRD,  "Gorefeast",                "GENERAL", 13,    3084, AI_SKELSD,   3,         20,         55,        66,        0,        0,        0, 0              },
+    {  MT_RTBLACK,  "Graywar the Slayer",       "GENERAL", 14,    2688, AI_SKELSD,   1,         30,         50,        68,        0,        0,        0, 0              },
+    {  MT_MAGISTR,  "Dreadjudge",               "GENERAL", 14,    2160, AI_COUNSLR,  1,         30,         40,        14,        3,        0,        0, 0              },
+    {  MT_HLSPWN,   "Stareye the Witch",        "GENERAL", 14,    2904, AI_SUCC,     2,         30,         50,        16,        0,        0,        0, 0              },
+    {  MT_BTBLACK,  "Steelskull the Hunter",    "GENERAL", 14,    3324, AI_SKELSD,   3,         40,         50,        68,        0,        0,        0, 0              },
+    {  MT_RBLACK,   "Sir Gorash",               "GENERAL", 16,   12000, AI_SKELSD,   1,         20,         60,        64,        0,        0,        0, 0              },
+    {  MT_CABALIST, "The Vizier",               "GENERAL", 15,    3400, AI_COUNSLR,  2,         25,         40,        16,        3,        0,        0, 0              },
+    {  MT_REALWEAV, "Zamphir",                  "GENERAL", 15,    3564, AI_SKELSD,   2,         30,         50,        78,        3,        0,        0, 0              },
+    {  MT_HLSPWN,   "Bloodlust",                "GENERAL", 15,    3300, AI_SUCC,     1,         20,         55,       104,        0,        0,        0, 0              },
+    {  MT_HLSPWN,   "Webwidow",                 "GENERAL", 16,    3096, AI_SUCC,     1,         20,         50,        88,        0,        0,        0, 0              },
+    {  MT_SOLBRNR,  "Fleshdancer",              "GENERAL", 16,    3996, AI_SUCC,     3,         30,         50,        74,        0,        0,        0, 0              },
+    {  MT_OBLORD,   "Grimspike",                "GENERAL", 19,    2128, AI_SNEAK,    1,         25,         40,        74,        3,        0,        0, 0              },
+    {  MT_STORML,   "Doomlock",                 "GENERAL", 28,    2128, AI_SNEAK,    1,         35,         55,        78,        3,        0,        0, 0              },
     {  -1,          NULL,                       NULL,       0,      0, 0,           0,          0,          0,         0,        0,        0,        0, 0              }
     // clang-format on
 };
@@ -469,7 +469,7 @@ void __cdecl GetLevelMTypes()
         if (QuestStatus(QTYPE_WARLRD))
             AddMonsterType(UniqMonst[8].mtype, 4);
 
-        if (gbMaxPlayers >= 1 && currlevel == quests[QTYPE_KING]._qlevel) {
+        if (gbMaxPlayers != 1 && currlevel == quests[QTYPE_KING]._qlevel) {
 
             AddMonsterType(MT_SKING, 4);
             const int numskeltypes = 19;
@@ -734,21 +734,8 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i]._mmode = MM_SATTACK;
     }
 
-    if (currlevel == 1) {
+    /*if (currlevel == 1) {
         //monster[i].mLevel += 7;
-        monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
-        monster[i]._mhitpoints = monster[i]._mmaxhp;
-        monster[i].mHit += 15;
-        monster[i].mHit2 += 15;
-        monster[i].mMinDamage = 1 * monster[i].mMinDamage;
-        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage;
-        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2;
-        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2;
-        monster[i].mArmorClass += 2;
-    }
-
-     if (currlevel == 2) {
-        monster[i].mLevel += 1;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 20;
@@ -758,14 +745,27 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2;
         monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2;
         monster[i].mArmorClass += 2;
-    }
+    }*/
 
-    if (currlevel == 3) {
-        monster[i].mLevel += 3;
-        monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 4;
+     if (currlevel == 1) {
+        monster[i].mLevel += 1;
+        monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 25;
         monster[i].mHit2 += 25;
+        monster[i].mMinDamage = 1 * monster[i].mMinDamage;
+        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage;
+        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2;
+        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2;
+        monster[i].mArmorClass += 2;
+    }
+
+    if (currlevel == 2) {
+        monster[i].mLevel += 2;
+        monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
+        monster[i]._mhitpoints = monster[i]._mmaxhp;
+        monster[i].mHit += 30;
+        monster[i].mHit2 += 30;
         monster[i].mMinDamage = 1 * monster[i].mMinDamage + 1;
         monster[i].mMaxDamage = 1 * monster[i].mMaxDamage + 1;
         monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2 + 1;
@@ -773,29 +773,42 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i].mArmorClass += 5;
     }
 
-     if (currlevel == 4) {
+     if (currlevel == 3) {
+        monster[i].mLevel += 3;
+        monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 4;
+        monster[i]._mhitpoints = monster[i]._mmaxhp;
+        monster[i].mHit += 33;
+        monster[i].mHit2 += 33;
+        monster[i].mMinDamage = 1 * monster[i].mMinDamage + 2;
+        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage + 2;
+        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2 + 2;
+        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2 + 2;
+        monster[i].mArmorClass += 5;
+    }
+
+    if (currlevel == 4) {
         monster[i].mLevel += 5;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 4;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
-        monster[i].mHit += 30;
-        monster[i].mHit2 += 30;
-        monster[i].mMinDamage = 1 * monster[i].mMinDamage + 2;
-        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage + 1;
-        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2 + 2;
-        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2 + 1;
-        monster[i].mArmorClass += 5;
+        monster[i].mHit += 35;
+        monster[i].mHit2 += 35;
+        monster[i].mMinDamage = 1 * monster[i].mMinDamage + 3;
+        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage + 3;
+        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2 + 3;
+        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2 + 3;
+        monster[i].mArmorClass += 10;
     }
 
     if (currlevel == 5) {
         monster[i].mLevel += 7;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 8;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
-        monster[i].mHit += 35;
-        monster[i].mHit2 += 35;
-        monster[i].mMinDamage = 1 * monster[i].mMinDamage + 2;
-        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage + 2;
-        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2 + 2;
-        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2 + 2;
+        monster[i].mHit += 40;
+        monster[i].mHit2 += 40;
+        monster[i].mMinDamage = 1 * monster[i].mMinDamage + 4;
+        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage + 4;
+        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2 + 4;
+        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2 + 4;
         monster[i].mArmorClass += 10;
     }
 
@@ -805,11 +818,11 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 40;
         monster[i].mHit2 += 40;
-        monster[i].mMinDamage = 1 * monster[i].mMinDamage + 3;
-        monster[i].mMaxDamage = 1 * monster[i].mMaxDamage + 3;
-        monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2 + 3;
-        monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2 + 3;
-        monster[i].mArmorClass += 10;
+        monster[i].mMinDamage = 2 * (monster[i].mMinDamage + 2);
+        monster[i].mMaxDamage = 2 * (monster[i].mMaxDamage + 2);
+        monster[i].mMinDamage2 = 2 * (monster[i].mMinDamage2 + 2);
+        monster[i].mMaxDamage2 = 2 * (monster[i].mMaxDamage2 + 2);
+        monster[i].mArmorClass += 15;
     }
 
     if (currlevel == 7) {
@@ -835,11 +848,11 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i].mMaxDamage = 2 * (monster[i].mMaxDamage + 2);
         monster[i].mMinDamage2 = 2 * (monster[i].mMinDamage2 + 3);
         monster[i].mMaxDamage2 = 2 * (monster[i].mMaxDamage2 + 2);
-        monster[i].mArmorClass += 30;
+        monster[i].mArmorClass += 20;
     }
 
       if (currlevel == 9) {
-        monster[i].mLevel += 20;
+        monster[i].mLevel += 17;
         monster[i].mHit += 55;
         monster[i].mHit2 += 55;
         monster[i]._mmaxhp = 3 * monster[i]._mmaxhp + 32;
@@ -848,11 +861,11 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i].mMaxDamage = 2 * (monster[i].mMaxDamage + 3);
         monster[i].mMinDamage2 = 2 * (monster[i].mMinDamage2 + 3);
         monster[i].mMaxDamage2 = 2 * (monster[i].mMaxDamage2 + 3);
-        monster[i].mArmorClass += 40;
+        monster[i].mArmorClass += 30;
     }
 
        if (currlevel == 10) {
-        monster[i].mLevel += 25;
+        monster[i].mLevel += 19;
         monster[i].mHit += 60;
         monster[i].mHit2 += 60;
         monster[i]._mmaxhp = 3 * monster[i]._mmaxhp + 32;
@@ -861,26 +874,54 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i].mMaxDamage = 2 * (monster[i].mMaxDamage + 3);
         monster[i].mMinDamage2 = 2 * (monster[i].mMinDamage2 + 4);
         monster[i].mMaxDamage2 = 2 * (monster[i].mMaxDamage2 + 3);
-        monster[i].mArmorClass += 50;
+        monster[i].mArmorClass += 30;
     }
 
     if (currlevel == 11) {
-        monster[i].mLevel += 30;
+        monster[i].mLevel += 21;
         monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 32;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
-        monster[i].mHit += 70;
-        monster[i].mHit2 += 70;
-        monster[i].mMinDamage = 3 * monster[i].mMinDamage + 3;
-        monster[i].mMaxDamage = 3 * monster[i].mMaxDamage + 3;
-        monster[i].mMinDamage2 = 3 * monster[i].mMinDamage2 + 3;
-        monster[i].mMaxDamage2 = 3 * monster[i].mMaxDamage2 + 3;
-        monster[i].mArmorClass += 60;
+        monster[i].mHit += 65;
+        monster[i].mHit2 += 65;
+        monster[i].mMinDamage = 3 * monster[i].mMinDamage + 2;
+        monster[i].mMaxDamage = 3 * monster[i].mMaxDamage + 2;
+        monster[i].mMinDamage2 = 3 * monster[i].mMinDamage2 + 2;
+        monster[i].mMaxDamage2 = 3 * monster[i].mMaxDamage2 + 2;
+        monster[i].mArmorClass += 40;
         monster[i].mMagicRes = monst->MData->mMagicRes2;
     }
 
     if (currlevel == 12) {
-        monster[i].mLevel += 40;
+        monster[i].mLevel += 23;
         monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 64;
+        monster[i]._mhitpoints = monster[i]._mmaxhp;
+        monster[i].mHit += 70;
+        monster[i].mHit2 += 70;
+        monster[i].mMinDamage = 3 * monster[i].mMinDamage + 3;
+        monster[i].mMaxDamage = 3 * monster[i].mMaxDamage + 2;
+        monster[i].mMinDamage2 = 3 * monster[i].mMinDamage2 + 3;
+        monster[i].mMaxDamage2 = 3 * monster[i].mMaxDamage2 + 2;
+        monster[i].mArmorClass += 40;
+        monster[i].mMagicRes = monst->MData->mMagicRes2;
+    }
+
+    if (currlevel == 13) {
+        monster[i].mLevel += 25;
+        monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 64;
+        monster[i]._mhitpoints = monster[i]._mmaxhp;
+        monster[i].mHit += 75;
+        monster[i].mHit2 += 75;
+        monster[i].mMinDamage = 3 * monster[i].mMinDamage + 3;
+        monster[i].mMaxDamage = 3 * monster[i].mMaxDamage + 3;
+        monster[i].mMinDamage2 = 3 * monster[i].mMinDamage2 + 3;
+        monster[i].mMaxDamage2 = 3 * monster[i].mMaxDamage2 + 3;
+        monster[i].mArmorClass += 50;
+        monster[i].mMagicRes = monst->MData->mMagicRes2;
+    }
+    
+    if (currlevel == 14) {
+        monster[i].mLevel += 27;
+        monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 128;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 80;
         monster[i].mHit2 += 80;
@@ -888,65 +929,65 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
         monster[i].mMaxDamage = 3 * monster[i].mMaxDamage + 3;
         monster[i].mMinDamage2 = 3 * monster[i].mMinDamage2 + 4;
         monster[i].mMaxDamage2 = 3 * monster[i].mMaxDamage2 + 3;
+        monster[i].mArmorClass += 60;
+        monster[i].mMagicRes = monst->MData->mMagicRes2;
+    }
+
+    if (currlevel == 15) {
+        monster[i].mLevel += 29;
+        monster[i]._mmaxhp = 6 * monster[i]._mmaxhp + 128;
+        monster[i]._mhitpoints = monster[i]._mmaxhp;
+        monster[i].mHit += 85;
+        monster[i].mHit2 += 85;
+        monster[i].mMinDamage = 4 * monster[i].mMinDamage + 3;
+        monster[i].mMaxDamage = 4 * monster[i].mMaxDamage + 3;
+        monster[i].mMinDamage2 = 4 * monster[i].mMinDamage2 + 3;
+        monster[i].mMaxDamage2 = 4 * monster[i].mMaxDamage2 + 3;
         monster[i].mArmorClass += 70;
         monster[i].mMagicRes = monst->MData->mMagicRes2;
     }
 
-    if (currlevel == 13) {
-        monster[i].mLevel += 50;
-        monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 64;
+     if (currlevel == 16) {
+        monster[i].mLevel += 30;
+        monster[i]._mmaxhp = 6 * monster[i]._mmaxhp + 128;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 90;
         monster[i].mHit2 += 90;
-        monster[i].mMinDamage = 3 * monster[i].mMinDamage + 4;
-        monster[i].mMaxDamage = 3 * monster[i].mMaxDamage + 4;
-        monster[i].mMinDamage2 = 3 * monster[i].mMinDamage2 + 4;
-        monster[i].mMaxDamage2 = 3 * monster[i].mMaxDamage2 + 4;
+        monster[i].mMinDamage = 5 * monster[i].mMinDamage + 3;
+        monster[i].mMaxDamage = 5 * monster[i].mMaxDamage + 3;
+        monster[i].mMinDamage2 = 5 * monster[i].mMinDamage2 + 3;
+        monster[i].mMaxDamage2 = 5 * monster[i].mMaxDamage2 + 3;
         monster[i].mArmorClass += 80;
         monster[i].mMagicRes = monst->MData->mMagicRes2;
     }
+     /*
+     if (currlevel == 15) {
+         monster[i].mLevel += 80;
+         monster[i]._mmaxhp = 6 * monster[i]._mmaxhp + 196;
+         monster[i]._mhitpoints = monster[i]._mmaxhp;
+         monster[i].mHit += 80;
+         monster[i].mHit2 += 80;
+         monster[i].mMinDamage = 5 * monster[i].mMinDamage + 4;
+         monster[i].mMaxDamage = 5 * monster[i].mMaxDamage + 3;
+         monster[i].mMinDamage2 = 5 * monster[i].mMinDamage2 + 4;
+         monster[i].mMaxDamage2 = 5 * monster[i].mMaxDamage2 + 3;
+         monster[i].mArmorClass += 90;
+         monster[i].mMagicRes = monst->MData->mMagicRes2;
+     }
 
-    if (currlevel == 14) {
-        monster[i].mLevel += 60;
-        monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 128;
-        monster[i]._mhitpoints = monster[i]._mmaxhp;
-        monster[i].mHit += 100;
-        monster[i].mHit2 += 100;
-        monster[i].mMinDamage = 3 * monster[i].mMinDamage + 5;
-        monster[i].mMaxDamage = 3 * monster[i].mMaxDamage + 4;
-        monster[i].mMinDamage2 = 3 * monster[i].mMinDamage2 + 5;
-        monster[i].mMaxDamage2 = 3 * monster[i].mMaxDamage2 + 4;
-        monster[i].mArmorClass += 90;
-        monster[i].mMagicRes = monst->MData->mMagicRes2;
-    }
-
-    if (currlevel >= 15) {
-        monster[i].mLevel += 75;
-        monster[i]._mmaxhp = 6 * monster[i]._mmaxhp + 196;
-        monster[i]._mhitpoints = monster[i]._mmaxhp;
-        monster[i].mHit += 110;
-        monster[i].mHit2 += 110;
-        monster[i].mMinDamage = 4 * monster[i].mMinDamage + 4;
-        monster[i].mMaxDamage = 4 * monster[i].mMaxDamage + 4;
-        monster[i].mMinDamage2 = 4 * monster[i].mMinDamage2 + 4;
-        monster[i].mMaxDamage2 = 4 * monster[i].mMaxDamage2 + 4;
-        monster[i].mArmorClass += 100;
-        monster[i].mMagicRes = monst->MData->mMagicRes2;
-    }
-
-     if (currlevel >= 16) {
-        monster[i].mLevel += 90;
-        monster[i]._mmaxhp = 6 * monster[i]._mmaxhp + 256;
-        monster[i]._mhitpoints = monster[i]._mmaxhp;
-        monster[i].mHit += 120;
-        monster[i].mHit2 += 120;
-        monster[i].mMinDamage = 5 * monster[i].mMinDamage + 5;
-        monster[i].mMaxDamage = 5 * monster[i].mMaxDamage + 5;
-        monster[i].mMinDamage2 = 5 * monster[i].mMinDamage2 + 5;
-        monster[i].mMaxDamage2 = 5 * monster[i].mMaxDamage2 + 5;
-        monster[i].mArmorClass += 110;
-        monster[i].mMagicRes = monst->MData->mMagicRes2;
-    }
+      if (currlevel == 16) {
+         monster[i].mLevel += 90;
+         monster[i]._mmaxhp = 6 * monster[i]._mmaxhp + 196;
+         monster[i]._mhitpoints = monster[i]._mmaxhp;
+         monster[i].mHit += 80;
+         monster[i].mHit2 += 80;
+         monster[i].mMinDamage = 5 * monster[i].mMinDamage + 4;
+         monster[i].mMaxDamage = 5 * monster[i].mMaxDamage + 4;
+         monster[i].mMinDamage2 = 5 * monster[i].mMinDamage2 + 4;
+         monster[i].mMaxDamage2 = 5 * monster[i].mMaxDamage2 + 4;
+         monster[i].mArmorClass += 90;
+         monster[i].mMagicRes = monst->MData->mMagicRes2;
+     }*/
 
 }
 /*
@@ -1397,6 +1438,9 @@ void __cdecl LoadDiabMonsts()
 {
     unsigned char *lpSetPiece; // esi
 
+   // lpSetPiece = LoadFileInMem("Levels\\L4Data\\diab1.DUN", 0);
+    //SetMapMonsters(lpSetPiece, 2 * diabquad1x, 2 * diabquad1y);
+  //  mem_free_dbg(lpSetPiece);
     lpSetPiece = LoadFileInMem("Levels\\L4Data\\diab1.DUN", 0);
     SetMapMonsters(lpSetPiece, 2 * diabquad1x, 2 * diabquad1y);
     mem_free_dbg(lpSetPiece);
@@ -1489,8 +1533,8 @@ void __cdecl InitMonsters()
         if (gbMaxPlayers != 1)
             v7 += v7 >> 1;
         v8 = nummonsters;
-        if (nummonsters + v7 > 250)
-            v7 = 250 - nummonsters;
+        if (nummonsters + v7 > 190)
+            v7 = 190 - nummonsters;
         v9 = nummtypes;
         v10 = nummonsters + v7;
         v11 = 0;
@@ -1767,7 +1811,7 @@ void __fastcall M_Enemy(int i)
         v21 = 0;
         v2 = &plr[0].plrlevel;
         do {
-            if (!*((_BYTE *)v2 - 23) || currlevel != *v2 || *((_BYTE *)v2 + 267) || !v2[89] && gbMaxPlayers >= 1)
+            if (!*((_BYTE *)v2 - 23) || currlevel != *v2 || *((_BYTE *)v2 + 267) || !v2[89] && gbMaxPlayers != 1)
                 goto LABEL_18;
             v3 = v1->_my;
             v4 = v2[2];
@@ -3170,7 +3214,7 @@ void __fastcall M_TryH2HHit(int i, int pnum, int Hit, int MinDam, int MaxDam)
                         else
                             M_StartKill(arglist, plr_num);
                     }
-                    if (!(monster[v6]._mFlags & 0x1000) && monster[v6].MType->mtype == MT_SKING && gbMaxPlayers >= 1)
+                    if (!(monster[v6]._mFlags & 0x1000) && monster[v6].MType->mtype == MT_SKING && gbMaxPlayers != 1)
                         monster[v6]._mhitpoints += v29;
                     v31 = plr[v7]._pMaxHP;
                     //  playerhitpoints = plr[v7]._pMaxHP;
@@ -3733,7 +3777,7 @@ void __cdecl PrepDoEnding()
     for (int i = 0; i < MAX_PLRS; i++) {
         plr[i]._pmode = PM_QUIT;
         plr[i]._pBlockFlag = TRUE;
-        if (gbMaxPlayers != 1) {
+        if (gbMaxPlayers >= 1) {
             if (plr[i]._pHitPoints >> 6 == 0)
                 plr[i]._pHitPoints = 64;
             if (plr[i]._pMana >> 6 == 0)
@@ -5996,7 +6040,7 @@ void __fastcall MAI_SkelKing(int i)
         _LOBYTE(v2->_mgoal) = 1;
     LABEL_26:
         if (_LOBYTE(v2->_mgoal) == 1) {
-            if (gbMaxPlayers == 1
+            if (gbMaxPlayers >= 1
                 && ((abs(v5) >= 3 || abs(v4) >= 3) && v35 < 4 * (unsigned char)v2->_mint + 35 || v35 < 6)
                 && (v20 = LineClear(v2->_mx, v2->_my, x2, y2), v20)) {
                 v21 = v2->_mx + offset_x[md];

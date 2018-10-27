@@ -1910,7 +1910,7 @@ void __cdecl DrawChr()
 	ADD_PlrStringXY(66, 69, 109, a4, 0);
 	sprintf(a4, "%li", plr[myplr]._pExperience);
 	ADD_PlrStringXY(216, 69, 300, a4, 0);
-	if ( plr[myplr]._pLevel == 50 )
+	if ( plr[myplr]._pLevel == 99 )
 	{
 		strcpy(a4, "None");
 		a5[0] = 3;

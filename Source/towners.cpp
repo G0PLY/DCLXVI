@@ -558,7 +558,7 @@ void __cdecl InitBoy()
 	signed int v3; // edx
 
 	boyloadflag = 1;
-	InitTownerInfo(numtowners, 96, 1, 8, 11, 53, -1, 10);
+	InitTownerInfo(numtowners, 96, 1, 8, 51, 53, -1, 10);
 	v0 = numtowners;
 	InitQstSnds(numtowners);
 	v1 = v0;

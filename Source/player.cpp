@@ -53,8 +53,9 @@ int MaxStats[3][4] = {
     { 75, 250, 96, 30 }
 };
 int ExpLvlsTbl[MAXCHARLEVEL] = {
-   // int ExpLvlsTbl[99] = {
+//    int ExpLvlsTbl[99] = {
     0,
+    1000,
     2000,
     3310,
     4620,
@@ -97,63 +98,64 @@ int ExpLvlsTbl[MAXCHARLEVEL] = {
     1590397,
     1814568,
     2108231,
+    2255063,
     2401895,
+    2593584,
     2785273,
+    2976962,
     3168651,
+    3418038,
     3667425,
+    3916812,
     4166200,
+    4489530,
     4812861,
+    5136192,
     5459523,
+    5877266,
     6295009,
+    6712752,
     7130496,
+    7668340,
     8206185,
+    8744029,
     9281874,
+    9971928,
     10661983,
+    11352037,
     12042092,
+    12924326,
     13806561,
+    14688796,
     15571031,
+    16694998,
     17818965,
+    18942932,
     20066900,
+    21493776,
     22920652,
+    24347528,
     25774405,
+    27579403,
     29384402,
+    31189400,
     32994399,
+    35269599,
     37544800,
+    39820001,
     42095202,
+    44952854,
     47810506,
+    50668158,
     53525811,
+    57102162,
     60678514,
     67831218,
     76750639,
-    85670061,
-    96752442,
     107834823,
-    121554811,
-    135274799,
-    152198404,
-    169122009,
-    189921120,
-    210720231,
-    236188742,
-    261657253,
-    292728836,
-    323800420,
-    361567930,
-    399335440,
-    445071894,
-    490808349,
-    545989381,
-    601170414,
-    667498015,
-    733825617,
-    813252919,
-    892680222,
-    987794417,
-    1082908612,
-    1196807861,
-    1310707109,
-    1390151835,
-    1583495809
+        121554811
+        //135274799
+    //99
 
 };
 char *ClassStrTbl[3] = { "Warrior", "Rogue", "Sorceror" };
@@ -801,7 +803,7 @@ void __fastcall AddPlrExperience(int pnum, int lvl, int exp)
    // }
 
     // Prevent power leveling
-    if (gbMaxPlayers > 1) {
+    if (gbMaxPlayers >= 1) {
         int powerLvlCap = plr[pnum]._pLevel < 0 ? 0 : plr[pnum]._pLevel;
         if (powerLvlCap >= 99) {
             powerLvlCap = 99;
@@ -3357,8 +3359,8 @@ void __cdecl ValidatePlayer()
     for (int b = 1; b < MAX_SPELLS; b++) {
         if (spelldata[b].sBookLvl != -1) {
             msk |= (__int64)1 << (b - 1);
-            if (plr[myplr]._pSplLvl[b] > 15)
-                plr[myplr]._pSplLvl[b] = 15;
+            if (plr[myplr]._pSplLvl[b] > 99)
+                plr[myplr]._pSplLvl[b] = 99;
         }
     }
 
@@ -3764,7 +3766,7 @@ void __fastcall SyncInitPlrPos(int pnum)
         BOOL posOk = FALSE;
         int xx;
         int yy;
-        for (int range = 1; range < 50 && !posOk; range++) {
+        for (int range = 1; range < 99 && !posOk; range++) {
             for (yy = -range; yy <= range && !posOk; yy++) {
                 y = yy + plr[pnum].WorldY;
                 for (xx = -range; xx <= range && !posOk; xx++) {
