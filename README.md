@@ -56,9 +56,6 @@ Removed Multiplayer (black screen crash, MP currently loads singleplayer).
 Using devilution-nightly(10/20/18). 
 =======
 
-For more information or more detailed instructions on installing. 
-=======
-
-https://github.com/diasurgical/devilution
+For more information or more detailed instructions on installing. https://github.com/diasurgical/devilution
 =======
 --------------------------------------------------------------------------------------------------
