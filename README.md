@@ -1,7 +1,9 @@
 =======
 =======
-#DemonStrate DCLXVI
-Alpha Version 1.0a (You will need a Diablo CD to use this)
+DemonStrate DCLXVI Alpha Version 1.0a 
+
+(You will need a Diablo CD to use this)
+
 Diablo 1 DCLXVI Mod made using Devilution Project.
 =======
 =======
@@ -54,6 +56,10 @@ Removed Multiplayer (black screen crash, MP currently loads singleplayer).
 
 =======
 =======
-Using devilution-nightly(10/20/18). Also for more information or more detailed instructions on installing see. https://github.com/diasurgical/devilution
+Using devilution-nightly(10/20/18). 
+
+Also for more information or more detailed instructions on installing see. 
+
+https://github.com/diasurgical/devilution
 =======
 =======
