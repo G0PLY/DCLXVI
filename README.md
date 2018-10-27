@@ -1,9 +1,10 @@
-<<<<<<< HEAD
+=======
 =======
 #DemonStrate DCLXVI
 Alpha Version 1.0a (You will need a Diablo CD to use this)
-
 Diablo 1 DCLXVI Mod made using Devilution Project.
+=======
+=======
 
 Prebuilt Version: Download Diablo_DCLXVI.7z
 
@@ -16,9 +17,11 @@ ddraw.dll (win7/10 graphics fix)
 DIABDAT.MPQ diabloui.dll SMACKW32.DLL STANDARD.snp Storm.dll (from Diablo CD)
 
 
-<<<<<<< HEAD
+=======
 =======
 DemonStrate DCLXVI Features: 
+=======
+=======
 
 Horadric Weapons (spells attached), 
 
@@ -49,6 +52,8 @@ Modified weapon and armor requirements,
 Removed Multiplayer (black screen crash, MP currently loads singleplayer).
 
 
-<<<<<<< HEAD
+=======
 =======
 Using devilution-nightly(10/20/18). Also for more information or more detailed instructions on installing see. https://github.com/diasurgical/devilution
+=======
+=======
