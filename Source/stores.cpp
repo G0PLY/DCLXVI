@@ -1444,6 +1444,26 @@ bool __fastcall WitchRechargeOk(int i)
 	{
 		rv = 1;
 	}
+        if (plr[myplr].InvList[i]._itype == ITYPE_SWORD
+            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+            rv = 1;
+        }
+        if (plr[myplr].InvList[i]._itype == ITYPE_MACE
+            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+            rv = 1;
+        }
+        if (plr[myplr].InvList[i]._itype == ITYPE_BOW
+            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+            rv = 1;
+        }
+        if (plr[myplr].InvList[i]._itype == ITYPE_SHIELD
+            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+            rv = 1;
+        }
+        if (plr[myplr].InvList[i]._itype == ITYPE_AXE
+            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+            rv = 1;
+        }
 	return rv;
 }
 
@@ -2734,7 +2754,7 @@ void __cdecl SmithBuyItem()
 	bool v3; // zf
 
 	TakePlrsMoney(plr[myplr].HoldItem._iIvalue);
-	if ( plr[myplr].HoldItem._iMagical == ITEM_QUALITY_NORMAL )
+	if ( !plr[myplr].HoldItem._iMagical )
 		plr[myplr].HoldItem._iIdentified = FALSE;
 	StoreAutoPlace();
 	idx = stextvhold + ((stextlhold - stextup) >> 2);
@@ -2830,7 +2850,7 @@ void __cdecl SmithBuyPItem()
 	int i; // edx
 
 	TakePlrsMoney(plr[myplr].HoldItem._iIvalue);
-	if ( plr[myplr].HoldItem._iMagical == ITEM_QUALITY_NORMAL )
+	if ( !plr[myplr].HoldItem._iMagical)
 		plr[myplr].HoldItem._iIdentified = FALSE;
 	StoreAutoPlace();
 	xx = 0;

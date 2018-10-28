@@ -9,7 +9,7 @@ Diablo 1 DCLXVI Mod, made using Devilution by GalaXyHaXz.
 =======
 --------------------------------------------------------------------------------------------------
 
-Prebuilt Version: Download Diablo_DCLXVI.7z
+Prebuilt Version: Download DCLXVI_103a.7z
 
 Needed for Prebuilt or Source to work; 
 
@@ -24,7 +24,9 @@ DemonStrate DCLXVI Features:
 =======
 --------------------------------------------------------------------------------------------------
 
-Horadric Weapons (spells attached), 
+Auto loot highlighting,
+
+Weapons may have spells,
 
 Removed waypoint restrictions, 
 
@@ -45,6 +47,8 @@ Increased stat caps (primary stat still 250),
 Increased exp rates, 
 
 Removed refill of health and mana for leveling up,
+
+Removed elixers and full potions from shopkeepers,
 
 Increased monster difficulty, 
 

@@ -748,7 +748,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }*/
 
      if (currlevel == 1) {
-        monster[i].mLevel += 1;
+       // monster[i].mLevel += 1;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 25;
@@ -761,7 +761,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 2) {
-        monster[i].mLevel += 2;
+        monster[i].mLevel += 1;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 30;
@@ -774,7 +774,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
      if (currlevel == 3) {
-        monster[i].mLevel += 3;
+        monster[i].mLevel += 2;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 4;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 33;
@@ -787,7 +787,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 4) {
-        monster[i].mLevel += 5;
+        monster[i].mLevel += 3;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 4;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 35;
@@ -800,7 +800,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 5) {
-        monster[i].mLevel += 7;
+        monster[i].mLevel += 5;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 8;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 40;
@@ -813,7 +813,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 6) {
-        monster[i].mLevel += 9;
+        monster[i].mLevel += 7;
         monster[i]._mmaxhp = 1 * monster[i]._mmaxhp + 8;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 40;
@@ -826,7 +826,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 7) {
-        monster[i].mLevel += 11;
+        monster[i].mLevel += 9;
         monster[i].mHit += 45;
         monster[i].mHit2 += 45;
         monster[i]._mmaxhp = 2 * monster[i]._mmaxhp + 16;
@@ -839,7 +839,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
      if (currlevel == 8) {
-        monster[i].mLevel += 15;
+        monster[i].mLevel += 11;
         monster[i].mHit += 50;
         monster[i].mHit2 += 50;
         monster[i]._mmaxhp = 2 * monster[i]._mmaxhp + 16;
@@ -852,7 +852,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
       if (currlevel == 9) {
-        monster[i].mLevel += 17;
+        monster[i].mLevel += 15;
         monster[i].mHit += 55;
         monster[i].mHit2 += 55;
         monster[i]._mmaxhp = 3 * monster[i]._mmaxhp + 32;
@@ -865,7 +865,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
        if (currlevel == 10) {
-        monster[i].mLevel += 19;
+        monster[i].mLevel += 17;
         monster[i].mHit += 60;
         monster[i].mHit2 += 60;
         monster[i]._mmaxhp = 3 * monster[i]._mmaxhp + 32;
@@ -878,7 +878,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 11) {
-        monster[i].mLevel += 21;
+        monster[i].mLevel += 19;
         monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 32;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 65;
@@ -892,7 +892,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 12) {
-        monster[i].mLevel += 23;
+        monster[i].mLevel += 21;
         monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 64;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 70;
@@ -906,7 +906,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
     if (currlevel == 13) {
-        monster[i].mLevel += 25;
+        monster[i].mLevel += 23;
         monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 64;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 75;
@@ -920,7 +920,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
     
     if (currlevel == 14) {
-        monster[i].mLevel += 27;
+        monster[i].mLevel += 25;
         monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 128;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 80;
@@ -948,7 +948,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
     }
 
      if (currlevel == 16) {
-        monster[i].mLevel += 30;
+        monster[i].mLevel += 31;
         monster[i]._mmaxhp = 6 * monster[i]._mmaxhp + 128;
         monster[i]._mhitpoints = monster[i]._mmaxhp;
         monster[i].mHit += 90;
@@ -3777,7 +3777,7 @@ void __cdecl PrepDoEnding()
     for (int i = 0; i < MAX_PLRS; i++) {
         plr[i]._pmode = PM_QUIT;
         plr[i]._pBlockFlag = TRUE;
-        if (gbMaxPlayers >= 1) {
+        if (gbMaxPlayers > 1) {
             if (plr[i]._pHitPoints >> 6 == 0)
                 plr[i]._pHitPoints = 64;
             if (plr[i]._pMana >> 6 == 0)
@@ -6040,7 +6040,7 @@ void __fastcall MAI_SkelKing(int i)
         _LOBYTE(v2->_mgoal) = 1;
     LABEL_26:
         if (_LOBYTE(v2->_mgoal) == 1) {
-            if (gbMaxPlayers >= 1
+            if (gbMaxPlayers == 1
                 && ((abs(v5) >= 3 || abs(v4) >= 3) && v35 < 4 * (unsigned char)v2->_mint + 35 || v35 < 6)
                 && (v20 = LineClear(v2->_mx, v2->_my, x2, y2), v20)) {
                 v21 = v2->_mx + offset_x[md];

@@ -117,7 +117,7 @@ void __cdecl mainmenu_loop()
 		while ( 1 )
 		{
 			a2 = 0;
-			if ( !UiMainMenuDialog("DCLXVI 1.0alpha by G0PLY.   Made using Devilution by GalaXyHaXz.", &a2, effects_play_sound, 30) )
+			if ( !UiMainMenuDialog("DemonStrate DCLXVI 1.03a by G0PLY using Devilution by GalaXyHaXz", &a2, effects_play_sound, 30) )
 				TermMsg("Unable to display mainmenu");
 			if ( a2 == 1 )
 				break;

@@ -2219,6 +2219,14 @@ void __cdecl game_logic()
 					ScrollView();
 			}
 #endif
+
+#ifdef _DEBUG
+            if (debug_mode_key_inverted_v)
+            {
+                            if (GetAsyncKeyState(VK_MENU) & 0x8000)
+                                ScrollView();
+                        }
+#endif
 			sound_update();
 			ClearPlrMsg();
 			CheckTriggers();

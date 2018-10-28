@@ -1105,6 +1105,17 @@ LABEL_99:
 								v24 = SwapItem(v23, &plr[v3].HoldItem);
 LABEL_172:
 								cursor_ida = v24;
+                                //ADDED
+    if (plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_STAFF || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_AXE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_BOW || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MACE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SHIELD || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MISC || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_0E || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SWORD) {
+        v34 = plr[v3].InvBody[INVLOC_HAND_LEFT]._iSpell;
+        if (v34) {
+            if (plr[v3].InvBody[INVLOC_HAND_LEFT]._iCharges > 0) {
+                plr[v3]._pRSpell = v34;
+                _LOBYTE(plr[v3]._pRSplType) = RSPLTYPE_CHARGES;
+                drawpanflag = 255;
+            }
+        }
+    }
 								goto LABEL_226;
 							}
 							if ( v25 == ITYPE_NONE || plr[v3].InvBody[INVLOC_HAND_LEFT]._iClass != plr[v3].HoldItem._iClass )
@@ -1211,6 +1222,9 @@ if (plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_STAFF ||
     plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_BOW ||
     plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MACE ||
     plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SHIELD ||
+    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE ||
+    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MISC ||
+    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_0E ||
     plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SWORD)
 					{
 						v34 = plr[v3].InvBody[INVLOC_HAND_LEFT]._iSpell;
