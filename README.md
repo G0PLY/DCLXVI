@@ -54,7 +54,13 @@ Increased monster difficulty,
 
 Modified weapon and armor requirements, 
 
-Removed Multiplayer (black screen crash, MP currently loads singleplayer).
+Working on:
+Removed multiplayer (black screen crash, MP currently loads singleplayer)
+(issue with the devilution version I'm using, need to port to one that works),
+
+Removed item drop on death (no effect without multiplayer),
+
+Half gold dropped on death is now deleted (no effect without multiplayer).
 
 --------------------------------------------------------------------------------------------------
 Using devilution-nightly(10/20/18). 
