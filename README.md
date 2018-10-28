@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------
-DemonStrate DCLXVI Alpha Version 1.01a 
+DemonStrate DCLXVI Alpha Version 1.03a 
 =======
 
 (You will need a Diablo CD to use this)
