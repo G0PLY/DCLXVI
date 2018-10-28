@@ -54,7 +54,10 @@ Increased monster difficulty,
 
 Modified weapon and armor requirements, 
 
-Working on:
+
+
+Working on the following:
+
 Removed multiplayer (black screen crash, MP currently loads singleplayer)
 (issue with the devilution version I'm using, need to port to one that works),
 
