@@ -50,7 +50,9 @@ Increased exp rates,
 
 Removed refill of health and mana for leveling up,
 
-Removed elixers and full potions from shopkeepers,
+Removed full potions from shopkeepers perma listing,
+
+Removed elixer potions from shopkeeper listings,
 
 Increased monster difficulty, 
 
@@ -58,10 +60,12 @@ Modified weapon and armor requirements,
 
 Removed item drop on death (multiplayer),
 
-Removed gold dropped on death (multiplayer).
+Removed gold dropped on death (multiplayer)
+
+Monsters are more difficult in multiplayer vs singleplayer.
 
 --------------------------------------------------------------------------------------------------
-Using devilution-nightly(10/20/18). 
+Using devilution-0.4
 =======
 
 For more information or more detailed instructions on installing. https://github.com/diasurgical/devilution
