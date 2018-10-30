@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------
-DemonStrate DCLXVI Alpha Version 1.03a 
+DemonStrate DCLXVI Alpha Version 1.04a 
 =======
 
 (You will need a Diablo CD to use this)
@@ -9,7 +9,7 @@ Diablo 1 DCLXVI Mod, made using Devilution by GalaXyHaXz.
 =======
 --------------------------------------------------------------------------------------------------
 
-Prebuilt Version: Download DCLXVI_103a.7z
+Prebuilt Version: Download DCLXVI_104a.7z
 
 Needed for Prebuilt or Source to work; 
 
@@ -18,6 +18,8 @@ The following files are not included in this download:
 ddraw.dll (win7/10 graphics fix) 
 
 DIABDAT.MPQ diabloui.dll SMACKW32.DLL STANDARD.snp Storm.dll (from Diablo CD)
+
+For LAN multiplayer download ipxwrapper
 
 --------------------------------------------------------------------------------------------------
 DemonStrate DCLXVI Features: 
@@ -54,16 +56,9 @@ Increased monster difficulty,
 
 Modified weapon and armor requirements, 
 
+Removed item drop on death (multiplayer),
 
-
-Working on the following:
-
-Removed multiplayer (black screen crash, MP currently loads singleplayer)
-(issue with the devilution version I'm using, need to port to one that works),
-
-Removed item drop on death (no effect without multiplayer),
-
-Half gold dropped on death is now deleted (no effect without multiplayer).
+Removed gold dropped on death (multiplayer).
 
 --------------------------------------------------------------------------------------------------
 Using devilution-nightly(10/20/18). 
