@@ -9,7 +9,7 @@ Diablo 1 DCLXVI Mod, made using Devilution by GalaXyHaXz.
 =======
 --------------------------------------------------------------------------------------------------
 
-Prebuilt Version: Download DCLXVI_104a.7z
+Prebuilt Version: Download DCLXVI_104a.zip
 
 Needed for Prebuilt or Source to work; 
 
@@ -19,7 +19,7 @@ ddraw.dll (win7/10 graphics fix)
 
 DIABDAT.MPQ diabloui.dll SMACKW32.DLL STANDARD.snp Storm.dll (from Diablo CD)
 
-For LAN multiplayer download ipxwrapper
+For multiplayer on LAN download ipxwrapper.
 
 --------------------------------------------------------------------------------------------------
 DemonStrate DCLXVI Features: 
@@ -48,11 +48,11 @@ Increased stat caps (primary stat still 250),
 
 Increased exp rates, 
 
-Removed refill of health and mana for leveling up,
+Removed free refill of health and mana for leveling up,
 
-Removed full potions from shopkeepers perma listing,
+Removed full potions from shopkeepers permanent listing,
 
-Removed elixer potions from shopkeeper listings,
+Removed elixer potions from shopkeepers listing,
 
 Increased monster difficulty, 
 
@@ -60,12 +60,12 @@ Modified weapon and armor requirements,
 
 Removed item drop on death (multiplayer),
 
-Removed gold dropped on death (multiplayer)
+Removed half gold dropped on death (multiplayer)
 
-Monsters are more difficult in multiplayer vs singleplayer.
+Monsters more difficult in multiplayer vs singleplayer.
 
 --------------------------------------------------------------------------------------------------
-Using devilution-0.4
+Using devilution-0.4 
 =======
 
 For more information or more detailed instructions on installing. https://github.com/diasurgical/devilution
