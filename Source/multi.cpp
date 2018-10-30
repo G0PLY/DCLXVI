@@ -21,10 +21,10 @@ int sglTimeoutStart; // weak
 int sgdwPlayerLeftReasonTbl[MAX_PLRS];
 char pkdata_678658[4100];
 unsigned int sgdwGameLoops; // idb
-BYTE gbMaxPlayers;
+UCHAR gbMaxPlayers; // weak
 char sgbTimeout; // weak
 char szPlayerName[128];
-BYTE gbDeltaSender;
+char gbDeltaSender; // weak
 int sgbNetInited; // weak
 int player_state[MAX_PLRS];
 
@@ -121,7 +121,7 @@ void __fastcall NetRecvPlrData(TPkt *pkt)
 	pkt->hdr.bdex = plr[myplr]._pBaseDex;
 }
 
-void __fastcall NetSendHiPri(BYTE *pbMsg, BYTE bLen)
+void __fastcall NetSendHiPri(unsigned char *pbMsg, unsigned char bLen)
 {
 	unsigned char *v2; // edi
 	unsigned char v3; // bl
@@ -367,7 +367,7 @@ int __cdecl multi_handle_delta()
 
 	if ( gbGameDestroyed )
 	{
-		gbRunGame = FALSE;
+		gbRunGame = 0;
 		return 0;
 	}
 	v0 = 0;
@@ -405,6 +405,7 @@ int __cdecl multi_handle_delta()
 	multi_mon_seeds();
 	return 1;
 }
+// 525650: using guessed type int gbRunGame;
 // 678628: using guessed type int dword_678628;
 // 67862D: using guessed type char gbGameDestroyed;
 // 679661: using guessed type char sgbTimeout;
@@ -494,10 +495,11 @@ void __cdecl multi_begin_timeout()
 		}
 		else
 		{
-			gbRunGame = FALSE;
+			gbRunGame = 0;
 		}
 	}
 }
+// 525650: using guessed type int gbRunGame;
 // 67862D: using guessed type char gbGameDestroyed;
 // 678644: using guessed type int sglTimeoutStart;
 // 679661: using guessed type char sgbTimeout;
@@ -550,7 +552,7 @@ void __cdecl multi_process_network_packets()
 	{
 		do
 		{
-			++pkt_counter;
+			++dword_676198;
 			multi_clear_left_tbl();
 			v1 = pkt;
 			v2 = pkt;
@@ -625,7 +627,7 @@ void __cdecl multi_process_network_packets()
 		nthread_terminate_game("SNetReceiveMsg");
 }
 // 676194: using guessed type char gbBufferMsgs;
-// 676198: using guessed type int pkt_counter;
+// 676198: using guessed type int dword_676198;
 
 void __fastcall multi_handle_all_packets(int players, TPkt *packet, int a3)
 {
@@ -773,7 +775,7 @@ void __stdcall multi_handle_events(_SNETEVENT *pEvt)
 				gbSomebodyWonGameKludge = 1;
 			sgbSendDeltaTbl[pEvt->playerid] = 0;
 			dthread_remove_player(pEvt->playerid);
-			if ( gbDeltaSender == pEvt->playerid )
+			if ( (unsigned char)gbDeltaSender == pEvt->playerid )
 				gbDeltaSender = 4;
 			break;
 		case EVENT_TYPE_PLAYER_MESSAGE:
@@ -824,14 +826,14 @@ int __fastcall NetInit(int bSinglePlayer, int *pfExitProgram)
 		memset(&UiData, 0, 0x50u);
 		UiData.size = 80;
 		UiData.parentwindow = SDrawGetFrameWindow(0);
-		UiData.artcallback = (void (__cdecl *)())UiArtCallback;
-		UiData.createcallback = (void (__cdecl *)())UiCreateGameCallback;
-		UiData.drawdesccallback = (void (__cdecl *)())UiDrawDescCallback;
-		UiData.messageboxcallback = (void (__cdecl *)())UiMessageBoxCallback;
-		UiData.soundcallback = (void (__cdecl *)())UiSoundCallback;
-		UiData.authcallback = (void (__cdecl *)())UiAuthCallback;
-		UiData.getdatacallback = (void (__cdecl *)())UiGetDataCallback;
-		UiData.categorycallback = (void (__cdecl *)())UiCategoryCallback;
+		UiData.artcallback = UiArtCallback;
+		UiData.createcallback = UiCreateGameCallback;
+		UiData.drawdesccallback = UiDrawDescCallback;
+		UiData.messageboxcallback = UiMessageBoxCallback;
+		UiData.soundcallback = UiSoundCallback;
+		UiData.authcallback = UiAuthCallback;
+		UiData.getdatacallback = UiGetDataCallback;
+		UiData.categorycallback = UiCategoryCallback;
 		UiData.selectnamecallback = (void (__cdecl *)())mainmenu_select_hero_dialog;
 		UiData.changenamecallback = (void (__cdecl *)())mainmenu_create_hero;
 		UiData.profilebitmapcallback = UiProfileDraw;
@@ -979,7 +981,7 @@ void __cdecl SetupLocalCoords()
 	plr[myplr]._pLvlChanging = 1;
 	plr[myplr].pLvlLoad = 0;
 	plr[myplr]._pmode = PM_NEWLVL;
-	plr[myplr].destAction = ACTION_NONE;
+	plr[myplr].destAction = -1;
 }
 // 52572C: using guessed type int leveldebug;
 // 5BB1ED: using guessed type char leveltype;
@@ -1127,7 +1129,7 @@ void __fastcall multi_player_joins(int pnum, TCmdPlrInfoHdr *cmd, int a3)
 					SyncInitPlr(v3);
 					if ( plr[v6].plrlevel == currlevel )
 					{
-						if ( plr[v6]._pHitPoints >> 6 <= 0 )
+						if ( (signed int)(plr[v6]._pHitPoints & 0xFFFFFFC0) <= 0 )
 						{
 							plr[v6]._pgfxnum = 0;
 							LoadPlrGFX(v3, PFILE_DEATH);
@@ -1140,7 +1142,7 @@ void __fastcall multi_player_joins(int pnum, TCmdPlrInfoHdr *cmd, int a3)
 							plr[v6]._pVar8 = 2 * v11;
 							v13 = plr[v6].WorldX;
 							plr[v6]._pAnimFrame = v12;
-							dFlags[v13][plr[v6].WorldY] |= DFLAG_DEAD_PLAYER;
+							dFlags[v13][plr[v6].WorldY] |= 4u;
 						}
 						else
 						{

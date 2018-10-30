@@ -104,7 +104,7 @@ void __cdecl InitTownTriggers()
 	trigs[0]._ty = 29;
 	trigs[0]._tmsg = WM_DIABNEXTLVL;
 	trigflag[4] = 1;
-	if ( gbMaxPlayers == 1 )
+	if ( gbMaxPlayers >= 1 )
 	{
 		trigs[1]._tx = 49;
 		trigflag[0] = 1;
@@ -239,7 +239,7 @@ void __cdecl InitL2Triggers()
 		v6 = v5;
 		do
 		{
-			if ( (*v6)[0] == 267 && (v0 != quests[QTYPE_BONE]._qtx || v7 != quests[QTYPE_BONE]._qty) )
+			if ( (*v6)[0] == 267 && (v0 != quests[14]._qtx || v7 != quests[14]._qty) )
 			{
 				++trigflag[4];
 				v8 += 4;
@@ -428,7 +428,7 @@ void __cdecl InitL4Triggers()
 		v8 = &trigs[trigflag[4]]._ty;
 		do
 		{
-			if ( (*v6)[0] == 370 && quests[QTYPE_VB]._qactive == 3 )
+			if ( (*v6)[0] == 370 && quests[15]._qactive == 3 )
 			{
 				++trigflag[4];
 				*(v8 - 1) = v7;
@@ -1101,7 +1101,7 @@ void __cdecl Freeupstairs()
 				v5 = 5;
 				do
 				{
-					*v4 |= DFLAG_POPULATED;
+					*v4 |= 8u;
 					v4 += 112;
 					--v5;
 				}
@@ -1133,7 +1133,7 @@ unsigned char __cdecl ForceSKingTrig()
 		if ( *v1 == -1 )
 			return 0;
 	}
-	sprintf(infostr, "Back to Level %i", (unsigned char)quests[QTYPE_KING]._qlevel);
+	sprintf(infostr, "Back to Level %i", (unsigned char)quests[12]._qlevel);
 	cursmx = trigs[0]._tx;
 	cursmy = trigs[0]._ty;
 	return 1;
@@ -1155,7 +1155,7 @@ unsigned char __cdecl ForceSChambTrig()
 		if ( *v1 == -1 )
 			return 0;
 	}
-	sprintf(infostr, "Back to Level %i", (unsigned char)quests[QTYPE_BONE]._qlevel);
+	sprintf(infostr, "Back to Level %i", (unsigned char)quests[14]._qlevel);
 	cursmx = trigs[0]._tx;
 	cursmy = trigs[0]._ty;
 	return 1;
@@ -1177,7 +1177,7 @@ unsigned char __cdecl ForcePWaterTrig()
 		if ( *v1 == -1 )
 			return 0;
 	}
-	sprintf(infostr, "Back to Level %i", (unsigned char)quests[QTYPE_PW]._qlevel);
+	sprintf(infostr, "Back to Level %i", (unsigned char)quests[13]._qlevel);
 	cursmx = trigs[0]._tx;
 	cursmy = trigs[0]._ty;
 	return 1;
@@ -1253,6 +1253,7 @@ LABEL_24:
 	}
 }
 // 5BB1ED: using guessed type char leveltype;
+// 5CCB10: using guessed type char setlvlnum;
 // 5CF31D: using guessed type char setlevel;
 
 void __cdecl CheckTriggers()
@@ -1264,6 +1265,8 @@ void __cdecl CheckTriggers()
 	int v4; // edx
 	signed int v5; // edx
 	int v6; // eax
+	char v7; // al
+	int v8; // ecx
 	int v9; // [esp-4h] [ebp-20h]
 	int x; // [esp+Ch] [ebp-10h]
 	int y; // [esp+10h] [ebp-Ch]
@@ -1327,21 +1330,21 @@ LABEL_34:
 	if ( gbMaxPlayers == 1 )
 		goto LABEL_46;
 	v5 = 0;
-	if ( v0[1] == 5 && plr[v1]._pLevel < 0 )
+	if ( v0[1] == 5 && plr[v1]._pLevel < 8 )
 	{
 		v5 = 1;
 		x = plr[myplr].WorldX;
 		_LOBYTE(y) = v3 + 1;
 		_LOBYTE(error_id) = 40;
 	}
-	if ( v0[1] == 9 && plr[v1]._pLevel < 0 )
+	if ( v0[1] == 9 && plr[v1]._pLevel < 13 )
 	{
 		v5 = 1;
 		_LOBYTE(x) = v2 + 1;
 		y = plr[v1].WorldY;
 		_LOBYTE(error_id) = 41;
 	}
-	if ( v0[1] == 13 && plr[v1]._pLevel < 0 )
+	if ( v0[1] == 13 && plr[v1]._pLevel < 17 )
 	{
 		x = plr[myplr].WorldX;
 		v5 = 1;
@@ -1356,20 +1359,24 @@ LABEL_33:
 		StartNewLvl(myplr, *v0, v9);
 		goto LABEL_34;
 	}
-	switch ( plr[myplr]._pClass ) {
-		case PC_WARRIOR:
-			PlaySFX(PS_WARR43);
-			break;
-		case PC_ROGUE:
-			PlaySFX(PS_ROGUE43);
-			break;
-		case PC_SORCERER:
-			PlaySFX(PS_MAGE43);
+	v7 = plr[myplr]._pClass;
+	switch ( v7 )
+	{
+		case UI_WARRIOR:
+			v8 = PS_WARR43;
+			goto LABEL_42;
+		case UI_ROGUE:
+			v8 = PS_ROGUE43;
+			goto LABEL_42;
+		case UI_SORCERER:
+			v8 = PS_MAGE43;
+LABEL_42:
+			PlaySFX(v8);
 			break;
 	}
 	_LOBYTE(v2) = error_id;
 	InitDiabloMsg(v2);
-	NetSendCmdLoc(TRUE, CMD_WALKXY, x, y);
+	NetSendCmdLoc(1u, 1u, x, y);
 }
 // 679660: using guessed type char gbMaxPlayers;
 // 6ABB30: using guessed type int TWarpFrom;

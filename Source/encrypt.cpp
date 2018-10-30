@@ -2,9 +2,9 @@
 
 #include "../types.h"
 
-int hashtable[1280];
+int encrypt_table[1280];
 
-void __fastcall Decrypt(void *block, int size, int key)
+void __fastcall encrypt_decrypt_block(void *block, int size, int key) // DecryptMPQBlock
 {
 	unsigned int v3; // edx
 	int v4; // eax
@@ -21,7 +21,7 @@ void __fastcall Decrypt(void *block, int size, int key)
 		v6 = key;
 		do
 		{
-			v7 = hashtable[(unsigned char)v6 + 1024] + v4;
+			v7 = encrypt_table[(unsigned char)v6 + 1024] + v4;
 			*(_DWORD *)block ^= v7 + v6;
 			v8 = *(_DWORD *)block;
 			block = (char *)block + 4;
@@ -33,7 +33,7 @@ void __fastcall Decrypt(void *block, int size, int key)
 	}
 }
 
-void __fastcall Encrypt(void *block, int size, int key)
+void __fastcall encrypt_encrypt_block(void *block, int size, int key) // EncryptMPQBlock
 {
 	unsigned int v3; // edx
 	int v4; // eax
@@ -50,7 +50,7 @@ void __fastcall Encrypt(void *block, int size, int key)
 		v6 = key;
 		do
 		{
-			v7 = hashtable[(unsigned char)v6 + 1024] + v4;
+			v7 = encrypt_table[(unsigned char)v6 + 1024] + v4;
 			v8 = *(_DWORD *)block ^ (v7 + v6);
 			v4 = 33 * v7 + *(_DWORD *)block + 3;
 			*(_DWORD *)block = v8;
@@ -62,10 +62,10 @@ void __fastcall Encrypt(void *block, int size, int key)
 	}
 }
 
-int __fastcall Hash(const char *s, int type)
+int __fastcall encrypt_hash(char *s, int type) // HashStringSlash
 {
 	int v2; // ebp
-	const char *v3; // ebx
+	char *v3; // ebx
 	signed int v4; // esi
 	int v5; // edi
 	int v6; // ST00_4
@@ -79,13 +79,13 @@ int __fastcall Hash(const char *s, int type)
 	{
 		v6 = *v3++;
 		v7 = toupper(v6);
-		v4 = (v5 + v4) ^ hashtable[v7 + (v2 << 8)];
+		v4 = (v5 + v4) ^ encrypt_table[v7 + (v2 << 8)];
 		v5 = v7 + 33 * v5 + v4 + 3;
 	}
 	return v4;
 }
 
-void __cdecl InitHash()
+void __cdecl encrypt_init_lookup_table() // InitScratchSpace
 {
 	unsigned int v0; // eax
 	int *v1; // edi
@@ -95,7 +95,7 @@ void __cdecl InitHash()
 	int *v5; // [esp+10h] [ebp-4h]
 
 	v0 = 0x100001;
-	v5 = hashtable;
+	v5 = encrypt_table;
 	do
 	{
 		v1 = v5;
@@ -112,10 +112,10 @@ void __cdecl InitHash()
 		while ( v4 );
 		++v5;
 	}
-	while ( (signed int)v5 < (signed int)&hashtable[256] );
+	while ( (signed int)v5 < (signed int)&encrypt_table[256] );
 }
 
-int __fastcall PkwareCompress(void *buf, int size)
+int __fastcall encrypt_compress(void *buf, int size) // MPQCompress_PKWare
 {
 	unsigned char *v2; // ebx
 	unsigned char *v3; // esi
@@ -141,8 +141,8 @@ int __fastcall PkwareCompress(void *buf, int size)
 	param.pbSize = v3;
 	dsize = 4096;
 	implode(
-		PkwareBufferRead,
-		PkwareBufferWrite,
+		encrypt_pkware_read,
+		encrypt_pkware_write,
 		ptr,
 		&param,
 		&type,
@@ -157,7 +157,7 @@ int __fastcall PkwareCompress(void *buf, int size)
 	return (int)v3;
 }
 
-unsigned int __cdecl PkwareBufferRead(char *buf, unsigned int *size, void *param)
+unsigned int __cdecl encrypt_pkware_read(char *buf, unsigned int *size, void *param) // ReadPKWare
 {
 	TDataInfo * pInfo = (TDataInfo *)param;
 	int v3; // edi
@@ -172,7 +172,7 @@ unsigned int __cdecl PkwareBufferRead(char *buf, unsigned int *size, void *param
 	return v3;
 }
 
-void __cdecl PkwareBufferWrite(char *buf, unsigned int *size, void *param)
+void __cdecl encrypt_pkware_write(char *buf, unsigned int *size, void *param) // WritePKWare
 {
 	TDataInfo * pInfo = (TDataInfo *)param;
 
@@ -180,7 +180,7 @@ void __cdecl PkwareBufferWrite(char *buf, unsigned int *size, void *param)
 	pInfo->pbOutBuffEnd += *size;
 }
 
-void __fastcall PkwareDecompress(void *param, int recv_size, int dwMaxBytes)
+void __fastcall encrypt_decompress(void *param, int recv_size, int dwMaxBytes) // MPQDecompress_PKWare
 {
 	unsigned char *v3; // edi
 	unsigned char *v4; // ebx
@@ -198,8 +198,8 @@ void __fastcall PkwareDecompress(void *param, int recv_size, int dwMaxBytes)
 	info.pbOutBuff = v5;
 	info.pbSize = v4;
 	explode(
-		PkwareBufferRead,
-		PkwareBufferWrite,
+		encrypt_pkware_read,
+		encrypt_pkware_write,
 		ptr,
 		&info);
 	memcpy(v3, v5, (size_t)info.pbOutBuffEnd);

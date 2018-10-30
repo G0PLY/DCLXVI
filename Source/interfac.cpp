@@ -49,7 +49,7 @@ void __cdecl DrawCutscene()
 {
 	unsigned int v0; // esi
 
-	j_lock_buf_priv(1);
+	lock_buf_priv();
 	CelDecodeOnly(64, 639, sgpBackCel, 1, 640);
 	v0 = 0;
 	if ( sgdwProgress )
@@ -61,7 +61,7 @@ void __cdecl DrawCutscene()
 				progress_id);
 		while ( v0 < sgdwProgress );
 	}
-	j_unlock_buf_priv(1);
+	unlock_buf_priv();
 	drawpanflag = 255;
 	scrollrt_draw_game_screen(0);
 }
@@ -226,7 +226,7 @@ LABEL_41:
 	PaletteFadeOut(8);
 	FreeInterface();
 	SetWindowProc(saveProc);
-	NetSendCmdLocParam1(TRUE, CMD_PLAYER_JOINLEVEL, plr[myplr].WorldX, plr[myplr].WorldY, plr[myplr].plrlevel);
+	NetSendCmdLocParam1(1u, CMD_PLAYER_JOINLEVEL, plr[myplr].WorldX, plr[myplr].WorldY, plr[myplr].plrlevel);
 	plrmsg_delay(0);
 	ResetPal();
 	if ( gbSomebodyWonGameKludge && plr[myplr].plrlevel == 16 )
@@ -380,3 +380,4 @@ LABEL_31:
 			goto LABEL_33;
 	}
 }
+// 5CCB10: using guessed type char setlvlnum;

@@ -11,11 +11,11 @@ extern int MouseY; // idb
 extern int MouseX; // idb
 extern bool gbGameLoopStartup; // idb
 extern int glSeedTbl[NUMLEVELS];
-extern BOOL gbRunGame;
+extern int gbRunGame; // weak
 extern int glMid3Seed[NUMLEVELS];
 extern int gbRunGameResult; // weak
 extern int zoomflag; // weak
-extern BOOL gbProcessPlayers;
+extern int gbProcessPlayers; // weak
 extern int glEndSeed[NUMLEVELS];
 extern int dword_5256E8; // weak
 extern HINSTANCE ghInst; // idb
@@ -95,7 +95,7 @@ extern int frameend;
 extern int framerate;
 extern int framestart;
 #endif
-extern BOOL FriendlyMode;
+extern int FriendlyMode; // weak
 extern char *spszMsgTbl[4]; // weak
 extern char *spszMsgKeyTbl[4]; // weak
 

@@ -117,7 +117,7 @@ void __cdecl mainmenu_loop()
 		while ( 1 )
 		{
 			a2 = 0;
-			if ( !UiMainMenuDialog("DemonStrate DCLXVI 1.03a by G0PLY using Devilution by GalaXyHaXz", &a2, effects_play_sound, 30) )
+			if ( !UiMainMenuDialog("DemonStrate DCLXVI 1.04a by G0PLY using Devilution by GalaXyHaXz", &a2, effects_play_sound, 30) )
 				TermMsg("Unable to display mainmenu");
 			if ( a2 == 1 )
 				break;
@@ -175,7 +175,7 @@ int __fastcall mainmenu_init_menu(int a1)
 int __cdecl mainmenu_multi_player()
 {
 	gbMaxPlayers = MAX_PLRS;
-	return mainmenu_init_menu(1);
+	return mainmenu_init_menu(3);
 }
 // 679660: using guessed type char gbMaxPlayers;
 

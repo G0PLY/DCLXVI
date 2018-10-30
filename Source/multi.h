@@ -21,10 +21,10 @@ extern int sglTimeoutStart; // weak
 extern int sgdwPlayerLeftReasonTbl[MAX_PLRS];
 extern char pkdata_678658[4100];
 extern unsigned int sgdwGameLoops; // idb
-extern BYTE gbMaxPlayers;
+extern UCHAR gbMaxPlayers;
 extern char sgbTimeout; // weak
 extern char szPlayerName[128];
-extern BYTE gbDeltaSender; // weak
+extern char gbDeltaSender; // weak
 extern int sgbNetInited; // weak
 extern int player_state[MAX_PLRS];
 

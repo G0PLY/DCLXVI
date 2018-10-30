@@ -6,7 +6,7 @@ extern char sgbNextTalkSave; // weak
 extern char sgbTalkSavePos; // weak
 extern void *pDurIcons;
 extern void *pChrButtons;
-extern BOOL drawhpflag; // idb
+extern int drawhpflag; // idb
 extern int dropGoldFlag; // weak
 extern int panbtn[8];
 extern int chrbtn[4];
@@ -16,12 +16,12 @@ extern void *pChrPanel;
 extern int lvlbtndown; // weak
 extern char sgszTalkSave[8][80];
 extern int dropGoldValue; // idb
-extern BOOL drawmanaflag; // idb
+extern int drawmanaflag; // idb
 extern int chrbtnactive; // weak
 extern char sgszTalkMsg[80];
 extern void *pPanelText;
 extern int frame_4B8800; // idb
-extern char *pLifeBuff;
+extern void *pLifeBuff;
 extern void *pBtmBuff;
 extern void *pTalkBtns;
 extern int pstrjust[4];
@@ -29,7 +29,7 @@ extern int pnumlines; // idb
 extern int pinfoflag; // weak
 extern int talkbtndown[3];
 extern int pSpell; // weak
-extern char *pManaBuff;
+extern void *pManaBuff;
 extern int infoclr; // weak
 extern int sgbPlrTalkTbl; // weak // should be char [4]
 extern void *pGBoxBuff;
@@ -50,7 +50,7 @@ extern int numpanbtns; // weak
 extern void *pStatusPanel;
 extern char panelstr[256];
 extern int panelflag; // weak
-extern unsigned char spell_trans[256];
+extern char byte_4B8B88[256];
 extern int initialDropGoldValue; // idb
 extern void *pSpellCels;
 extern int panbtndown; // weak
@@ -64,7 +64,7 @@ void __cdecl DrawSpellList();
 void __cdecl SetSpell();
 void __fastcall SetSpeedSpell(int slot);
 void __fastcall ToggleSpell(int slot);
-void __fastcall CPrintString(int No, unsigned int glyph, unsigned char col); /* check arg names */
+void __fastcall CPrintString(int No, unsigned char pszStr, int Just); /* check arg names */
 void __fastcall AddPanelString(char *str, int just);
 void __cdecl ClearPanel();
 void __fastcall DrawPanelBox(int x, int y, int w, int h, int sx, int sy);
@@ -102,7 +102,7 @@ void __cdecl ReleaseChrBtns();
 void __cdecl DrawDurIcon();
 int __fastcall DrawDurIcon4Item(ItemStruct *pItem, int x, int c);
 void __cdecl RedBack();
-char __fastcall GetSBookTrans(int ii, BOOL townok);
+int __fastcall GetSBookTrans(int ii, unsigned char townok);
 void __cdecl DrawSpellBook();
 void __fastcall PrintSBookStr(int x, int y, bool cjustflag, char *pszStr, int bright);
 void __cdecl CheckSBook();
@@ -131,7 +131,7 @@ extern const unsigned char fontidx[256];
 
 /* data */
 
-extern unsigned char SpellITbl[MAX_SPELLS];
+extern unsigned char SpellITbl[37];
 extern int PanBtnPos[8][5];
 extern char *PanBtnHotKey[8];
 extern char *PanBtnStr[8];

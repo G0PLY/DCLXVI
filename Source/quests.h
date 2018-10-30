@@ -20,7 +20,7 @@ void __cdecl InitQuests();
 void __cdecl CheckQuests();
 bool __cdecl ForceQuests();
 BOOL __fastcall QuestStatus(int i);
-void __fastcall CheckQuestKill(int m, BOOL sendmsg);
+void __fastcall CheckQuestKill(int m, unsigned char sendmsg);
 void __cdecl DrawButcher();
 void __fastcall DrawSkelKing(int q, int x, int y);
 void __fastcall DrawWarLord(int x, int y);
@@ -40,7 +40,7 @@ void __cdecl QuestlogUp();
 void __cdecl QuestlogDown();
 void __cdecl QuestlogEnter();
 void __cdecl QuestlogESC();
-void __fastcall SetMultiQuest(int q, int s, int l, int v1);
+void __fastcall SetMultiQuest(int q, int s, unsigned char l, int v1);
 
 /* rdata */
 extern QuestData questlist[MAXQUESTS];

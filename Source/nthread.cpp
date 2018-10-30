@@ -8,7 +8,7 @@ int gdwMsgLenTbl[4];
 static CRITICAL_SECTION sgMemCrit;
 int gdwDeltaBytesSec; // weak
 char nthread_should_run; // weak
-DWORD gdwTurnsInTransit; // weak
+int gdwTurnsInTransit; // weak
 int glpMsgTbl[4];
 unsigned int glpNThreadId;
 char sgbSyncCountdown; // weak
@@ -312,7 +312,7 @@ void __fastcall nthread_ignore_mutex(bool bStart)
 }
 // 67975A: using guessed type char sgbThreadIsRunning;
 
-BOOL __cdecl nthread_has_500ms_passed()
+bool __cdecl nthread_has_500ms_passed()
 {
 	DWORD currentTickCount; // eax
 	int ticksElapsed; // ecx

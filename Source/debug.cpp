@@ -36,8 +36,8 @@ void __cdecl CheckDungeonClear()
 			if ( dPlayer[i][j] )
 				TermMsg("Players not cleared");
 
-			dMonsDbg[currlevel][i][j] = dFlags[i][j] & DFLAG_VISIBLE;
-			dFlagDbg[currlevel][i][j] = dFlags[i][j] & DFLAG_POPULATED;
+			dMonsDbg[currlevel][i][j] = dFlags[i][j] & 2;
+			dFlagDbg[currlevel][i][j] = dFlags[i][j] & 8;
 		}
 	}
 }
@@ -92,7 +92,7 @@ void __cdecl TakeGoldCheat()
 			RemoveInvItem(myplr, ig - 1);
 	}
 
-	for(i = 0; i < MAXBELTITEMS; i++)
+	for(i = 0; i < 8; i++)
 	{
 		if ( plr[myplr].SpdList[i]._itype == ITYPE_GOLD )
 			plr[myplr].SpdList[i]._itype = -1;
@@ -103,9 +103,13 @@ void __cdecl TakeGoldCheat()
 
 void __cdecl MaxSpellsCheat()
 {
-	for(int i = 1; i < MAX_SPELLS; i++) {
-		if ( spelldata[i].sBookLvl != -1 ) {
-			plr[myplr]._pMemSpells |= (__int64)1 << (i - 1);
+	int i; // ebp
+
+	for(i = 1; i < 37; i++)
+	{
+		if ( spelldata[i].sBookLvl != -1 )
+		{
+			*(_QWORD *)plr[myplr]._pMemSpells |= (__int64)1 << (i - 1);
 			plr[myplr]._pSplLvl[i] = 10;
 		}
 	}
@@ -113,7 +117,7 @@ void __cdecl MaxSpellsCheat()
 
 void __fastcall SetSpellLevelCheat(char spl, int spllvl)
 {
-	plr[myplr]._pMemSpells |= (__int64)1 << (spl - 1);
+	*(_QWORD *)plr[myplr]._pMemSpells |= (__int64)1 << (spl - 1);
 	plr[myplr]._pSplLvl[spl] = spllvl;
 }
 

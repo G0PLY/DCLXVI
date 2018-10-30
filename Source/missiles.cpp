@@ -505,11 +505,12 @@ void __fastcall GetDamageAmt(int i, int *mind, int *maxd)
 			v6 = plr[v3]._pLevel + v4 + 1;
 			*mind = v6;
 			v7 = myplr;
-			if ( plr[myplr]._pClass == PC_WARRIOR ) {
+			if ( !_LOBYTE(plr[myplr]._pClass) )
+			{
 				*mind = 2 * v6;
 				v7 = myplr;
 			}
-			if ( plr[v7]._pClass == PC_ROGUE )
+			if ( _LOBYTE(plr[v7]._pClass) == 1 )
 				*mind += *mind >> 1;
 			v8 = maxd;
 			v9 = 0;
@@ -734,11 +735,12 @@ LABEL_43:
 			v26 = plr[v3]._pLevel + v4 + 1;
 			*mind = v26;
 			v27 = myplr;
-			if ( plr[myplr]._pClass == PC_WARRIOR ) {
+			if ( !_LOBYTE(plr[myplr]._pClass) )
+			{
 				*mind = 2 * v26;
 				v27 = myplr;
 			}
-			if ( plr[v27]._pClass == PC_ROGUE )
+			if ( _LOBYTE(plr[v27]._pClass) == 1 )
 				*mind += *mind >> 1;
 			v8 = maxd;
 			v28 = 0;
@@ -755,9 +757,9 @@ LABEL_43:
 LABEL_65:
 			if ( v4 > 0 )
 				*v8 += 6 * v4;
-			if ( plr[myplr]._pClass == PC_WARRIOR )
+			if ( !_LOBYTE(plr[myplr]._pClass) )
 				*v8 *= 2;
-			if ( plr[myplr]._pClass == PC_ROGUE )
+			if ( _LOBYTE(plr[myplr]._pClass) == 1 )
 				*v8 += *v8 >> 1;
 LABEL_71:
 			*mind = -1;
@@ -887,6 +889,7 @@ int __fastcall GetDirection8(int x1, int y1, int x2, int y2)
 	int v7; // eax
 	int result; // eax
 	int v9; // [esp+8h] [ebp-110h]
+	char Dirs[16][16]; // [esp+Ch] [ebp-10Ch]
 	char lrtoul[3]; // [esp+10Ch] [ebp-Ch]
 	char urtoll[3]; // [esp+10Fh] [ebp-9h]
 	char lltour[3]; // [esp+112h] [ebp-6h]
@@ -894,26 +897,41 @@ int __fastcall GetDirection8(int x1, int y1, int x2, int y2)
 
 	v9 = y1;
 	v4 = x1;
-
-	unsigned char Dirs[16][16] = {
-		{ 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{  2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{  2, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 },
-		{  2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
-		{  2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
-		{  2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
-	};
-
+	strcpy((char *)Dirs, "c");
+	*(_QWORD *)&Dirs[0][2] = (__int64)0;
+	*(_DWORD *)&Dirs[0][10] = 0;
+	*(_WORD *)&Dirs[0][14] = 0;
+	*(_QWORD *)&Dirs[1][0] = (__int64)0x1010102;
+	*(_QWORD *)&Dirs[1][8] = (__int64)0;
+	*(_QWORD *)&Dirs[2][0] = (__int64)0x1010101010102;
+	*(_QWORD *)&Dirs[2][8] = (__int64)0;
+	*(_QWORD *)&Dirs[3][0] = (__int64)0x101010101010102;
+	*(_QWORD *)&Dirs[3][8] = (__int64)1;
+	*(_QWORD *)&Dirs[4][0] = (__int64)0x101010101010202;
+	*(_QWORD *)&Dirs[4][8] = (__int64)0x1010101;
+	*(_QWORD *)&Dirs[5][0] = (__int64)0x101010101010202;
+	*(_QWORD *)&Dirs[5][8] = (__int64)0x10101010101;
+	*(_QWORD *)&Dirs[6][0] = (__int64)0x101010101010202;
+	*(_QWORD *)&Dirs[6][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[7][0] = (__int64)0x101010101020202;
+	*(_QWORD *)&Dirs[7][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[8][0] = (__int64)0x101010101020202;
+	*(_QWORD *)&Dirs[8][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[9][0] = (__int64)0x101010102020202;
+	*(_QWORD *)&Dirs[9][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[10][0] = (__int64)0x101010102020202;
+	*(_QWORD *)&Dirs[10][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[11][0] = (__int64)0x101010102020202;
+	*(_QWORD *)&Dirs[11][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[12][0] = (__int64)0x101010202020202;
+	*(_QWORD *)&Dirs[12][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[13][0] = (__int64)0x101010202020202;
+	*(_QWORD *)&Dirs[13][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[14][0] = (__int64)0x101020202020202;
+	*(_QWORD *)&Dirs[14][8] = (__int64)0x101010101010101;
+	lltour[1] = 0;
+	*(_QWORD *)&Dirs[15][0] = (__int64)0x101020202020202;
+	*(_QWORD *)&Dirs[15][8] = (__int64)0x101010101010101;
 	lrtoul[0] = 3;
 	lrtoul[1] = 4;
 	lrtoul[2] = 5;
@@ -924,7 +942,6 @@ int __fastcall GetDirection8(int x1, int y1, int x2, int y2)
 	ultolr[1] = 6;
 	ultolr[2] = 5;
 	lltour[0] = 7;
-	lltour[1] = 0;
 	lltour[2] = 1;
 	v5 = abs(x2 - x1);
 	if ( v5 > 15 )
@@ -932,7 +949,7 @@ int __fastcall GetDirection8(int x1, int y1, int x2, int y2)
 	v6 = abs(y2 - v9);
 	if ( v6 > 15 )
 		v6 = 15;
-	v7 = Dirs[v6][v5];
+	v7 = (unsigned char)Dirs[v6][v5];
 	if ( v4 <= x2 )
 	{
 		if ( v9 <= y2 )
@@ -959,6 +976,7 @@ int __fastcall GetDirection16(int x1, int y1, int x2, int y2)
 	int v7; // eax
 	int result; // eax
 	int v9; // [esp+8h] [ebp-124h]
+	char Dirs[16][16]; // [esp+Ch] [ebp-120h]
 	char lrtoul[5]; // [esp+10Ch] [ebp-20h]
 	char urtoll[5]; // [esp+114h] [ebp-18h]
 	char lltour[5]; // [esp+11Ch] [ebp-10h]
@@ -966,26 +984,41 @@ int __fastcall GetDirection16(int x1, int y1, int x2, int y2)
 
 	v9 = y1;
 	v4 = x1;
-
-	unsigned char Dirs[16][16] = {
-		{ 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{  4, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{  4, 3, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{  4, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
-		{  4, 4, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  4, 4, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{  4, 4, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1 },
-		{  4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1 },
-		{  4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1 },
-		{  4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1 },
-		{  4, 4, 4, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 1, 1 },
-		{  4, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 1 },
-		{  4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2 },
-		{  4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2 },
-		{  4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2 },
-		{  4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2 }
-	};
-
+	strcpy((char *)Dirs, "c");
+	*(_QWORD *)&Dirs[0][2] = (__int64)0;
+	*(_DWORD *)&Dirs[0][10] = 0;
+	*(_WORD *)&Dirs[0][14] = 0;
+	*(_QWORD *)&Dirs[1][0] = (__int64)0x1010204;
+	*(_QWORD *)&Dirs[1][8] = (__int64)0;
+	*(_QWORD *)&Dirs[2][0] = (__int64)0x101010101020304;
+	*(_QWORD *)&Dirs[2][8] = (__int64)0;
+	*(_QWORD *)&Dirs[3][0] = (__int64)0x101010202030304;
+	*(_QWORD *)&Dirs[3][8] = (__int64)0x1010101;
+	*(_QWORD *)&Dirs[4][0] = (__int64)0x101010202030404;
+	*(_QWORD *)&Dirs[4][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[5][0] = (__int64)0x102020203030404;
+	*(_QWORD *)&Dirs[5][8] = (__int64)0x101010101010101;
+	*(_QWORD *)&Dirs[6][0] = (__int64)0x202020203030404;
+	*(_QWORD *)&Dirs[6][8] = (__int64)0x101010101010102;
+	*(_QWORD *)&Dirs[7][0] = (__int64)0x202030303030404;
+	*(_QWORD *)&Dirs[7][8] = (__int64)0x101010101010202;
+	*(_QWORD *)&Dirs[8][0] = (__int64)0x202030303040404;
+	*(_QWORD *)&Dirs[8][8] = (__int64)0x101010101020202;
+	*(_QWORD *)&Dirs[9][0] = (__int64)0x203030303040404;
+	*(_QWORD *)&Dirs[9][8] = (__int64)0x101010102020202;
+	*(_QWORD *)&Dirs[10][0] = (__int64)0x303030303040404;
+	*(_QWORD *)&Dirs[10][8] = (__int64)0x101020202020202;
+	*(_QWORD *)&Dirs[11][0] = (__int64)0x303030303040404;
+	*(_QWORD *)&Dirs[11][8] = (__int64)0x102020202020203;
+	*(_QWORD *)&Dirs[12][0] = (__int64)0x303030304040404;
+	*(_QWORD *)&Dirs[12][8] = (__int64)0x202020202020303;
+	*(_QWORD *)&Dirs[13][0] = (__int64)0x303030304040404;
+	*(_QWORD *)&Dirs[13][8] = (__int64)0x202020202020303;
+	*(_QWORD *)&Dirs[14][0] = (__int64)0x303030304040404;
+	*(_QWORD *)&Dirs[14][8] = (__int64)0x202020202030303;
+	lrtoul[2] = 0;
+	*(_QWORD *)&Dirs[15][0] = (__int64)0x303030304040404;
+	*(_QWORD *)&Dirs[15][8] = (__int64)0x202020203030303;
 	urtoll[0] = 6;
 	urtoll[1] = 7;
 	urtoll[2] = 8;
@@ -1003,7 +1036,6 @@ int __fastcall GetDirection16(int x1, int y1, int x2, int y2)
 	lltour[4] = 10;
 	lrtoul[0] = 14;
 	lrtoul[1] = 15;
-	lrtoul[2] = 0;
 	lrtoul[3] = 1;
 	lrtoul[4] = 2;
 	v5 = abs(x2 - x1);
@@ -1012,7 +1044,7 @@ int __fastcall GetDirection16(int x1, int y1, int x2, int y2)
 	v6 = abs(y2 - v9);
 	if ( v6 > 15 )
 		v6 = 15;
-	v7 = Dirs[v6][v5];
+	v7 = (unsigned char)Dirs[v6][v5];
 	if ( v4 <= x2 )
 	{
 		if ( v9 <= y2 )
@@ -1046,7 +1078,7 @@ void __fastcall DeleteMissile(int mi, int i)
 	{
 		v4 = missile[mi]._misource;
 		if ( v4 == myplr )
-			NetSendCmd(TRUE, CMD_REMSHIELD);
+			NetSendCmd(1u, CMD_REMSHIELD);
 		plr[v4].pManaShield = 0;
 	}
 	v5 = nummissiles - 1;
@@ -1099,7 +1131,7 @@ void __fastcall PutMissile(int i)
 	if ( !missile[v1]._miDelFlag )
 	{
 		v4 = v3 + 112 * v2;
-		dFlags[0][v4] |= DFLAG_MISSILE;
+		dFlags[0][v4] |= 1u;
 		v5 = (unsigned char *)dMissile + v4;
 		if ( *v5 )
 			*v5 = -1;
@@ -1223,7 +1255,7 @@ BOOL __fastcall MonsterTrapHit(int m, int mindam, int maxdam, int dist, int t, i
 	v6 = m;
 	v15 = mindam;
 	if ( monster[m].mtalkmsg
-	  || monster[v6]._mhitpoints >> 6 <= 0
+	  || (signed int)(monster[v6]._mhitpoints & 0xFFFFFFC0) <= 0
 	  || monster[v6].MType->mtype == MT_ILLWEAV && _LOBYTE(monster[v6]._mgoal) == 2 )
 	{
 		return 0;
@@ -1269,7 +1301,7 @@ BOOL __fastcall MonsterTrapHit(int m, int mindam, int maxdam, int dist, int t, i
 	if ( debug_mode_dollar_sign || debug_mode_key_inverted_v )
 		monster[v6]._mhitpoints = 0;
 #endif
-	if ( monster[v6]._mhitpoints >> 6 > 0 )
+	if ( (signed int)(monster[v6]._mhitpoints & 0xFFFFFFC0) > 0 )
 	{
 		if ( v16 )
 		{
@@ -1307,6 +1339,7 @@ bool __fastcall MonsterMHit(int pnum, int m, int mindam, int maxdam, int dist, i
 	int v11; // eax
 	int v12; // esi
 	int v13; // ebx
+	char v14; // al
 	int v15; // eax
 	//int v16; // eax
 	int v19; // ebx
@@ -1327,7 +1360,7 @@ bool __fastcall MonsterMHit(int pnum, int m, int mindam, int maxdam, int dist, i
 	v8 = monster[m].mtalkmsg == 0;
 	pnuma = pnum;
 	if ( !v8
-	  || monster[v7]._mhitpoints >> 6 <= 0
+	  || (signed int)(monster[v7]._mhitpoints & 0xFFFFFFC0) <= 0
 	  || t == 53 && monster[v7].MType->mtype != MT_DIABLO && monster[v7].MData->mMonstClass )
 	{
 		return 0;
@@ -1361,7 +1394,8 @@ bool __fastcall MonsterMHit(int pnum, int m, int mindam, int maxdam, int dist, i
 			- (dist * dist >> 1)
 			+ plr[pnuma]._pIEnAc
 			+ 50;
-		if ( plr[pnuma]._pClass == PC_ROGUE )
+		v14 = plr[pnuma]._pClass;
+		if ( v14 == 1 )
 			v13 = plr[v12]._pDexterity
 				+ plr[v12]._pIBonusToHit
 				+ plr[v12]._pLevel
@@ -1369,7 +1403,7 @@ bool __fastcall MonsterMHit(int pnum, int m, int mindam, int maxdam, int dist, i
 				- (dist * dist >> 1)
 				+ plr[pnuma]._pIEnAc
 				+ 70;
-		if ( plr[pnuma]._pClass == PC_WARRIOR )
+		if ( !v14 )
 			v13 += 10;
 	}
 	else
@@ -1377,7 +1411,7 @@ bool __fastcall MonsterMHit(int pnum, int m, int mindam, int maxdam, int dist, i
 		v12 = pnuma;
 		v15 = 2 * SLOBYTE(monster[v7].mLevel);
 		v13 = plr[pnuma]._pMagic - v15 - dist + 50;
-		if ( plr[pnuma]._pClass == PC_SORCERER )
+		if ( _LOBYTE(plr[pnuma]._pClass) == 2 )
 			v13 = plr[v12]._pMagic - v15 - dist + 70;
 	}
 	if ( v13 < 5 )
@@ -1407,7 +1441,7 @@ bool __fastcall MonsterMHit(int pnum, int m, int mindam, int maxdam, int dist, i
 	if ( !missiledata[v23].mType )
 	{
 		v20 = plr[v12]._pIBonusDamMod + v19 * plr[v12]._pIBonusDam / 100 + v19;
-		if ( plr[v12]._pClass == PC_ROGUE )
+		if ( _LOBYTE(plr[v12]._pClass) == 1 )
 			v19 = plr[v12]._pDamageMod + v20;
 		else
 			v19 = (plr[v12]._pDamageMod >> 1) + v20;
@@ -1422,7 +1456,7 @@ bool __fastcall MonsterMHit(int pnum, int m, int mindam, int maxdam, int dist, i
 	v22 = plr[v12]._pIFlags;
 	if ( v22 & 8 )
 		monster[v7]._mFlags |= 8u;
-	if ( monster[v7]._mhitpoints >> 6 > 0 )
+	if ( (signed int)(monster[v7]._mhitpoints & 0xFFFFFFC0) > 0 )
 	{
 		if ( v26 )
 		{
@@ -1484,6 +1518,8 @@ bool __fastcall PlayerMHit(int pnum, int m, int dist, int mind, int maxd, int mt
 	int v24; // edi
 	int v25; // ecx
 	int v26; // eax
+	char v27; // al
+	int v28; // ecx
 	int v29; // eax
 	int v30; // eax
 	int v32; // [esp+Ch] [ebp-14h]
@@ -1496,7 +1532,7 @@ bool __fastcall PlayerMHit(int pnum, int m, int dist, int mind, int maxd, int mt
 	arglist = pnum;
 	v9 = pnum;
 	v34 = m;
-	if ( plr[pnum]._pHitPoints >> 6 <= 0
+	if ( (signed int)(plr[pnum]._pHitPoints & 0xFFFFFFC0) <= 0
 	  || plr[v9]._pInvincible
 	  || plr[v9]._pSpellFlags & 1 && !missiledata[mtype].mType )
 	{
@@ -1644,7 +1680,7 @@ LABEL_50:
 				plr[v9]._pHitPoints = v30;
 				plr[v9]._pHPBase = plr[v9]._pMaxHPBase;
 			}
-			if ( plr[v9]._pHitPoints >> 6 > 0 )
+			if ( (signed int)(plr[v9]._pHitPoints & 0xFFFFFFC0) > 0 )
 			{
 				StartPlrHit(arglist, v21, 0);
 				return 1;
@@ -1664,23 +1700,36 @@ LABEL_50:
 			plr[v9]._pHitPoints = v26;
 			plr[v9]._pHPBase = plr[v9]._pMaxHPBase;
 		}
-		if ( plr[v9]._pHitPoints >> 6 <= 0 )
+		if ( (signed int)(plr[v9]._pHitPoints & 0xFFFFFFC0) <= 0 )
 		{
 LABEL_70:
 			SyncPlrKill(v24, earflag);
 			return 1;
 		}
-
-		if ( plr[v9]._pClass == PC_WARRIOR ) {
-			PlaySfxLoc(PS_WARR69, plr[v9].WorldX, plr[v9].WorldY);
-		} else if ( plr[v9]._pClass == PC_ROGUE ) {
-			PlaySfxLoc(PS_ROGUE69, plr[v9].WorldX, plr[v9].WorldY);
-		} else if ( plr[v9]._pClass == PC_SORCERER ) {
-			PlaySfxLoc(PS_MAGE69, plr[v9].WorldX, plr[v9].WorldY);
+		v27 = plr[v9]._pClass;
+		if ( v27 )
+		{
+			if ( v27 == 1 )
+			{
+				v28 = PS_ROGUE69;
+			}
+			else
+			{
+				if ( v27 != 2 )
+				{
+LABEL_78:
+					drawhpflag = 1;
+					return 1;
+				}
+				v28 = PS_MAGE69;
+			}
 		}
-
-		drawhpflag = TRUE;
-		return 1;
+		else
+		{
+			v28 = PS_WARR69;
+		}
+		PlaySfxLoc(v28, plr[v9].WorldX, plr[v9].WorldY);
+		goto LABEL_78;
 	}
 	return 0;
 }
@@ -1698,6 +1747,8 @@ bool __fastcall Plr2PlrMHit(int pnum, int p, int mindam, int maxdam, int dist, i
 	bool v15; // sf
 	int v16; // ecx
 	int v17; // ebx
+	char v18; // al
+	int v19; // ecx
 	int v20; // eax
 	int v22; // [esp+Ch] [ebp-14h]
 	int v23; // [esp+10h] [ebp-10h]
@@ -1739,7 +1790,7 @@ LABEL_14:
 		v10 = v26;
 		v12 = 2 * plr[v7]._pLevel;
 		v11 = plr[v26]._pMagic - v12 - dist + 50;
-		if ( plr[v26]._pClass == PC_SORCERER )
+		if ( _LOBYTE(plr[v26]._pClass) == 2 )
 			v11 = plr[v10]._pMagic - v12 - dist + 70;
 	}
 	else
@@ -1752,9 +1803,10 @@ LABEL_14:
 			- plr[v7]._pIBonusAC
 			- plr[v7]._pIAC;
 		v11 = v12 + plr[v26]._pDexterity + 50;
-		if ( plr[v26]._pClass == PC_ROGUE )
+		_LOBYTE(v12) = plr[v26]._pClass;
+		if ( (_BYTE)v12 == 1 )
 			v11 += 20;
-		if ( plr[v26]._pClass == PC_WARRIOR )
+		if ( !(_BYTE)v12 )
 			v11 += 10;
 	}
 	if ( v11 < 5 )
@@ -1808,7 +1860,7 @@ LABEL_14:
 			if ( v24 >= v16 )
 			{
 				if ( v26 == myplr )
-					NetSendCmdDamage(TRUE, arglist, v17);
+					NetSendCmdDamage(1u, arglist, v17);
 				StartPlrHit(arglist, v17, 0);
 			}
 			else
@@ -1819,14 +1871,26 @@ LABEL_14:
 			return 1;
 		}
 		if ( v26 == myplr )
-			NetSendCmdDamage(TRUE, arglist, v17 - v27 * v17 / 100);
-		if ( plr[v10]._pClass == PC_WARRIOR ) {
-			PlaySfxLoc(PS_WARR69, plr[v10].WorldX, plr[v10].WorldY);
-		} else if ( plr[v10]._pClass == PC_ROGUE ) {
-			PlaySfxLoc(PS_ROGUE69, plr[v10].WorldX, plr[v10].WorldY);
-		} else if ( plr[v10]._pClass == PC_SORCERER ) {
-			PlaySfxLoc(PS_MAGE69, plr[v10].WorldX, plr[v10].WorldY);
+			NetSendCmdDamage(1u, arglist, v17 - v27 * v17 / 100);
+		v18 = plr[v10]._pClass;
+		if ( v18 )
+		{
+			if ( v18 == 1 )
+			{
+				v19 = PS_ROGUE69;
+			}
+			else
+			{
+				if ( v18 != 2 )
+					return 1;
+				v19 = PS_MAGE69;
+			}
 		}
+		else
+		{
+			v19 = PS_WARR69;
+		}
+		PlaySfxLoc(v19, plr[v10].WorldX, plr[v10].WorldY);
 		return 1;
 	}
 	return 0;
@@ -2273,7 +2337,7 @@ void __cdecl InitMissiles()
 		v8 = 112;
 		do
 		{
-			*v7 &= ~DFLAG_MISSILE;
+			*v7 &= 0xFEu;
 			v7 += 112;
 			--v8;
 		}
@@ -2290,6 +2354,7 @@ void __fastcall AddLArrow(int mi, int sx, int sy, int dx, int dy, int midir, int
 	int v10; // ebx
 	int v11; // edi
 	int v12; // eax
+	char v13; // dl
 	int v14; // eax
 	int v15; // esi
 	int v16; // [esp-4h] [ebp-14h]
@@ -2306,16 +2371,23 @@ void __fastcall AddLArrow(int mi, int sx, int sy, int dx, int dy, int midir, int
 	}
 	if ( (_BYTE)mienemy )
 	{
-		GetMissileVel(mi, v10, sy, v9, v11, 32);
+		v16 = 32;
+		goto LABEL_11;
 	}
 	v12 = id;
-	if ( plr[id]._pClass == PC_ROGUE ) {
+	v13 = plr[id]._pClass;
+	if ( v13 == 1 )
+	{
 		v16 = (plr[v12]._pLevel >> 2) + 31;
+LABEL_11:
 		GetMissileVel(mi, v10, sy, v9, v11, v16);
-	} else if ( plr[id]._pClass == PC_SORCERER )
+		goto LABEL_12;
+	}
+	if ( v13 )
 		GetMissileVel(mi, v10, sy, v9, v11, 32);
 	else
 		GetMissileVel(mi, v10, sy, v9, v11, (plr[v12]._pLevel >> 3) + 31);
+LABEL_12:
 	v14 = GetDirection16(v10, sy, v9, v11);
 	SetMissDir(mia, v14);
 	v15 = mia;
@@ -2331,6 +2403,7 @@ void __fastcall AddArrow(int mi, int sx, int sy, int dx, int dy, int midir, int 
 	int v10; // esi
 	int v11; // edi
 	int v12; // eax
+	char v13; // cl
 	int v14; // esi
 	int v15; // eax
 	int x1; // [esp+8h] [ebp-8h]
@@ -2358,9 +2431,10 @@ void __fastcall AddArrow(int mi, int sx, int sy, int dx, int dy, int midir, int 
 		{
 			v12 = random(64, 32) + 16;
 		}
-		if ( plr[v11]._pClass == PC_ROGUE )
+		v13 = plr[v11]._pClass;
+		if ( v13 == 1 )
 			v12 += (plr[v11]._pLevel - 1) >> 2;
-		if ( plr[v11]._pClass == PC_WARRIOR )
+		if ( !v13 )
 			v12 += (plr[v11]._pLevel - 1) >> 3;
 		GetMissileVel(i, x1, sy, v10, v9, v12);
 	}
@@ -2482,6 +2556,7 @@ LABEL_12:
 		}
 	}
 }
+// 5CCB10: using guessed type char setlvlnum;
 // 5CF31D: using guessed type char setlevel;
 
 void __fastcall AddFirebolt(int mi, int sx, int sy, int dx, int dy, int midir, int micaster, int id, int dam)
@@ -3019,18 +3094,21 @@ LABEL_14:
 		{
 			_LOWORD(v21) = (unsigned char)leveltype;
 			v22 = v21;
-			_LOWORD(v21) = setlvlnum;
-			NetSendCmdLocParam3(TRUE, CMD_ACTIVATEPORTAL, v9, v11, v21, v22, 1);
+			_LOWORD(v21) = (unsigned char)setlvlnum;
+						NetSendCmdLocParam3(1u, CMD_ACTIVATEPORTAL, v9, v11, v21, v22, 1);  
+
+			//NetSendCmdLocParam3(1u, CMD_ACTIVATEPORTAL, v9, v11, v21, v22, 0);
 		}
 		else
 		{
 			_LOWORD(v20) = (unsigned char)leveltype;
 			_LOWORD(v21) = currlevel;
-			NetSendCmdLocParam3(TRUE, CMD_ACTIVATEPORTAL, v9, v11, v21, v20, 0);
+			NetSendCmdLocParam3(1u, CMD_ACTIVATEPORTAL, v9, v11, v21, v20, 0);
 		}
 	}
 }
 // 5BB1ED: using guessed type char leveltype;
+// 5CCB10: using guessed type char setlvlnum;
 // 5CF31D: using guessed type char setlevel;
 
 void __fastcall AddFlash(int mi, int sx, int sy, int dx, int dy, int midir, int mienemy, int id, int dam)
@@ -3143,7 +3221,7 @@ void __fastcall AddManashield(int mi, int sx, int sy, int dx, int dy, int midir,
 	if ( !(_BYTE)mienemy )
 		UseMana(id, 11);
 	if ( id == myplr )
-		NetSendCmd(TRUE, CMD_SETSHIELD);
+		NetSendCmd(1u, CMD_SETSHIELD);
 	plr[id].pManaShield = 1;
 }
 
@@ -3371,20 +3449,20 @@ void __fastcall AddRhino(int mi, int sx, int sy, int dx, int dy, int midir, int 
 	v11 = v10->mtype;
 	if ( v10->mtype < MT_HORNED || v11 > MT_OBLORD )
 	{
-		if ( v11 < MT_NSNAKE || (v12 = &v10->Anims[MA_ATTACK], v11 > MT_GSNAKE) )
-			v12 = &v10->Anims[MA_WALK];
+		if ( v11 < MT_NSNAKE || (v12 = &v10->Anims[2], v11 > MT_GSNAKE) )
+			v12 = &v10->Anims[1];
 	}
 	else
 	{
-		v12 = &v10->Anims[MA_SPECIAL];
+		v12 = &v10->Anims[5];
 	}
 	GetMissileVel(i, sx, sy, dx, dy, 18);
 	v13 = i;
 	missile[v13]._miAnimFlags = 0;
 	missile[v13]._mimfnum = midir;
-	missile[v13]._miAnimData = v12->Data[midir];
-	missile[v13]._miAnimDelay = v12->Rate;
-	missile[v13]._miAnimLen = v12->Frames;
+	missile[v13]._miAnimData = v12->Frames[midir];
+	missile[v13]._miAnimDelay = v12->Delay;
+	missile[v13]._miAnimLen = v12->Rate;
 	v14 = monster[v9].MType;
 	missile[v13]._miAnimWidth = v14->flags_1;
 	missile[v13]._miAnimWidth2 = v14->flags_2;
@@ -3417,14 +3495,14 @@ void __fastcall miss_null_32(int mi, int sx, int sy, int dx, int dy, int midir, 
 
 	v9 = id;
 	v10 = mi;
-	v11 = &monster[id].MType->Anims[MA_WALK];
+	v11 = &monster[id].MType->Anims[1];
 	GetMissileVel(mi, sx, sy, dx, dy, 16);
 	v12 = v10;
 	missile[v12]._mimfnum = midir;
 	missile[v12]._miAnimFlags = 0;
-	missile[v12]._miAnimData = v11->Data[midir];
-	missile[v12]._miAnimDelay = v11->Rate;
-	missile[v12]._miAnimLen = v11->Frames;
+	missile[v12]._miAnimData = v11->Frames[midir];
+	missile[v12]._miAnimDelay = v11->Delay;
+	missile[v12]._miAnimLen = v11->Rate;
 	v13 = monster[id].MType;
 	missile[v12]._miAnimWidth = v13->flags_1;
 	missile[v12]._miAnimWidth2 = v13->flags_2;
@@ -3487,7 +3565,7 @@ void __fastcall AddFlare(int mi, int sx, int sy, int dx, int dy, int midir, int 
 	{
 		UseMana(id, 35);
 		v14 = id;
-		drawhpflag = TRUE;
+		drawhpflag = 1;
 		plr[v14]._pHPBase -= 320;
 		plr[v14]._pHitPoints -= 320;
 		if ( plr[id]._pHitPoints <= 0 )
@@ -3779,6 +3857,7 @@ void __fastcall AddHeal(int mi, int sx, int sy, int dx, int dy, int midir, int m
 	signed int v10; // ebx
 	int v12; // edi
 	int i; // ebx
+	char v14; // al
 	int v15; // ecx
 	int *v16; // eax
 	int *v17; // eax
@@ -3804,9 +3883,10 @@ void __fastcall AddHeal(int mi, int sx, int sy, int dx, int dy, int midir, int m
 	{
 		v12 += (random(57, 6) + 1) << 6;
 	}
-	if ( plr[v9]._pClass == PC_WARRIOR )
+	v14 = plr[v9]._pClass;
+	if ( !v14 )
 		v12 *= 2;
-	if ( plr[v9]._pClass == PC_ROGUE )
+	if ( v14 == 1 )
 		v12 += v12 >> 1;
 	v15 = plr[v9]._pMaxHP;
 	v16 = &plr[v9]._pHitPoints;
@@ -3820,7 +3900,7 @@ void __fastcall AddHeal(int mi, int sx, int sy, int dx, int dy, int midir, int m
 		*v17 = v18;
 	UseMana(id, 2);
 	missile[i]._miDelFlag = 1;
-	drawhpflag = TRUE;
+	drawhpflag = 1;
 }
 
 void __fastcall AddHealOther(int mi, int sx, int sy, int dx, int dy, int midir, int mienemy, int id, int dam)
@@ -4374,7 +4454,7 @@ void __fastcall AddBoneSpirit(int mi, int sx, int sy, int dx, int dy, int midir,
 	{
 		UseMana(id, 36);
 		v13 = id;
-		drawhpflag = TRUE;
+		drawhpflag = 1;
 		plr[v13]._pHPBase -= 384;
 		plr[v13]._pHitPoints -= 384;
 		if ( plr[id]._pHitPoints <= 0 )
@@ -4540,7 +4620,7 @@ int __fastcall Sentfire(int i, int sx, int sy)
 	if ( LineClear(missile[i]._mix, missile[i]._miy, sx, sy) )
 	{
 		v7 = dMonster[0][sy + 112 * v4];
-		if ( v7 > 0 && monster[v7-1]._mhitpoints >> 6 > 0 && v7 - 1 > 3 ) /* fix monstactive */
+		if ( v7 > 0 && (signed int)(monster[v7-1]._mhitpoints & 0xFFFFFFC0) > 0 && v7 - 1 > 3 ) /* fix monstactive */
 		{
 			v8 = GetDirection(missile[v3]._mix, missile[v3]._miy, v4, sy);
 			v9 = missile[v3]._misource;
@@ -5270,8 +5350,8 @@ void __fastcall MI_Fireball(int i)
 				CheckMissileCol(ia, v5, v5, 0, tx - 1, ty, 1);
 			if ( !CheckBlock(fx, fy, tx - 1, ty + 1) )
 				CheckMissileCol(ia, v5, v5, 0, tx - 1, ty + 1, 1);
-			if ( !CheckBlock(fx, fy, tx - 1, ty - 1) )
-				CheckMissileCol(ia, v5, v5, 0, tx - 1, ty - 1, 1);
+			if ( !CheckBlock(fx, fy, ty - 2, ty - 1) )
+				CheckMissileCol(ia, v5, v5, 0, 0, ty - 1, 1);
 			v13 = 112 * tx + ty;
 			if ( !TransList[dung_map[0][v13]] /* check */
 			  || missile[v1]._mixvel < 0
@@ -5474,7 +5554,7 @@ void __fastcall MI_Town(int i)
 				ClrPlrPath(arglist);
 				if ( arglist == myplr )
 				{
-					NetSendCmdParam1(TRUE, CMD_WARP, missile[v1]._misource);
+					NetSendCmdParam1(1u, CMD_WARP, missile[v1]._misource);
 					*(v3 - 13) = 10;
 				}
 			}
@@ -5638,8 +5718,8 @@ void __fastcall MI_Manashield(int i)
 	}
 	if ( v10 < 0 )
 		v10 = 0;
-	drawmanaflag = TRUE;
-	drawhpflag = TRUE;
+	drawmanaflag = 1;
+	drawhpflag = 1;
 	if ( v8 >= v10 )
 	{
 		plr[v2]._pHitPoints = v9;
@@ -5666,7 +5746,7 @@ LABEL_26:
 	plr[v2]._pManaBase = v12;
 	if ( v13 )
 		SetPlayerHitPoints(arglist, 0);
-	if ( plr[v2]._pHitPoints >> 6 )
+	if ( plr[v2]._pHitPoints & 0xFFFFFFC0 )
 		goto LABEL_26;
 	if ( arglist == myplr )
 	{
@@ -5680,7 +5760,7 @@ LABEL_31:
 	if ( v7 )
 	{
 		missile[v1]._miDelFlag = 1;
-		NetSendCmd(TRUE, CMD_ENDSHIELD);
+		NetSendCmd(1u, CMD_ENDSHIELD);
 	}
 LABEL_33:
 	PutMissile(ia);
@@ -6437,7 +6517,7 @@ void __fastcall mi_null_32(int i)
 		missile[v2]._miyvel = -missile[v2]._miyvel;
 		v14 = opposite[v13];
 		missile[v2]._mimfnum = v14;
-		v15 = monster[v4].MType->Anims[MA_WALK].Data[v14];
+		v15 = monster[v4].MType->Anims[1].Frames[v14];
 		++missile[v2]._miVar2;
 		missile[v2]._miAnimData = v15;
 		if ( v10 > 0 )
@@ -7290,7 +7370,7 @@ void __cdecl ProcessMissiles()
 	for ( i = 0; i < v0; dMissile[0][v2] = 0 )
 	{
 		v2 = 112 * missile[missileactive[i]]._mix + missile[missileactive[i]]._miy;
-		dFlags[0][v2] &= ~DFLAG_MISSILE;
+		dFlags[0][v2] &= 0xFEu;
 		++i;
 	}
 	v3 = 0;
@@ -7397,21 +7477,21 @@ void __cdecl missiles_process_charge()
 			if ( v5->mtype < MT_HORNED || v6 > MT_OBLORD )
 			{
 				if ( v6 < MT_NSNAKE || v6 > MT_GSNAKE )
-					v7 = &v5->Anims[MA_WALK];
+					v7 = &v5->Anims[1];
 				else
-					v7 = &v5->Anims[MA_ATTACK];
+					v7 = &v5->Anims[2];
 			}
 			else
 			{
-				v7 = &v5->Anims[MA_SPECIAL];
+				v7 = &v5->Anims[5];
 			}
-			missile[v2]._miAnimData = v7->Data[v3];
+			missile[v2]._miAnimData = v7->Frames[v3];
 		}
 	}
 }
 
 void __fastcall ClearMissileSpot(int mi)
 {
-	dFlags[missile[mi]._mix][missile[mi]._miy] &= ~DFLAG_MISSILE;
+	dFlags[missile[mi]._mix][missile[mi]._miy] &= 0xFE;
 	dMissile[missile[mi]._mix][missile[mi]._miy] = 0;
 }

@@ -734,6 +734,7 @@ void __fastcall S_ScrollSBuy(int idx)
 void __fastcall PrintStoreItem(ItemStruct *x, int l, char iclr)
 {
 	ItemStruct *v3; // esi
+	bool v4; // zf
 	char v5; // cl
 	char v6; // cl
 	int v7; // eax
@@ -746,10 +747,11 @@ void __fastcall PrintStoreItem(ItemStruct *x, int l, char iclr)
 
 	sstr[0] = 0;
 	v3 = x;
+	v4 = x->_iIdentified == 0;
 	y = l;
-	if ( x->_iIdentified )
+	if ( !v4 )
 	{
-		if ( x->_iMagical != ITEM_QUALITY_UNIQUE )
+		if ( x->_iMagical != 2 )
 		{
 			v5 = x->_iPrePower;
 			if ( v5 != -1 )
@@ -813,7 +815,7 @@ void __fastcall PrintStoreItem(ItemStruct *x, int l, char iclr)
 	}
 	v11 = y;
 	AddSText(40, y, 0, sstr, iclr, 0);
-	if ( v3->_iMagical == ITEM_QUALITY_UNIQUE )
+	if ( v3->_iMagical == 2 )
 	{
 		if ( v3->_iIdentified )
 			AddSText(40, v11 + 1, 0, "Unique Item", iclr, 0);
@@ -1052,7 +1054,7 @@ void __cdecl S_StartSSell()
 			sellok = 1;
 			qmemcpy(&storehold[storenumh], &plr[myplr].InvList[i], sizeof(ItemStruct));
 
-			if ( storehold[storenumh]._iMagical != ITEM_QUALITY_NORMAL && storehold[storenumh]._iIdentified )
+			if ( storehold[storenumh]._iMagical && storehold[storenumh]._iIdentified )
 				storehold[storenumh]._ivalue = storehold[storenumh]._iIvalue;
 
 			if ( !(storehold[storenumh]._ivalue >>= 2) )
@@ -1133,31 +1135,31 @@ void __cdecl S_StartSRepair()
 	while ( (signed int)v1 < (signed int)&storehold[48]._itype );
 	v2 = myplr;
 	v3 = myplr;
-	if ( plr[myplr].InvBody[INVLOC_HEAD]._itype != -1 && plr[v3].InvBody[INVLOC_HEAD]._iDurability != plr[v3].InvBody[INVLOC_HEAD]._iMaxDur )
+	if ( plr[myplr].InvBody[0]._itype != -1 && plr[v3].InvBody[0]._iDurability != plr[v3].InvBody[0]._iMaxDur )
 	{
 		v12 = 1;
 		AddStoreHoldRepair(plr[v3].InvBody, -1);
 		v2 = myplr;
 	}
 	v4 = v2;
-	if ( plr[v2].InvBody[INVLOC_CHEST]._itype != -1 && plr[v4].InvBody[INVLOC_CHEST]._iDurability != plr[v4].InvBody[INVLOC_CHEST]._iMaxDur )
+	if ( plr[v2].InvBody[6]._itype != -1 && plr[v4].InvBody[6]._iDurability != plr[v4].InvBody[6]._iMaxDur )
 	{
 		v12 = 1;
-		AddStoreHoldRepair(&plr[v4].InvBody[INVLOC_CHEST], -2);
+		AddStoreHoldRepair(&plr[v4].InvBody[6], -2);
 		v2 = myplr;
 	}
 	v5 = v2;
-	if ( plr[v2].InvBody[INVLOC_HAND_LEFT]._itype != -1 && plr[v5].InvBody[INVLOC_HAND_LEFT]._iDurability != plr[v5].InvBody[INVLOC_HAND_LEFT]._iMaxDur )
+	if ( plr[v2].InvBody[4]._itype != -1 && plr[v5].InvBody[4]._iDurability != plr[v5].InvBody[4]._iMaxDur )
 	{
 		v12 = 1;
-		AddStoreHoldRepair(&plr[v5].InvBody[INVLOC_HAND_LEFT], -3);
+		AddStoreHoldRepair(&plr[v5].InvBody[4], -3);
 		v2 = myplr;
 	}
 	v6 = v2;
-	if ( plr[v2].InvBody[INVLOC_HAND_RIGHT]._itype != -1 && plr[v6].InvBody[INVLOC_HAND_RIGHT]._iDurability != plr[v6].InvBody[INVLOC_HAND_RIGHT]._iMaxDur )
+	if ( plr[v2].InvBody[5]._itype != -1 && plr[v6].InvBody[5]._iDurability != plr[v6].InvBody[5]._iMaxDur )
 	{
 		v12 = 1;
-		AddStoreHoldRepair(&plr[v6].InvBody[INVLOC_HAND_RIGHT], -4);
+		AddStoreHoldRepair(&plr[v6].InvBody[5], -4);
 		v2 = myplr;
 	}
 	v7 = 21720 * v2;
@@ -1213,17 +1215,19 @@ void __fastcall AddStoreHoldRepair(ItemStruct *itm, int i)
 {
 	int v2; // ebx
 	ItemStruct *v3; // ebp
+	int v4; // ecx
 	int v5; // eax
 
 	v2 = storenumh;
 	v3 = &storehold[storenumh];
 	qmemcpy(&storehold[storenumh], itm, sizeof(ItemStruct));
-	if ( v3->_iMagical != ITEM_QUALITY_NORMAL && v3->_iIdentified )
+	v4 = (unsigned char)v3->_iMagical;
+	if ( (_BYTE)v4 && v3->_iIdentified )
 		v3->_ivalue = 30 * v3->_iIvalue / 100;
 	v5 = v3->_ivalue * (100 * (v3->_iMaxDur - v3->_iDurability) / v3->_iMaxDur) / 100;
 	if ( !v5 )
 	{
-		if ( v3->_iMagical != ITEM_QUALITY_NORMAL && v3->_iIdentified )
+		if ( (_BYTE)v4 && v3->_iIdentified )
 			return;
 		v5 = 1;
 	}
@@ -1377,7 +1381,7 @@ void __cdecl S_StartWSell()
 			sellok = 1;
 			qmemcpy(&storehold[storenumh], &plr[myplr].InvList[i], sizeof(ItemStruct));
 
-			if ( storehold[storenumh]._iMagical != ITEM_QUALITY_NORMAL && storehold[storenumh]._iIdentified )
+			if ( storehold[storenumh]._iMagical && storehold[storenumh]._iIdentified )
 				storehold[storenumh]._ivalue = storehold[storenumh]._iIvalue;
 
 			if ( !(storehold[storenumh]._ivalue >>= 2) )
@@ -1388,14 +1392,14 @@ void __cdecl S_StartWSell()
 		}
 	}
 
-	for(i = 0; i < MAXBELTITEMS; i++)
+	for(i = 0; i < 8; i++)
 	{
 		if ( plr[myplr].SpdList[i]._itype != -1 && WitchSellOk(~i) )
 		{
 			sellok = 1;
 			qmemcpy(&storehold[storenumh], &plr[myplr].SpdList[i], sizeof(ItemStruct));
 
-			if ( storehold[storenumh]._iMagical != ITEM_QUALITY_NORMAL && storehold[storenumh]._iIdentified )
+			if ( storehold[storenumh]._iMagical && storehold[storenumh]._iIdentified )
 				storehold[storenumh]._ivalue = storehold[storenumh]._iIvalue;
 
 			if ( !(storehold[storenumh]._ivalue >>= 2) )
@@ -1439,31 +1443,31 @@ bool __fastcall WitchRechargeOk(int i)
 	bool rv; // al
 
 	rv = 0;
-	if ( plr[myplr].InvList[i]._itype == ITYPE_STAFF
-	  && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges )
+	if (plr[myplr].InvList[i]._itype == ITYPE_STAFF
+		&& plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges)
 	{
 		rv = 1;
 	}
-        if (plr[myplr].InvList[i]._itype == ITYPE_SWORD
-            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
-            rv = 1;
-        }
-        if (plr[myplr].InvList[i]._itype == ITYPE_MACE
-            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
-            rv = 1;
-        }
-        if (plr[myplr].InvList[i]._itype == ITYPE_BOW
-            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
-            rv = 1;
-        }
-        if (plr[myplr].InvList[i]._itype == ITYPE_SHIELD
-            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
-            rv = 1;
-        }
-        if (plr[myplr].InvList[i]._itype == ITYPE_AXE
-            && plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
-            rv = 1;
-        }
+	if (plr[myplr].InvList[i]._itype == ITYPE_SWORD
+		&& plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+		rv = 1;
+	}
+	if (plr[myplr].InvList[i]._itype == ITYPE_MACE
+		&& plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+		rv = 1;
+	}
+	if (plr[myplr].InvList[i]._itype == ITYPE_BOW
+		&& plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+		rv = 1;
+	}
+	if (plr[myplr].InvList[i]._itype == ITYPE_SHIELD
+		&& plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+		rv = 1;
+	}
+	if (plr[myplr].InvList[i]._itype == ITYPE_AXE
+		&& plr[myplr].InvList[i]._iCharges != plr[myplr].InvList[i]._iMaxCharges) {
+		rv = 1;
+	}
 	return rv;
 }
 
@@ -1517,10 +1521,10 @@ void __cdecl S_StartWRecharge()
 	}
 	while ( (signed int)v0 < (signed int)&storehold[48]._itype );
 	v1 = myplr;
-	if ( plr[myplr].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_STAFF && plr[v1].InvBody[INVLOC_HAND_LEFT]._iCharges != plr[v1].InvBody[INVLOC_HAND_LEFT]._iMaxCharges )
+	if ( plr[myplr].InvBody[4]._itype == ITYPE_STAFF && plr[v1].InvBody[4]._iCharges != plr[v1].InvBody[4]._iMaxCharges )
 	{
 		v8 = 1;
-		qmemcpy(&v4, &plr[v1].InvBody[INVLOC_HAND_LEFT], sizeof(v4));
+		qmemcpy(&v4, &plr[v1].InvBody[4], sizeof(v4));
 		AddStoreHoldRecharge(v4, -1);
 	}
 	v2 = plr[v1]._pNumInv;
@@ -1601,25 +1605,25 @@ void __cdecl S_StartConfirm()
 	ClearSText(5, 23);
 	iclr = COL_WHITE;
 
-	if ( plr[myplr].HoldItem._iMagical != ITEM_QUALITY_NORMAL )
+	if ( plr[myplr].HoldItem._iMagical )
 		iclr = COL_BLUE;
 	if ( !plr[myplr].HoldItem._iStatFlag )
 		iclr = COL_RED;
 
-	idprint = plr[myplr].HoldItem._iMagical != ITEM_QUALITY_NORMAL;
+	idprint = plr[myplr].HoldItem._iMagical != 0;
 
 	if ( stextshold == STORE_SIDENTIFY )
-		idprint = FALSE;
-	if ( plr[myplr].HoldItem._iMagical != ITEM_QUALITY_NORMAL && !plr[myplr].HoldItem._iIdentified )
+		idprint = 0;
+	if ( plr[myplr].HoldItem._iMagical && !plr[myplr].HoldItem._iIdentified )
 	{
 		if ( stextshold == STORE_SSELL )
-			idprint = FALSE;
+			idprint = 0;
 		if ( stextshold == STORE_WSELL )
-			idprint = FALSE;
+			idprint = 0;
 		if ( stextshold == STORE_SREPAIR )
-			idprint = FALSE;
+			idprint = 0;
 		if ( stextshold == STORE_WRECHARGE )
-			idprint = FALSE;
+			idprint = 0;
 	}
 	if ( idprint )
 		AddSText(20, 8, 0, plr[myplr].HoldItem._iIName, iclr, 0);
@@ -1712,11 +1716,11 @@ void __cdecl S_StartBBoy()
 	AddSLine(21);
 	iclr = COL_WHITE;
 
-	if ( boyitem._iMagical != ITEM_QUALITY_NORMAL )
+	if ( boyitem._iMagical )
 		iclr = COL_BLUE;
 	if ( !boyitem._iStatFlag )
 		iclr = COL_RED;
-	if ( boyitem._iMagical != ITEM_QUALITY_NORMAL )
+	if ( boyitem._iMagical )
 		AddSText(20, 10, 0, boyitem._iIName, iclr, 1);
 	else
 		AddSText(20, 10, 0, boyitem._iName, iclr, 1);
@@ -1842,8 +1846,8 @@ bool __fastcall IdItemOk(ItemStruct *i)
 	result = 0;
 	if ( i->_itype != -1 )
 	{
-		if ( i->_iMagical != ITEM_QUALITY_NORMAL )
-			result = !i->_iIdentified;
+		if ( i->_iMagical )
+			result = i->_iIdentified == 0;
 	}
 	return result;
 }
@@ -1877,40 +1881,40 @@ void __cdecl S_StartSIdentify()
 		qmemcpy(&itm, plr[myplr].InvBody, sizeof(ItemStruct));
 		AddStoreHoldId(itm, -1);
 	}
-	if ( IdItemOk(&plr[myplr].InvBody[INVLOC_CHEST]) )
+	if ( IdItemOk(&plr[myplr].InvBody[6]) )
 	{
 		idok = 1;
-		qmemcpy(&itm, &plr[myplr].InvBody[INVLOC_CHEST], sizeof(ItemStruct));
+		qmemcpy(&itm, &plr[myplr].InvBody[6], sizeof(ItemStruct));
 		AddStoreHoldId(itm, -2);
 	}
-	if ( IdItemOk(&plr[myplr].InvBody[INVLOC_HAND_LEFT]) )
+	if ( IdItemOk(&plr[myplr].InvBody[4]) )
 	{
 		idok = 1;
-		qmemcpy(&itm, &plr[myplr].InvBody[INVLOC_HAND_LEFT], sizeof(ItemStruct));
+		qmemcpy(&itm, &plr[myplr].InvBody[4], sizeof(ItemStruct));
 		AddStoreHoldId(itm, -3);
 	}
-	if ( IdItemOk(&plr[myplr].InvBody[INVLOC_HAND_RIGHT]) )
+	if ( IdItemOk(&plr[myplr].InvBody[5]) )
 	{
 		idok = 1;
-		qmemcpy(&itm, &plr[myplr].InvBody[INVLOC_HAND_RIGHT], sizeof(ItemStruct));
+		qmemcpy(&itm, &plr[myplr].InvBody[5], sizeof(ItemStruct));
 		AddStoreHoldId(itm, -4);
 	}
-	if ( IdItemOk(&plr[myplr].InvBody[INVLOC_RING_LEFT]) )
+	if ( IdItemOk(&plr[myplr].InvBody[1]) )
 	{
 		idok = 1;
-		qmemcpy(&itm, &plr[myplr].InvBody[INVLOC_RING_LEFT], sizeof(ItemStruct));
+		qmemcpy(&itm, &plr[myplr].InvBody[1], sizeof(ItemStruct));
 		AddStoreHoldId(itm, -5);
 	}
-	if ( IdItemOk(&plr[myplr].InvBody[INVLOC_RING_RIGHT]) )
+	if ( IdItemOk(&plr[myplr].InvBody[2]) )
 	{
 		idok = 1;
-		qmemcpy(&itm, &plr[myplr].InvBody[INVLOC_RING_RIGHT], sizeof(ItemStruct));
+		qmemcpy(&itm, &plr[myplr].InvBody[2], sizeof(ItemStruct));
 		AddStoreHoldId(itm, -6);
 	}
-	if ( IdItemOk(&plr[myplr].InvBody[INVLOC_AMULET]) )
+	if ( IdItemOk(&plr[myplr].InvBody[3]) )
 	{
 		idok = 1;
-		qmemcpy(&itm, &plr[myplr].InvBody[INVLOC_AMULET], sizeof(ItemStruct));
+		qmemcpy(&itm, &plr[myplr].InvBody[3], sizeof(ItemStruct));
 		AddStoreHoldId(itm, -7);
 	}
 
@@ -1961,7 +1965,7 @@ void __cdecl S_StartIdShow()
 	ClearSText(5, 23);
 	iclr = COL_WHITE;
 
-	if ( plr[myplr].HoldItem._iMagical != ITEM_QUALITY_NORMAL )
+	if ( plr[myplr].HoldItem._iMagical )
 		iclr = COL_BLUE;
 	if ( !plr[myplr].HoldItem._iStatFlag )
 		iclr = COL_RED;
@@ -2267,7 +2271,7 @@ void __cdecl STextESC()
 
 	if ( qtextflag )
 	{
-		qtextflag = FALSE;
+		qtextflag = 0;
 		if ( leveltype == DTYPE_TOWN )
 			sfx_stop();
 	}
@@ -2553,13 +2557,13 @@ void __fastcall SetGoldCurs(int pnum, int i)
 	if ( plr[pnum].InvList[i]._ivalue < 2500 )
 	{
 		if ( plr[pnum].InvList[i]._ivalue > 1000 )
-			plr[pnum].InvList[i]._iCurs = ICURS_GOLD_MEDIUM;
+			plr[pnum].InvList[i]._iCurs = 5;
 		else
-			plr[pnum].InvList[i]._iCurs = ICURS_GOLD_SMALL;
+			plr[pnum].InvList[i]._iCurs = 4;
 	}
 	else
 	{
-		plr[pnum].InvList[i]._iCurs = ICURS_GOLD_LARGE;
+		plr[pnum].InvList[i]._iCurs = 6;
 	}
 }
 
@@ -2568,13 +2572,13 @@ void __fastcall SetSpdbarGoldCurs(int pnum, int i)
 	if ( plr[pnum].SpdList[i]._ivalue < 2500 )
 	{
 		if ( plr[pnum].SpdList[i]._ivalue > 1000 )
-			plr[pnum].SpdList[i]._iCurs = ICURS_GOLD_MEDIUM;
+			plr[pnum].SpdList[i]._iCurs = 5;
 		else
-			plr[pnum].SpdList[i]._iCurs = ICURS_GOLD_SMALL;
+			plr[pnum].SpdList[i]._iCurs = 4;
 	}
 	else
 	{
-		plr[pnum].SpdList[i]._iCurs = ICURS_GOLD_LARGE;
+		plr[pnum].SpdList[i]._iCurs = 6;
 	}
 }
 
@@ -2631,7 +2635,7 @@ void __fastcall TakePlrsMoney(int cost)
 				}
 			}
 		}
-		if ( ++v4 >= MAXBELTITEMS )
+		if ( ++v4 >= 8 )
 		{
 			if ( v1 > 0 )
 			{
@@ -2661,7 +2665,7 @@ void __fastcall TakePlrsMoney(int cost)
 					}
 					++v8;
 				}
-				while ( v8 < MAXBELTITEMS );
+				while ( v8 < 8 );
 			}
 			break;
 		}
@@ -2755,7 +2759,7 @@ void __cdecl SmithBuyItem()
 
 	TakePlrsMoney(plr[myplr].HoldItem._iIvalue);
 	if ( !plr[myplr].HoldItem._iMagical )
-		plr[myplr].HoldItem._iIdentified = FALSE;
+		plr[myplr].HoldItem._iIdentified = 0;
 	StoreAutoPlace();
 	idx = stextvhold + ((stextlhold - stextup) >> 2);
 	if ( idx == 19 )
@@ -2850,8 +2854,8 @@ void __cdecl SmithBuyPItem()
 	int i; // edx
 
 	TakePlrsMoney(plr[myplr].HoldItem._iIvalue);
-	if ( !plr[myplr].HoldItem._iMagical)
-		plr[myplr].HoldItem._iIdentified = FALSE;
+	if ( !plr[myplr].HoldItem._iMagical )
+		plr[myplr].HoldItem._iIdentified = 0;
 	StoreAutoPlace();
 	xx = 0;
 	idx = (stextlhold - stextup) >> 2;
@@ -3169,13 +3173,13 @@ void __cdecl SmithRepairItem()
 	else
 	{
 		if ( i == -1 )
-			plr[myplr].InvBody[INVLOC_HEAD]._iDurability = plr[myplr].InvBody[INVLOC_HEAD]._iMaxDur;
+			plr[myplr].InvBody[0]._iDurability = plr[myplr].InvBody[0]._iMaxDur;
 		if ( i == -2 )
-			plr[myplr].InvBody[INVLOC_CHEST]._iDurability = plr[myplr].InvBody[INVLOC_CHEST]._iMaxDur;
+			plr[myplr].InvBody[6]._iDurability = plr[myplr].InvBody[6]._iMaxDur;
 		if ( i == -3 )
-			plr[myplr].InvBody[INVLOC_HAND_LEFT]._iDurability = plr[myplr].InvBody[INVLOC_HAND_LEFT]._iMaxDur;
+			plr[myplr].InvBody[4]._iDurability = plr[myplr].InvBody[4]._iMaxDur;
 		if ( i == -4 )
-			plr[myplr].InvBody[INVLOC_HAND_RIGHT]._iDurability = plr[myplr].InvBody[INVLOC_HAND_RIGHT]._iMaxDur;
+			plr[myplr].InvBody[5]._iDurability = plr[myplr].InvBody[5]._iMaxDur;
 	}
 }
 // 69F108: using guessed type int stextup;
@@ -3394,7 +3398,7 @@ void __cdecl WitchRechargeItem()
 	if ( i >= 0 )
 		plr[myplr].InvList[i]._iCharges = plr[myplr].InvList[i]._iMaxCharges;
 	else
-		plr[myplr].InvBody[INVLOC_HAND_LEFT]._iCharges = plr[myplr].InvBody[INVLOC_HAND_LEFT]._iMaxCharges;
+		plr[myplr].InvBody[4]._iCharges = plr[myplr].InvBody[4]._iMaxCharges;
 
 	CalcPlrInv(myplr, 1u);
 }
@@ -3527,8 +3531,8 @@ void __cdecl HealerBuyItem()
 		v4 = myplr;
 	}
 	TakePlrsMoney(plr[v4].HoldItem._iIvalue);
-	if ( plr[myplr].HoldItem._iMagical == ITEM_QUALITY_NORMAL )
-		plr[myplr].HoldItem._iIdentified = FALSE;
+	if ( !plr[myplr].HoldItem._iMagical )
+		plr[myplr].HoldItem._iIdentified = 0;
 	StoreAutoPlace();
 	if ( gbMaxPlayers == 1 )
 	{
@@ -3639,27 +3643,27 @@ void __cdecl StoryIdItem()
 	v1 = myplr;
 	if ( v0 >= 0 )
 	{
-		plr[myplr].InvList[v0]._iIdentified = TRUE;
+		plr[myplr].InvList[v0]._iIdentified = 1;
 	}
 	else
 	{
 		if ( v0 == -1 )
-			plr[myplr].InvBody[INVLOC_HEAD]._iIdentified = TRUE;
+			plr[myplr].InvBody[0]._iIdentified = 1;
 		if ( v0 == -2 )
-			plr[v1].InvBody[INVLOC_CHEST]._iIdentified = TRUE;
+			plr[v1].InvBody[6]._iIdentified = 1;
 		if ( v0 == -3 )
-			plr[v1].InvBody[INVLOC_HAND_LEFT]._iIdentified = TRUE;
+			plr[v1].InvBody[4]._iIdentified = 1;
 		if ( v0 == -4 )
-			plr[v1].InvBody[INVLOC_HAND_RIGHT]._iIdentified = TRUE;
+			plr[v1].InvBody[5]._iIdentified = 1;
 		if ( v0 == -5 )
-			plr[v1].InvBody[INVLOC_RING_LEFT]._iIdentified = TRUE;
+			plr[v1].InvBody[1]._iIdentified = 1;
 		if ( v0 == -6 )
-			plr[v1].InvBody[INVLOC_RING_RIGHT]._iIdentified = TRUE;
+			plr[v1].InvBody[2]._iIdentified = 1;
 		if ( v0 == -7 )
-			plr[v1].InvBody[INVLOC_AMULET]._iIdentified = TRUE;
+			plr[v1].InvBody[3]._iIdentified = 1;
 	}
 	v2 = v1;
-	plr[v2].HoldItem._iIdentified = TRUE;
+	plr[v2].HoldItem._iIdentified = 1;
 	TakePlrsMoney(plr[v2].HoldItem._iIvalue);
 	CalcPlrInv(myplr, 1u);
 }
@@ -3760,7 +3764,7 @@ LABEL_12:
 	}
 	if ( plr[myplr]._pHitPoints != plr[myplr]._pMaxHP )
 		PlaySFX(IS_CAST8);
-	drawhpflag = TRUE;
+	drawhpflag = 1;
 	v1 = myplr;
 	plr[v1]._pHitPoints = plr[myplr]._pMaxHP;
 	plr[v1]._pHPBase = plr[v1]._pMaxHPBase;
@@ -4064,7 +4068,7 @@ void __cdecl STextEnter()
 {
 	if ( qtextflag )
 	{
-		qtextflag = FALSE;
+		qtextflag = 0;
 		if ( leveltype == DTYPE_TOWN )
 			sfx_stop();
 	}
@@ -4163,7 +4167,7 @@ void __cdecl CheckStoreBtn()
 
 	if ( qtextflag )
 	{
-		qtextflag = FALSE;
+		qtextflag = 0;
 		if ( leveltype == DTYPE_TOWN )
 			sfx_stop();
 	}

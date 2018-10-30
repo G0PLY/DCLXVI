@@ -2,7 +2,7 @@
 
 #include "../types.h"
 
-BOOL invflag;
+int invflag;
 void *pInvCels;
 int drawsbarflag; // idb
 int sgdwLastTime; // check name
@@ -170,12 +170,14 @@ void __cdecl DrawInv()
 
 		if ( pcursinvitem == INVITEM_HEAD )
 		{
-			int colour = ICOL_WHITE;
-			if ( plr[myplr].InvBody[INVLOC_HEAD]._iMagical != ITEM_QUALITY_NORMAL ) {
-				colour = ICOL_BLUE;
+			int colour = 197;
+			if ( plr[myplr].InvBody[INVLOC_HEAD]._iMagical )
+			{
+				colour = 181;
 			}
-			if ( !plr[myplr].InvBody[INVLOC_HEAD]._iStatFlag ) {
-				colour = ICOL_RED;
+			if ( !plr[myplr].InvBody[INVLOC_HEAD]._iStatFlag )
+			{
+				colour = 229;
 			}
 			CelDecodeClr(colour, 517, 219, (char *)pCursCels, frame, frame_width, 0, 8);
 		}
@@ -199,12 +201,14 @@ void __cdecl DrawInv()
 
 		if ( pcursinvitem == INVITEM_RING_LEFT )
 		{
-			int colour = ICOL_WHITE;
-			if ( plr[myplr].InvBody[INVLOC_RING_LEFT]._iMagical != ITEM_QUALITY_NORMAL ) {
-				colour = ICOL_BLUE;
+			int colour = 197;
+			if ( plr[myplr].InvBody[INVLOC_RING_LEFT]._iMagical )
+			{
+				colour = 181;
 			}
-			if ( !plr[myplr].InvBody[INVLOC_RING_LEFT]._iStatFlag ) {
-				colour = ICOL_RED;
+			if ( !plr[myplr].InvBody[INVLOC_RING_LEFT]._iStatFlag )
+			{
+				colour = 229;
 			}
 			CelDecodeClr(colour, 432, 365, (char *)pCursCels, frame, frame_width, 0, 8);
 		}
@@ -225,15 +229,17 @@ void __cdecl DrawInv()
 
 		int frame = plr[myplr].InvBody[INVLOC_RING_RIGHT]._iCurs + 12;
 		int frame_width = InvItemWidth[frame];
-         
+
 		if ( pcursinvitem == INVITEM_RING_RIGHT )
 		{
-			int colour = ICOL_WHITE;
-			if ( plr[myplr].InvBody[INVLOC_RING_RIGHT]._iMagical != ITEM_QUALITY_NORMAL ) {
-				colour = ICOL_BLUE;
+			int colour = 197;
+			if ( plr[myplr].InvBody[INVLOC_RING_RIGHT]._iMagical )
+			{
+				colour = 181;
 			}
-			if ( !plr[myplr].InvBody[INVLOC_RING_RIGHT]._iStatFlag ) {
-				colour = ICOL_RED;
+			if ( !plr[myplr].InvBody[INVLOC_RING_RIGHT]._iStatFlag )
+			{
+				colour = 229;
 			}
 			CelDecodeClr(colour, 633, 365, (char *)pCursCels, frame, frame_width, 0, 8);
 		}
@@ -257,12 +263,14 @@ void __cdecl DrawInv()
 
 		if ( pcursinvitem == INVITEM_AMULET )
 		{
-			int colour = ICOL_WHITE;
-			if ( plr[myplr].InvBody[INVLOC_AMULET]._iMagical != ITEM_QUALITY_NORMAL ) {
-				colour = ICOL_BLUE;
+			int colour = 197;
+			if ( plr[myplr].InvBody[INVLOC_AMULET]._iMagical )
+			{
+				colour = 181;
 			}
-			if ( !plr[myplr].InvBody[INVLOC_AMULET]._iStatFlag ) {
-				colour = ICOL_RED;
+			if ( !plr[myplr].InvBody[INVLOC_AMULET]._iStatFlag )
+			{
+				colour = 229;
 			}
 			CelDecodeClr(colour, 589, 220, (char *)pCursCels, frame, frame_width, 0, 8);
 		}
@@ -289,12 +297,14 @@ void __cdecl DrawInv()
 
 		if ( pcursinvitem == INVITEM_HAND_LEFT )
 		{
-			int colour = ICOL_WHITE;
-			if ( plr[myplr].InvBody[INVLOC_HAND_LEFT]._iMagical != ITEM_QUALITY_NORMAL ) {
-				colour = ICOL_BLUE;
+			int colour = 197;
+			if ( plr[myplr].InvBody[INVLOC_HAND_LEFT]._iMagical )
+			{
+				colour = 181;
 			}
-			if ( !plr[myplr].InvBody[INVLOC_HAND_LEFT]._iStatFlag ) {
-				colour = ICOL_RED;
+			if ( !plr[myplr].InvBody[INVLOC_HAND_LEFT]._iStatFlag )
+			{
+				colour = 229;
 			}
 			CelDecodeClr(colour, screen_x, screen_y, (char *)pCursCels, frame, frame_width, 0, 8);
 		}
@@ -335,12 +345,14 @@ void __cdecl DrawInv()
 
 		if ( pcursinvitem == INVITEM_HAND_RIGHT )
 		{
-			int colour = ICOL_WHITE;
-			if ( plr[myplr].InvBody[INVLOC_HAND_RIGHT]._iMagical != ITEM_QUALITY_NORMAL ) {
-				colour = ICOL_BLUE;
+			int colour = 197;
+			if ( plr[myplr].InvBody[INVLOC_HAND_RIGHT]._iMagical )
+			{
+				colour = 181;
 			}
-			if ( !plr[myplr].InvBody[INVLOC_HAND_RIGHT]._iStatFlag ) {
-				colour = ICOL_RED;
+			if ( !plr[myplr].InvBody[INVLOC_HAND_RIGHT]._iStatFlag )
+			{
+				colour = 229;
 			}
 			CelDecodeClr(colour, screen_x, screen_y, (char *)pCursCels, frame, frame_width, 0, 8);
 		}
@@ -356,26 +368,33 @@ void __cdecl DrawInv()
 	}
 
 
-	if ( plr[myplr].InvBody[INVLOC_CHEST]._itype != ITYPE_NONE ) {
+	if ( plr[myplr].InvBody[INVLOC_CHEST]._itype != ITYPE_NONE )
+	{
 		InvDrawSlotBack(517, 320, 2 * INV_SLOT_SIZE_PX, 3 * INV_SLOT_SIZE_PX);
 
 		int frame = plr[myplr].InvBody[INVLOC_CHEST]._iCurs + 12;
 		int frame_width = InvItemWidth[frame];
 
-		if ( pcursinvitem == INVITEM_CHEST ) {
-			int colour = ICOL_WHITE;
-			if ( plr[myplr].InvBody[INVLOC_CHEST]._iMagical != ITEM_QUALITY_NORMAL ) {
-				colour = ICOL_BLUE;
+		if ( pcursinvitem == INVITEM_CHEST )
+		{
+			int colour = 197;
+			if ( plr[myplr].InvBody[INVLOC_CHEST]._iMagical )
+			{
+				colour = 181;
 			}
-			if ( !plr[myplr].InvBody[INVLOC_CHEST]._iStatFlag ) {
-				colour = ICOL_RED;
+			if ( !plr[myplr].InvBody[INVLOC_CHEST]._iStatFlag )
+			{
+				colour = 229;
 			}
 			CelDecodeClr(colour, 517, 320, (char *)pCursCels, frame, frame_width, 0, 8);
 		}
 
-		if ( plr[myplr].InvBody[INVLOC_CHEST]._iStatFlag ) {
+		if ( plr[myplr].InvBody[INVLOC_CHEST]._iStatFlag )
+		{
 			CelDrawHdrOnly(517, 320, (char *)pCursCels, frame, frame_width, 0, 8);
-		} else {
+		}
+		else
+		{
 			CelDrawHdrLightRed(517, 320, (char *)pCursCels, frame, frame_width, 0, 8, 1);
 		}
 	}
@@ -404,12 +423,14 @@ void __cdecl DrawInv()
 			int frame_width = InvItemWidth[frame];
 			if ( pcursinvitem == ii + INVITEM_INV_FIRST )
 			{
-				int colour = ICOL_WHITE;
-				if ( plr[myplr].InvList[ii]._iMagical != ITEM_QUALITY_NORMAL ) {
-					colour = ICOL_BLUE;
+				int colour = 197;
+				if ( plr[myplr].InvList[ii]._iMagical )
+				{
+					colour = 181;
 				}
-				if ( !plr[myplr].InvList[ii]._iStatFlag ) {
-					colour = ICOL_RED;
+				if ( !plr[myplr].InvList[ii]._iStatFlag )
+				{
+					colour = 229;
 				}
 				CelDecodeClr(
 					colour,
@@ -518,7 +539,7 @@ void __cdecl DrawInvBelt()
 			v0 += 368;
 			v13 = v0;
 		}
-		while ( v11 < MAXBELTITEMS );
+		while ( v11 < 8 );
 	}
 }
 // 4B8960: using guessed type int talkflag;
@@ -720,7 +741,7 @@ LABEL_25:
 		{
 			++v11;
 			v12 += 92;
-			if ( v11 >= MAXBELTITEMS )
+			if ( v11 >= 8 )
 				goto LABEL_24;
 		}
 		v6 = 1;
@@ -879,27 +900,27 @@ int __fastcall WeaponAutoPlace(int pnum)
 	v1 = pnum;
 	if ( plr[pnum].HoldItem._iLoc == ILOC_TWOHAND )
 	{
-		if ( plr[v1].InvBody[INVLOC_HAND_LEFT]._itype != -1 || plr[v1].InvBody[INVLOC_HAND_RIGHT]._itype != -1 )
+		if ( plr[v1].InvBody[4]._itype != -1 || plr[v1].InvBody[5]._itype != -1 )
 			return 0;
 LABEL_12:
-		NetSendCmdChItem(TRUE, 4u);
+		NetSendCmdChItem(1u, 4u);
 		v4 = &plr[v1].HoldItem;
-		v5 = &plr[v1].InvBody[INVLOC_HAND_LEFT];
+		v5 = &plr[v1].InvBody[4];
 		goto LABEL_13;
 	}
-	v2 = plr[v1].InvBody[INVLOC_HAND_LEFT]._itype;
-	if ( v2 != -1 && plr[v1].InvBody[INVLOC_HAND_LEFT]._iClass == 1 )
+	v2 = plr[v1].InvBody[4]._itype;
+	if ( v2 != -1 && plr[v1].InvBody[4]._iClass == 1 )
 		return 0;
-	v3 = plr[v1].InvBody[INVLOC_HAND_RIGHT]._itype;
-	if ( v3 != -1 && plr[v1].InvBody[INVLOC_HAND_RIGHT]._iClass == 1 )
+	v3 = plr[v1].InvBody[5]._itype;
+	if ( v3 != -1 && plr[v1].InvBody[5]._iClass == 1 )
 		return 0;
 	if ( v2 == -1 )
 		goto LABEL_12;
-	if ( v3 == -1 && plr[v1].InvBody[INVLOC_HAND_LEFT]._iLoc != ILOC_TWOHAND )
+	if ( v3 == -1 && plr[v1].InvBody[4]._iLoc != ILOC_TWOHAND )
 	{
-		NetSendCmdChItem(TRUE, 5u);
+		NetSendCmdChItem(1u, 5u);
 		v4 = &plr[v1].HoldItem;
-		v5 = &plr[v1].InvBody[INVLOC_HAND_RIGHT];
+		v5 = &plr[v1].InvBody[5];
 LABEL_13:
 		result = 1;
 		qmemcpy(v5, v4, sizeof(ItemStruct));
@@ -938,6 +959,8 @@ void __fastcall CheckInvPaste(int pnum, int mx, int my)
 	int v16; // esi
 	int v17; // ecx
 	int v18; // edx
+	char v19; // al
+	int v20; // ecx
 	int v21; // esi
 	ItemStruct *v22; // edi
 	ItemStruct *v23; // ecx
@@ -1090,86 +1113,86 @@ LABEL_93:
 				case ILOC_ONEHAND:
 					if ( v10 > 12 )
 					{
-						if ( plr[v3].InvBody[INVLOC_HAND_RIGHT]._itype == ITYPE_NONE )
+						if ( plr[v3].InvBody[5]._itype == ITYPE_NONE )
 						{
-							v25 = plr[v3].InvBody[INVLOC_HAND_LEFT]._itype;
+							v25 = plr[v3].InvBody[4]._itype;
 							if ( v25 == ITYPE_NONE )
 								goto LABEL_232;
-							if ( plr[v3].InvBody[INVLOC_HAND_LEFT]._iLoc == ILOC_TWOHAND )
+							if ( plr[v3].InvBody[4]._iLoc == ILOC_TWOHAND )
 							{
-								NetSendCmdDelItem(FALSE, 4u);
-								NetSendCmdChItem(FALSE, 5u);
-								SwapItem(&plr[v3].InvBody[INVLOC_HAND_RIGHT], &plr[v3].InvBody[INVLOC_HAND_LEFT]);
-								v23 = &plr[v3].InvBody[INVLOC_HAND_RIGHT];
+								NetSendCmdDelItem(0, 4u);
+								NetSendCmdChItem(0, 5u);
+								SwapItem(&plr[v3].InvBody[5], &plr[v3].InvBody[4]);
+								v23 = &plr[v3].InvBody[5];
 LABEL_99:
 								v24 = SwapItem(v23, &plr[v3].HoldItem);
 LABEL_172:
 								cursor_ida = v24;
-                                //ADDED
-    if (plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_STAFF || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_AXE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_BOW || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MACE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SHIELD || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MISC || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_0E || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SWORD) {
-        v34 = plr[v3].InvBody[INVLOC_HAND_LEFT]._iSpell;
-        if (v34) {
-            if (plr[v3].InvBody[INVLOC_HAND_LEFT]._iCharges > 0) {
-                plr[v3]._pRSpell = v34;
-                _LOBYTE(plr[v3]._pRSplType) = RSPLTYPE_CHARGES;
-                drawpanflag = 255;
-            }
-        }
-    }
+
+								if (plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_STAFF || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_AXE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_BOW || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MACE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SHIELD || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MISC || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_0E || plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SWORD) {
+									v34 = plr[v3].InvBody[INVLOC_HAND_LEFT]._iSpell;
+									if (v34) {
+										if (plr[v3].InvBody[INVLOC_HAND_LEFT]._iCharges > 0) {
+											plr[v3]._pRSpell = v34;
+											_LOBYTE(plr[v3]._pRSplType) = RSPLTYPE_CHARGES;
+											drawpanflag = 255;
+										}
+									}
+								}
 								goto LABEL_226;
 							}
-							if ( v25 == ITYPE_NONE || plr[v3].InvBody[INVLOC_HAND_LEFT]._iClass != plr[v3].HoldItem._iClass )
+							if ( v25 == ITYPE_NONE || plr[v3].InvBody[4]._iClass != plr[v3].HoldItem._iClass )
 							{
 LABEL_232:
-								NetSendCmdChItem(FALSE, 5u);
-								v22 = &plr[v3].InvBody[INVLOC_HAND_RIGHT];
+								NetSendCmdChItem(0, 5u);
+								v22 = &plr[v3].InvBody[5];
 LABEL_158:
 								qmemcpy(v22, &plr[v3].HoldItem, sizeof(ItemStruct));
 								goto LABEL_226;
 							}
 						}
-						else if ( plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE
-							   || plr[v3].InvBody[INVLOC_HAND_LEFT]._iClass != plr[v3].HoldItem._iClass )
+						else if ( plr[v3].InvBody[4]._itype == ITYPE_NONE
+							   || plr[v3].InvBody[4]._iClass != plr[v3].HoldItem._iClass )
 						{
 							goto LABEL_114;
 						}
 					}
 					else
 					{
-						if ( plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE )
+						if ( plr[v3].InvBody[4]._itype == ITYPE_NONE )
 						{
-							if ( plr[v3].InvBody[INVLOC_HAND_RIGHT]._itype != ITYPE_NONE
-							  && plr[v3].InvBody[INVLOC_HAND_RIGHT]._iClass == plr[v3].HoldItem._iClass )
+							if ( plr[v3].InvBody[5]._itype != ITYPE_NONE
+							  && plr[v3].InvBody[5]._iClass == plr[v3].HoldItem._iClass )
 							{
 LABEL_114:
-								NetSendCmdChItem(FALSE, 5u);
-								v23 = &plr[v3].InvBody[INVLOC_HAND_RIGHT];
+								NetSendCmdChItem(0, 5u);
+								v23 = &plr[v3].InvBody[5];
 								goto LABEL_99;
 							}
-							NetSendCmdChItem(FALSE, 4u);
-							v22 = &plr[v3].InvBody[INVLOC_HAND_LEFT];
+							NetSendCmdChItem(0, 4u);
+							v22 = &plr[v3].InvBody[4];
 							goto LABEL_158;
 						}
-						if ( plr[v3].InvBody[INVLOC_HAND_RIGHT]._itype != ITYPE_NONE
-						  && plr[v3].InvBody[INVLOC_HAND_RIGHT]._iClass == plr[v3].HoldItem._iClass )
+						if ( plr[v3].InvBody[5]._itype != ITYPE_NONE
+						  && plr[v3].InvBody[5]._iClass == plr[v3].HoldItem._iClass )
 						{
 							goto LABEL_114;
 						}
 					}
-					NetSendCmdChItem(FALSE, 4u);
-					v23 = &plr[v3].InvBody[INVLOC_HAND_LEFT];
+					NetSendCmdChItem(0, 4u);
+					v23 = &plr[v3].InvBody[4];
 					goto LABEL_99;
 				case ILOC_TWOHAND:
-					NetSendCmdDelItem(FALSE, 5u);
-					if ( plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE )
+					NetSendCmdDelItem(0, 5u);
+					if ( plr[v3].InvBody[4]._itype == ITYPE_NONE )
 						goto LABEL_147;
-					v26 = plr[v3].InvBody[INVLOC_HAND_RIGHT]._itype;
+					v26 = plr[v3].InvBody[5]._itype;
 					if ( v26 == -1 )
 						goto LABEL_146;
 					qmemcpy(&tempitem, &plr[v3].HoldItem, sizeof(tempitem));
-					v27 = &plr[v3].InvBody[INVLOC_HAND_RIGHT];
+					v27 = &plr[v3].InvBody[5];
 					if ( v26 != 5 )
-						v27 = &plr[v3].InvBody[INVLOC_HAND_LEFT];
+						v27 = &plr[v3].InvBody[4];
 					v28 = p;
 					qmemcpy(&plr[v3].HoldItem, v27, sizeof(plr[v3].HoldItem));
 					v29 = plr[v3].HoldItem._iCurs + 12;
@@ -1196,62 +1219,53 @@ LABEL_114:
 						SetICursor(v33);
 					if ( !v67 )
 						return;
-					if ( plr[v3].InvBody[INVLOC_HAND_RIGHT]._itype == ITYPE_SHIELD )
-						plr[v3].InvBody[INVLOC_HAND_RIGHT]._itype = ITYPE_NONE;
+					if ( plr[v3].InvBody[5]._itype == ITYPE_SHIELD )
+						plr[v3].InvBody[5]._itype = ITYPE_NONE;
 					else
-						plr[v3].InvBody[INVLOC_HAND_LEFT]._itype = ITYPE_NONE;
+						plr[v3].InvBody[4]._itype = ITYPE_NONE;
 LABEL_146:
-					if ( plr[v3].InvBody[INVLOC_HAND_LEFT]._itype != ITYPE_NONE )
+					if ( plr[v3].InvBody[4]._itype != ITYPE_NONE )
 						goto LABEL_149;
 LABEL_147:
-					if ( plr[v3].InvBody[INVLOC_HAND_RIGHT]._itype == ITYPE_NONE )
+					if ( plr[v3].InvBody[5]._itype == ITYPE_NONE )
 					{
-						NetSendCmdChItem(FALSE, 4u);
-						qmemcpy(&plr[v3].InvBody[INVLOC_HAND_LEFT], &plr[v3].HoldItem, sizeof(plr[v3].InvBody[INVLOC_HAND_LEFT]));
+						NetSendCmdChItem(0, 4u);
+						qmemcpy(&plr[v3].InvBody[4], &plr[v3].HoldItem, sizeof(plr[v3].InvBody[4]));
 					}
 					else
 					{
 LABEL_149:
-						NetSendCmdChItem(FALSE, 4u);
-						if ( plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE )
-							SwapItem(&plr[v3].InvBody[INVLOC_HAND_LEFT], &plr[v3].InvBody[INVLOC_HAND_RIGHT]);
-						cursor_ida = SwapItem(&plr[v3].InvBody[INVLOC_HAND_LEFT], &plr[v3].HoldItem);
+						NetSendCmdChItem(0, 4u);
+						if ( plr[v3].InvBody[4]._itype == ITYPE_NONE )
+							SwapItem(&plr[v3].InvBody[4], &plr[v3].InvBody[5]);
+						cursor_ida = SwapItem(&plr[v3].InvBody[4], &plr[v3].HoldItem);
 					}
-if (plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_STAFF ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_AXE ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_BOW ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MACE ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SHIELD ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_NONE ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_MISC ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_0E ||
-    plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_SWORD)
+					if ( plr[v3].InvBody[4]._itype == ITYPE_STAFF )
 					{
-						v34 = plr[v3].InvBody[INVLOC_HAND_LEFT]._iSpell;
+						v34 = plr[v3].InvBody[4]._iSpell;
 						if ( v34 )
 						{
-							if ( plr[v3].InvBody[INVLOC_HAND_LEFT]._iCharges > 0 )
+							if ( plr[v3].InvBody[4]._iCharges > 0 )
 							{
 								plr[v3]._pRSpell = v34;
-								_LOBYTE(plr[v3]._pRSplType) = RSPLTYPE_CHARGES;
+								_LOBYTE(plr[v3]._pRSplType) = 3;
 								drawpanflag = 255;
 							}
 						}
 					}
-                
 					goto LABEL_226;
 				case ILOC_ARMOR:
-					NetSendCmdChItem(FALSE, 6u);
-					if ( plr[v3].InvBody[INVLOC_CHEST]._itype == ITYPE_NONE )
+					NetSendCmdChItem(0, 6u);
+					if ( plr[v3].InvBody[6]._itype == ITYPE_NONE )
 					{
-						v22 = &plr[v3].InvBody[INVLOC_CHEST];
+						v22 = &plr[v3].InvBody[6];
 						goto LABEL_158;
 					}
-					v23 = &plr[v3].InvBody[INVLOC_CHEST];
+					v23 = &plr[v3].InvBody[6];
 					goto LABEL_99;
 				case ILOC_HELM:
-					NetSendCmdChItem(FALSE, 0);
-					if ( plr[v3].InvBody[INVLOC_HEAD]._itype == ITYPE_NONE )
+					NetSendCmdChItem(0, 0);
+					if ( plr[v3].InvBody[0]._itype == ITYPE_NONE )
 					{
 						v22 = plr[v3].InvBody;
 						goto LABEL_158;
@@ -1261,33 +1275,33 @@ if (plr[v3].InvBody[INVLOC_HAND_LEFT]._itype == ITYPE_STAFF ||
 				case ILOC_RING:
 					if ( v10 == 4 )
 					{
-						NetSendCmdChItem(FALSE, 1u);
-						if ( plr[v3].InvBody[INVLOC_RING_LEFT]._itype == ITYPE_NONE )
+						NetSendCmdChItem(0, 1u);
+						if ( plr[v3].InvBody[1]._itype == ITYPE_NONE )
 						{
-							v22 = &plr[v3].InvBody[INVLOC_RING_LEFT];
+							v22 = &plr[v3].InvBody[1];
 							goto LABEL_158;
 						}
-						v23 = &plr[v3].InvBody[INVLOC_RING_LEFT];
+						v23 = &plr[v3].InvBody[1];
 					}
 					else
 					{
-						NetSendCmdChItem(FALSE, 2u);
-						if ( plr[v3].InvBody[INVLOC_RING_RIGHT]._itype == ITYPE_NONE )
+						NetSendCmdChItem(0, 2u);
+						if ( plr[v3].InvBody[2]._itype == ITYPE_NONE )
 						{
-							v22 = &plr[v3].InvBody[INVLOC_RING_RIGHT];
+							v22 = &plr[v3].InvBody[2];
 							goto LABEL_158;
 						}
-						v23 = &plr[v3].InvBody[INVLOC_RING_RIGHT];
+						v23 = &plr[v3].InvBody[2];
 					}
 					goto LABEL_99;
 				case ILOC_AMULET:
-					NetSendCmdChItem(FALSE, 3u);
-					if ( plr[v3].InvBody[INVLOC_AMULET]._itype == ITYPE_NONE )
+					NetSendCmdChItem(0, 3u);
+					if ( plr[v3].InvBody[3]._itype == ITYPE_NONE )
 					{
-						v22 = &plr[v3].InvBody[INVLOC_AMULET];
+						v22 = &plr[v3].InvBody[3];
 						goto LABEL_158;
 					}
-					v23 = &plr[v3].InvBody[INVLOC_AMULET];
+					v23 = &plr[v3].InvBody[3];
 					goto LABEL_99;
 				case ILOC_UNEQUIPABLE:
 					v35 = plr[v3].HoldItem._itype;
@@ -1566,16 +1580,29 @@ LABEL_78:
 LABEL_81:
 	if ( !v12 )
 		return;
-	if ( v69 == ILOC_UNEQUIPABLE || v69 == ILOC_BELT || plr[v3].HoldItem._iStatFlag ) {
+	if ( v69 == ILOC_UNEQUIPABLE || v69 == ILOC_BELT || plr[v3].HoldItem._iStatFlag )
+		goto LABEL_92;
+	v19 = plr[v3]._pClass;
+	if ( !v19 )
+	{
+		v20 = PS_WARR13;
+		goto LABEL_89;
+	}
+	if ( v19 != 1 )
+	{
+		if ( v19 != 2 )
+			return;
+		PlaySFX(PS_MAGE13);
+		v12 = 0;
+		v10 = v68;
+LABEL_92:
+		if ( !v12 )
+			return;
 		goto LABEL_93;
 	}
-	if ( plr[v3]._pClass == PC_WARRIOR ) {
-		PlaySFX(PS_WARR13);
-	} else if ( plr[v3]._pClass == PC_ROGUE ) {
-		PlaySFX(PS_ROGUE13);
-	} else if ( plr[v3]._pClass == PC_SORCERER ) {
-		PlaySFX(PS_MAGE13);
-	}
+	v20 = PS_ROGUE13;
+LABEL_89:
+	PlaySFX(v20);
 }
 // 4B8C9C: using guessed type int cursH;
 // 4B8CB4: using guessed type int icursH;
@@ -1848,7 +1875,7 @@ void __fastcall RemoveInvItem(int pnum, int iv)
 			// BUGFIX: Cast the literal `1` to `unsigned __int64` to make that bitshift 64bit
 			// this causes the last 4 skills to not reset correctly after use
 			if ( !(
-				plr[pnum]._pScrlSpells
+				plr[pnum]._pScrlSpells64
 				& (1 << (plr[pnum]._pRSpell - 1))) )
 			{
 				plr[pnum]._pRSpell = SPL_INVALID;
@@ -1872,7 +1899,7 @@ void __fastcall RemoveSpdBarItem(int pnum, int iv)
 			// BUGFIX: Cast the literal `1` to `unsigned __int64` to make that bitshift 64bit
 			// this causes the last 4 skills to not reset correctly after use
 			if ( !(
-				plr[pnum]._pScrlSpells
+				plr[pnum]._pScrlSpells64
 				& (1 << (plr[pnum]._pRSpell - 1))) )
 			{
 				plr[pnum]._pRSpell = SPL_INVALID;
@@ -1954,80 +1981,132 @@ void __fastcall CheckQuestItem(int pnum)
 {
 	int v1; // ecx
 	int v2; // esi
+	char v3; // cl
+	char v4; // cl
+	char v5; // cl
+	char v6; // cl
+	char v7; // al
 
 	v1 = pnum;
 	v2 = plr[v1].HoldItem.IDidx;
 	if ( v2 == IDI_OPTAMULET )
-		quests[QTYPE_BLIND]._qactive = 3;
-	if ( v2 == IDI_MUSHROOM && quests[QTYPE_BLKM]._qactive == 2 && quests[QTYPE_BLKM]._qvar1 == QS_MUSHSPAWNED )
+		quests[8]._qactive = 3;
+	if ( v2 == IDI_MUSHROOM && quests[1]._qactive == 2 && quests[1]._qvar1 == 3 )
 	{
+		v3 = plr[v1]._pClass;
 		sfxdelay = IDI_OPTAMULET;
-		if ( plr[v1]._pClass == PC_WARRIOR ) {
-			sfxdnum = PS_WARR95;
-		} else if ( plr[v1]._pClass == PC_ROGUE ) {
-			sfxdnum = PS_ROGUE95;
-		} else if ( plr[v1]._pClass == PC_SORCERER ) {
-			sfxdnum = PS_MAGE95;
+		if ( v3 )
+		{
+			if ( v3 == 1 )
+			{
+				sfxdnum = PS_ROGUE95;
+			}
+			else if ( v3 == 2 )
+			{
+				sfxdnum = PS_MAGE95;
+			}
 		}
-		quests[QTYPE_BLKM]._qvar1 = QS_MUSHPICKED;
+		else
+		{
+			sfxdnum = PS_WARR95;
+		}
+		quests[1]._qvar1 = 4;
 	}
 	if ( v2 == IDI_ANVIL )
 	{
-		if ( quests[QTYPE_ANVIL]._qactive == 1 )
+		if ( quests[10]._qactive == 1 )
 		{
-			quests[QTYPE_ANVIL]._qactive = 2;
-			quests[QTYPE_ANVIL]._qvar1 = 1;
+			quests[10]._qactive = 2;
+			quests[10]._qvar1 = 1;
 		}
-		if ( quests[QTYPE_ANVIL]._qlog == 1 ) {
+		if ( quests[10]._qlog == 1 )
+		{
 			sfxdelay = IDI_OPTAMULET;
-			if ( plr[v1]._pClass == PC_WARRIOR ) {
+			v4 = plr[myplr]._pClass;
+			if ( v4 )
+			{
+				if ( v4 == 1 )
+				{
+					sfxdnum = PS_ROGUE89;
+				}
+				else if ( v4 == 2 )
+				{
+					sfxdnum = PS_MAGE89;
+				}
+			}
+			else
+			{
 				sfxdnum = PS_WARR89;
-			} else if ( plr[v1]._pClass == PC_ROGUE ) {
-				sfxdnum = PS_ROGUE89;
-			} else if ( plr[v1]._pClass == PC_SORCERER ) {
-				sfxdnum = PS_MAGE89;
 			}
 		}
 	}
 	if ( v2 == IDI_GLDNELIX )
 	{
 		sfxdelay = 30;
-		if ( plr[v1]._pClass == PC_WARRIOR ) {
+		v5 = plr[myplr]._pClass;
+		if ( v5 )
+		{
+			if ( v5 == 1 )
+			{
+				sfxdnum = PS_ROGUE88;
+			}
+			else if ( v5 == 2 )
+			{
+				sfxdnum = PS_MAGE88;
+			}
+		}
+		else
+		{
 			sfxdnum = PS_WARR88;
-		} else if ( plr[v1]._pClass == PC_ROGUE ) {
-			sfxdnum = PS_ROGUE88;
-		} else if ( plr[v1]._pClass == PC_SORCERER ) {
-			sfxdnum = PS_MAGE88;
 		}
 	}
 	if ( v2 == IDI_ROCK )
 	{
-		if ( quests[QTYPE_INFRA]._qactive == 1 )
+		if ( quests[0]._qactive == 1 )
 		{
-			quests[QTYPE_INFRA]._qactive = 2;
-			quests[QTYPE_INFRA]._qvar1 = 1;
+			quests[0]._qactive = 2;
+			quests[0]._qvar1 = 1;
 		}
-		if ( quests[QTYPE_INFRA]._qlog == 1 ) {
+		if ( quests[0]._qlog == 1 )
+		{
 			sfxdelay = IDI_OPTAMULET;
-			if ( plr[v1]._pClass == PC_WARRIOR ) {
+			v6 = plr[myplr]._pClass;
+			if ( v6 )
+			{
+				if ( v6 == 1 )
+				{
+					sfxdnum = PS_ROGUE87;
+				}
+				else if ( v6 == 2 )
+				{
+					sfxdnum = PS_MAGE87;
+				}
+			}
+			else
+			{
 				sfxdnum = PS_WARR87;
-			} else if ( plr[v1]._pClass == PC_ROGUE ) {
-				sfxdnum = PS_ROGUE87;
-			} else if ( plr[v1]._pClass == PC_SORCERER ) {
-				sfxdnum = PS_MAGE87;
 			}
 		}
 	}
 	if ( v2 == IDI_ARMOFVAL )
 	{
-		quests[QTYPE_BLOOD]._qactive = 3;
+		quests[9]._qactive = 3;
 		sfxdelay = 20;
-		if ( plr[v1]._pClass == PC_WARRIOR ) {
+		v7 = plr[myplr]._pClass;
+		if ( v7 )
+		{
+			if ( v7 == 1 )
+			{
+				sfxdnum = PS_ROGUE91;
+			}
+			else if ( v7 == 2 )
+			{
+				sfxdnum = PS_MAGE91;
+			}
+		}
+		else
+		{
 			sfxdnum = PS_WARR91;
-		} else if ( plr[v1]._pClass == PC_ROGUE ) {
-			sfxdnum = PS_ROGUE91;
-		} else if ( plr[v1]._pClass == PC_SORCERER ) {
-			sfxdnum = PS_MAGE91;
 		}
 	}
 }
@@ -2053,7 +2132,7 @@ void __fastcall InvGetItem(int pnum, int ii)
 	if ( dItem[item[ii]._ix][item[ii]._iy] )
 	{
 		if ( myplr == pnum && pcurs >= CURSOR_FIRSTITEM )
-			NetSendCmdPItem(TRUE, CMD_SYNCPUTITEM, plr[myplr].WorldX, plr[myplr].WorldY);
+			NetSendCmdPItem(1u, CMD_SYNCPUTITEM, plr[myplr].WorldX, plr[myplr].WorldY);
 		_HIBYTE(item[v2]._iCreateInfo) &= 0x7Fu;
 		qmemcpy(&plr[pnuma].HoldItem, &item[v2], sizeof(plr[pnuma].HoldItem));
 		CheckQuestItem(pnuma);
@@ -2094,6 +2173,7 @@ void __fastcall AutoGetItem(int pnum, int ii)
 	int v9; // edi
 	int v10; // edx
 	int v11; // ecx
+	char v12; // al
 	int v13; // ecx
 	int iia; // [esp+10h] [ebp-18h]
 	signed int iib; // [esp+10h] [ebp-18h]
@@ -2136,7 +2216,7 @@ void __fastcall AutoGetItem(int pnum, int ii)
 		else
 		{
 			v4 = 0;
-			if ( ((plr[v3]._pgfxnum & 0xF) == ANIM_ID_UNARMED || (plr[v3]._pgfxnum & 0xF) == ANIM_ID_UNARMED_SHIELD) && plr[v3]._pmode <= PM_WALK3 )
+			if ( (!(plr[v3]._pgfxnum & 0xF) || (plr[v3]._pgfxnum & 0xF) == 1) && plr[v3]._pmode <= PM_WALK3 )
 			{
 				if ( plr[v3].HoldItem._iStatFlag )
 				{
@@ -2145,7 +2225,7 @@ void __fastcall AutoGetItem(int pnum, int ii)
 						v4 = WeaponAutoPlace(v2);
 						if ( v4 )
 						{
-							CalcPlrInv(v2, TRUE);
+							CalcPlrInv(v2, 1u);
 							goto LABEL_71;
 						}
 					}
@@ -2341,25 +2421,25 @@ LABEL_71:
 		}
 		if ( v2 == myplr )
 		{
-			switch ( plr[v3]._pClass )
+			v12 = plr[v3]._pClass;
+			switch ( v12 )
 			{
-				case PC_WARRIOR:
+				case UI_WARRIOR:
 					v13 = random(0, 3) + PS_WARR14;
+LABEL_84:
 					PlaySFX(v13);
 					break;
-				case PC_ROGUE:
+				case UI_ROGUE:
 					v13 = random(0, 3) + PS_ROGUE14;
-					PlaySFX(v13);
-					break;
-				case PC_SORCERER:
+					goto LABEL_84;
+				case UI_SORCERER:
 					v13 = random(0, 3) + PS_MAGE14;
-					PlaySFX(v13);
-					break;
+					goto LABEL_84;
 			}
 		}
 		qmemcpy(&plr[v3].HoldItem, &item[v28], sizeof(plr[v3].HoldItem));
 		RespawnItem(i, 1);
-		NetSendCmdPItem(TRUE, CMD_RESPAWNITEM, item[v28]._ix, item[v28]._iy);
+		NetSendCmdPItem(1u, CMD_RESPAWNITEM, item[v28]._ix, item[v28]._iy);
 		plr[v3].HoldItem._itype = ITYPE_NONE;
 	}
 }
@@ -2623,7 +2703,7 @@ int __fastcall InvPutItem(int pnum, int x, int y)
 	v15 = itemavail[0];
 	dItem[xa][v5] = _LOBYTE(itemavail[0]) + 1;
 	yc = v15;
-	v16 = &itemavail[MAXITEMS - numitems - 1];
+	v16 = &itemavail[-numitems + 126];
 	itemactive[numitems] = v15;
 	itemavail[0] = *v16;
 	v17 = v15;
@@ -2636,7 +2716,7 @@ int __fastcall InvPutItem(int pnum, int x, int y)
 	return yc;
 }
 
-int __fastcall SyncPutItem(int pnum, int x, int y, int idx, WORD icreateinfo, int iseed, int Id, int dur, int mdur, int ch, int mch, int ivalue, unsigned int ibuff)
+int __fastcall SyncPutItem(int pnum, int x, int y, int idx, int icreateinfo, int iseed, int Id, int dur, int mdur, int ch, int mch, int ivalue, unsigned int ibuff)
 {
 	int v13; // ebx
 	int v14; // edi
@@ -2743,7 +2823,7 @@ int __fastcall SyncPutItem(int pnum, int x, int y, int idx, WORD icreateinfo, in
 	v25 = itemavail[0];
 	ic = itemavail[0];
 	dItem[v13][v15] = _LOBYTE(itemavail[0]) + 1;
-	v26 = &itemavail[MAXITEMS - numitems - 1];
+	v26 = &itemavail[-numitems + 126];
 	itemactive[numitems] = v25;
 	itemavail[0] = *v26;
 	if ( idx == IDI_EAR )
@@ -2754,7 +2834,7 @@ int __fastcall SyncPutItem(int pnum, int x, int y, int idx, WORD icreateinfo, in
 	{
 		RecreateItem(v25, idx, icreateinfo, iseed, ivalue);
 		if ( Id )
-			item[ic]._iIdentified = TRUE;
+			item[ic]._iIdentified = 1;
 		v27 = ic;
 		item[v27]._iDurability = dur;
 		item[v27]._iMaxDur = mdur;
@@ -2779,6 +2859,7 @@ int __cdecl CheckInvHLight()
 	int v5; // ebx
 	int v6; // edi
 	char *v7; // eax
+	char v8; // al
 	char v9; // [esp+Fh] [ebp-1h]
 
 	v0 = 0;
@@ -2801,7 +2882,7 @@ int __cdecl CheckInvHLight()
 	if ( (unsigned int)v0 >= 0x49 )
 		goto LABEL_37;
 	v9 = -1;
-	infoclr = COL_WHITE;
+	_LOBYTE(infoclr) = 0;
 	v2 = 0;
 	v3 = &plr[myplr];
 	ClearPanel();
@@ -2815,21 +2896,21 @@ int __cdecl CheckInvHLight()
 	{
 		case 4:
 			v9 = 1;
-			v2 = &v3->InvBody[INVLOC_RING_LEFT];
+			v2 = &v3->InvBody[1];
 			goto LABEL_36;
 		case 5:
 			v9 = 2;
-			v2 = &v3->InvBody[INVLOC_RING_RIGHT];
+			v2 = &v3->InvBody[2];
 			goto LABEL_36;
 		case 6:
 			v9 = 3;
-			v2 = &v3->InvBody[INVLOC_AMULET];
+			v2 = &v3->InvBody[3];
 			goto LABEL_36;
 	}
 	if ( v0 >= 7 && v0 <= 12 )
 	{
 		v9 = 4;
-		v2 = &v3->InvBody[INVLOC_HAND_LEFT];
+		v2 = &v3->InvBody[4];
 		goto LABEL_36;
 	}
 	if ( v0 < 13 || v0 > 18 )
@@ -2837,7 +2918,7 @@ int __cdecl CheckInvHLight()
 		if ( v0 >= 19 && v0 <= 24 )
 		{
 			v9 = 6;
-			v2 = &v3->InvBody[INVLOC_CHEST];
+			v2 = &v3->InvBody[6];
 			goto LABEL_36;
 		}
 		if ( v0 < 25 || v0 > 64 )
@@ -2869,11 +2950,11 @@ LABEL_37:
 		_LOBYTE(result) = -1;
 		return result;
 	}
-	v2 = &v3->InvBody[INVLOC_HAND_LEFT];
-	if ( v3->InvBody[INVLOC_HAND_LEFT]._itype == -1 || v3->InvBody[INVLOC_HAND_LEFT]._iLoc != 2 )
+	v2 = &v3->InvBody[4];
+	if ( v3->InvBody[4]._itype == -1 || v3->InvBody[4]._iLoc != 2 )
 	{
 		v9 = 5;
-		v2 = &v3->InvBody[INVLOC_HAND_RIGHT];
+		v2 = &v3->InvBody[5];
 	}
 	else
 	{
@@ -2891,11 +2972,14 @@ LABEL_36:
 	}
 	else
 	{
-		if ( v2->_iMagical == ITEM_QUALITY_MAGIC )
+		v8 = v2->_iMagical;
+		if ( v8 == 1 )
 		{
-			infoclr = COL_BLUE;
-		} else if ( v2->_iMagical == ITEM_QUALITY_UNIQUE ) {
-			infoclr = COL_GOLD;
+			_LOBYTE(infoclr) = 1;
+		}
+		else if ( v8 == 2 )
+		{
+			_LOBYTE(infoclr) = 3;
 		}
 		strcpy(infostr, v2->_iName);
 		if ( v2->_iIdentified )
@@ -2936,7 +3020,7 @@ LABEL_8:
 		{
 			++v5;
 			v6 += 92;
-			if ( v5 >= MAXBELTITEMS )
+			if ( v5 >= 8 )
 				return;
 		}
 		RemoveSpdBarItem(p, v5);
@@ -2956,7 +3040,7 @@ LABEL_8:
 	CalcPlrScrolls(p);
 }
 
-BOOL __cdecl UseScroll()
+bool __cdecl UseScroll()
 {
 	int v0; // eax
 	int v1; // esi
@@ -2965,8 +3049,8 @@ BOOL __cdecl UseScroll()
 	signed int v4; // esi
 	int *v5; // ecx
 
-	if ( pcurs != CURSOR_HAND || leveltype == DTYPE_TOWN && !spelldata[plr[myplr]._pRSpell].sTownSpell )
-		return FALSE;
+	if ( pcurs != CURSOR_HAND || leveltype == DTYPE_TOWN && !*(_DWORD *)&spelldata[plr[myplr]._pRSpell].sTownSpell )
+		return 0;
 	v0 = myplr;
 	v1 = 0;
 	v2 = plr[myplr]._pNumInv;
@@ -2979,8 +3063,8 @@ LABEL_11:
 		{
 			++v4;
 			v5 += 92;
-			if ( v4 >= MAXBELTITEMS )
-				return FALSE;
+			if ( v4 >= 8 )
+				return 0;
 		}
 	}
 	else
@@ -2994,7 +3078,7 @@ LABEL_11:
 				goto LABEL_11;
 		}
 	}
-	return TRUE;
+	return 1;
 }
 // 5BB1ED: using guessed type char leveltype;
 
@@ -3004,11 +3088,11 @@ void __fastcall UseStaffCharge(int pnum)
 	int *v2; // eax
 
 	v1 = pnum;
-	if ( plr[pnum].InvBody[INVLOC_HAND_LEFT]._itype != ITYPE_NONE
-		&& plr[v1].InvBody[INVLOC_HAND_LEFT]._iMiscId == IMISC_STAFF
-		&& plr[v1].InvBody[INVLOC_HAND_LEFT]._iSpell == plr[v1]._pRSpell )
+	if ( plr[pnum].InvBody[4]._itype != ITYPE_NONE
+		&& plr[v1].InvBody[4]._iMiscId == IMISC_STAFF
+		&& plr[v1].InvBody[4]._iSpell == plr[v1]._pRSpell )
 	{
-		v2 = &plr[v1].InvBody[INVLOC_HAND_LEFT]._iCharges;
+		v2 = &plr[v1].InvBody[4]._iCharges;
 		if ( *v2 > 0 )
 		{
 			--*v2;
@@ -3017,21 +3101,21 @@ void __fastcall UseStaffCharge(int pnum)
 	}
 }
 
-BOOL __cdecl UseStaff()
+bool __cdecl UseStaff()
 {
 	int v0; // eax
-	BOOL result; // al
+	bool result; // al
 
-	result = FALSE;
+	result = 0;
 	if ( pcurs == CURSOR_HAND )
 	{
 		v0 = myplr;
-		if ( plr[myplr].InvBody[INVLOC_HAND_LEFT]._itype != ITYPE_NONE
-			&& plr[v0].InvBody[INVLOC_HAND_LEFT]._iMiscId == IMISC_STAFF
-			&& plr[v0].InvBody[INVLOC_HAND_LEFT]._iSpell == plr[v0]._pRSpell
-			&& plr[v0].InvBody[INVLOC_HAND_LEFT]._iCharges > 0 )
+		if ( plr[myplr].InvBody[4]._itype != ITYPE_NONE
+			&& plr[v0].InvBody[4]._iMiscId == IMISC_STAFF
+			&& plr[v0].InvBody[4]._iSpell == plr[v0]._pRSpell
+			&& plr[v0].InvBody[4]._iCharges > 0 )
 		{
-			result = TRUE;
+			result = 1;
 		}
 	}
 	return result;
@@ -3063,8 +3147,12 @@ int __fastcall UseInvItem(int pnum, int cii)
 	int v4; // ebx
 	int v5; // ebp
 	_DWORD *v6; // edi
+	char v7; // al
+	int v8; // ecx
 	int v9; // eax
 	int v10; // ecx
+	char v11; // al
+	char v12; // al
 	int p; // [esp+10h] [ebp-8h]
 	signed int v14; // [esp+14h] [ebp-4h]
 
@@ -3095,26 +3183,44 @@ int __fastcall UseInvItem(int pnum, int cii)
 		}
 		if ( v6[90] == 17 )
 		{
+			v12 = plr[v2]._pClass;
 			sfxdelay = 10;
-			if ( plr[v2]._pClass == PC_WARRIOR ) {
+			if ( v12 )
+			{
+				if ( v12 == 1 )
+				{
+					sfxdnum = PS_ROGUE95;
+				}
+				else if ( v12 == 2 )
+				{
+					sfxdnum = PS_MAGE95;
+				}
+			}
+			else
+			{
 				sfxdnum = PS_WARR95;
-			} else if ( plr[v2]._pClass == PC_ROGUE ) {
-				sfxdnum = PS_ROGUE95;
-			} else if ( plr[v2]._pClass == PC_SORCERER ) {
-				sfxdnum = PS_MAGE95;
 			}
 			return 1;
 		}
 		if ( v6[90] == 19 )
 		{
 			PlaySFX(IS_IBOOK);
+			v11 = plr[v2]._pClass;
 			sfxdelay = 10;
-			if ( plr[v2]._pClass == PC_WARRIOR ) {
+			if ( v11 )
+			{
+				if ( v11 == 1 )
+				{
+					sfxdnum = PS_ROGUE29;
+				}
+				else if ( v11 == 2 )
+				{
+					sfxdnum = PS_MAGE29;
+				}
+			}
+			else
+			{
 				sfxdnum = PS_WARR29;
-			} else if ( plr[v2]._pClass == PC_ROGUE ) {
-				sfxdnum = PS_ROGUE29;
-			} else if ( plr[v2]._pClass == PC_SORCERER ) {
-				sfxdnum = PS_MAGE29;
 			}
 			return 1;
 		}
@@ -3122,13 +3228,25 @@ int __fastcall UseInvItem(int pnum, int cii)
 			return 0;
 		if ( !v6[89] )
 		{
-			if ( plr[v2]._pClass == PC_WARRIOR ) {
-				PlaySFX(PS_WARR13);
-			} else if ( plr[v2]._pClass == PC_ROGUE ) {
-				PlaySFX(PS_ROGUE13);
-			} else if ( plr[v2]._pClass == PC_SORCERER ) {
-				PlaySFX(PS_MAGE13);
+			v7 = plr[v2]._pClass;
+			if ( v7 )
+			{
+				if ( v7 == 1 )
+				{
+					v8 = PS_ROGUE13;
+				}
+				else
+				{
+					if ( v7 != 2 )
+						return 1;
+					v8 = PS_MAGE13;
+				}
 			}
+			else
+			{
+				v8 = PS_WARR13;
+			}
+			PlaySFX(v8);
 			return 1;
 		}
 		v9 = v6[55];
@@ -3142,8 +3260,8 @@ int __fastcall UseInvItem(int pnum, int cii)
 			dropGoldFlag = 0;
 			dropGoldValue = 0;
 		}
-		if ( v9 == 21 && !currlevel && !spelldata[v6[56]].sTownSpell
-			|| v9 == 22 && !currlevel && !spelldata[v6[56]].sTownSpell )
+		if ( v9 == 21 && !currlevel && !*(_DWORD *)&spelldata[v6[56]].sTownSpell
+			|| v9 == 22 && !currlevel && !*(_DWORD *)&spelldata[v6[56]].sTownSpell )
 		{
 			return 1;
 		}
@@ -3180,11 +3298,11 @@ LABEL_39:
 void __cdecl DoTelekinesis()
 {
 	if ( pcursobj != -1 )
-		NetSendCmdParam1(TRUE, CMD_OPOBJT, pcursobj);
+		NetSendCmdParam1(1u, CMD_OPOBJT, pcursobj);
 	if ( pcursitem != -1 )
-		NetSendCmdGItem(TRUE, CMD_REQUESTAGITEM, myplr, myplr, pcursitem);
+		NetSendCmdGItem(1u, CMD_REQUESTAGITEM, myplr, myplr, pcursitem);
 	if ( pcursmonst != -1 && !M_Talker(pcursmonst) && !monster[pcursmonst].mtalkmsg )
-		NetSendCmdParam1(TRUE, CMD_KNOCKBACK, pcursmonst);
+		NetSendCmdParam1(1u, CMD_KNOCKBACK, pcursmonst);
 	SetCursor(CURSOR_HAND);
 }
 // 4B8CC0: using guessed type char pcursitem;
@@ -3202,7 +3320,7 @@ int __fastcall CalculateGold(int pnum)
 	result = 0;
 	v2 = pnum;
 	v3 = &plr[v2].SpdList[0]._ivalue;
-	v4 = MAXBELTITEMS;
+	v4 = 8;
 	do
 	{
 		if ( *(v3 - 47) == 11 )
@@ -3235,7 +3353,7 @@ int __cdecl DropItemBeforeTrig()
 {
 	if ( !TryInvPut() )
 		return 0;
-	NetSendCmdPItem(TRUE, CMD_PUTITEM, cursmx, cursmy);
+	NetSendCmdPItem(1u, CMD_PUTITEM, cursmx, cursmy);
 	SetCursor(CURSOR_HAND);
 	return 1;
 }

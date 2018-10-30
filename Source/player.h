@@ -4,17 +4,17 @@
 
 extern int plr_lframe_size; // idb
 extern int plr_wframe_size; // idb
-extern UCHAR plr_gfx_flag;
+extern char plr_gfx_flag; // weak
 extern int player_cpp_init_value; // weak
 extern int plr_aframe_size; // idb
 extern int myplr;
 extern PlayerStruct plr[MAX_PLRS];
 extern int plr_fframe_size; // idb
 extern int plr_qframe_size; // idb
-extern BOOL deathflag; // idb
+extern int deathflag; // idb
 extern int plr_hframe_size; // idb
 extern int plr_bframe_size; // idb
-extern UCHAR plr_gfx_bflag;
+extern char plr_gfx_bflag; // weak
 extern int plr_sframe_size; // idb
 extern int deathdelay; // weak
 extern int plr_dframe_size; // idb
@@ -70,22 +70,21 @@ void __fastcall StartNewLvl(int pnum, int fom, int lvl);
 void __fastcall RestartTownLvl(int pnum);
 void __fastcall StartWarpLvl(int pnum, int pidx);
 BOOL __fastcall PM_DoStand(int pnum);
-BOOL __fastcall PM_DoNewLvl(int pnum);
 BOOL __fastcall PM_DoWalk(int pnum);
 BOOL __fastcall PM_DoWalk2(int pnum);
 BOOL __fastcall PM_DoWalk3(int pnum);
 BOOL __fastcall WeaponDur(int pnum, int durrnd);
-BOOL __fastcall PlrHitMonst(int pnum, int m);
+bool __fastcall PlrHitMonst(int pnum, int m);
 BOOL __fastcall PlrHitPlr(int pnum, char p);
 BOOL __fastcall PlrHitObj(int pnum, int mx, int my);
-BOOL __fastcall PM_DoAttack(int pnum);
+int __fastcall PM_DoAttack(int pnum);
 BOOL __fastcall PM_DoRangeAttack(int pnum);
 void __fastcall ShieldDur(int pnum);
 BOOL __fastcall PM_DoBlock(int pnum);
 BOOL __fastcall PM_DoSpell(int pnum);
-BOOL __fastcall PM_DoGotHit(int pnum);
+int __fastcall PM_DoGotHit(int pnum);
 void __fastcall ArmorDur(int pnum);
-BOOL __fastcall PM_DoDeath(int pnum);
+int __fastcall PM_DoDeath(int pnum);
 void __fastcall CheckNewPath(int pnum);
 BOOL __fastcall PlrDeathModeOK(int pnum);
 void __cdecl ValidatePlayer();
@@ -93,7 +92,7 @@ void __cdecl ProcessPlayers();
 void __fastcall CheckCheatStats(int pnum);
 void __fastcall ClrPlrPath(int pnum);
 BOOL __fastcall PosOkPlayer(int pnum, int px, int py);
-void __fastcall MakePlrPath(int pnum, int xx, int yy, BOOL endspace);
+void __fastcall MakePlrPath(int pnum, int xx, int yy, unsigned char endspace);
 void __fastcall CheckPlrSpell();
 void __fastcall SyncPlrAnim(int pnum);
 void __fastcall SyncInitPlrPos(int pnum);
@@ -133,8 +132,7 @@ extern int VitalityTbl[3];
 extern int ToBlkTbl[3];
 extern char *ClassStrTblOld[3];
 extern int MaxStats[3][4];
-extern int ExpLvlsTbl[MAXCHARLEVEL];
-//extern int ExpLvlsTbl[99];
+extern int ExpLvlsTbl[100];
 extern char *ClassStrTbl[3];
 extern unsigned char fix[9];
 

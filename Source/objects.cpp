@@ -449,7 +449,7 @@ bool __fastcall RndLocOk(int xp, int yp)
 	v2 = xp;
 	v3 = v2 * 112 + yp;
 	result = 0;
-	if ( !dMonster[0][v3] && !dPlayer[v2][yp] && !dObject[v2][yp] && !(dFlags[v2][yp] & DFLAG_POPULATED) )
+	if ( !dMonster[0][v3] && !dPlayer[v2][yp] && !dObject[v2][yp] && !(dFlags[v2][yp] & 8) )
 	{
 		v4 = dPiece[0][v3];
 		if ( !nSolidTable[v4] && (leveltype != 1 || v4 <= 126 || v4 >= 144) )
@@ -708,10 +708,10 @@ void __cdecl AddCandles()
 	int v1; // edi
 	int v2; // ebx
 
-	v0 = quests[QTYPE_PW]._qtx;
-	v1 = quests[QTYPE_PW]._qty;
-	v2 = quests[QTYPE_PW]._qty + 1;
-	AddObject(OBJ_STORYCANDLE, quests[QTYPE_PW]._qtx - 2, quests[QTYPE_PW]._qty + 1);
+	v0 = quests[13]._qtx;
+	v1 = quests[13]._qty;
+	v2 = quests[13]._qty + 1;
+	AddObject(OBJ_STORYCANDLE, quests[13]._qtx - 2, quests[13]._qty + 1);
 	AddObject(OBJ_STORYCANDLE, v0 + 3, v2);
 	v1 += 2;
 	AddObject(OBJ_STORYCANDLE, v0 - 1, v1);
@@ -758,14 +758,14 @@ void __fastcall AddBookLever(int lx1, int ly1, int lx2, int ly2, int x1, int y1,
 		if ( ++v18 > 20000 )
 			return;
 	}
-	//_LOBYTE(v13) = QuestStatus(QTYPE_BLIND);
-	if ( QuestStatus(QTYPE_BLIND) )
+	//_LOBYTE(v13) = QuestStatus(8);
+	if ( QuestStatus(8) )
 		AddObject(OBJ_BLINDBOOK, v9, v10);
-	//_LOBYTE(v14) = QuestStatus(QTYPE_WARLRD);
-	if ( QuestStatus(QTYPE_WARLRD) )
+	//_LOBYTE(v14) = QuestStatus(11);
+	if ( QuestStatus(11) )
 		AddObject(OBJ_STEELTOME, v9, v10);
-	//_LOBYTE(v15) = QuestStatus(QTYPE_BLOOD);
-	if ( QuestStatus(QTYPE_BLOOD) )
+	//_LOBYTE(v15) = QuestStatus(9);
+	if ( QuestStatus(9) )
 	{
 		v9 = 2 * setpc_x + 25;
 		v10 = 2 * setpc_y + 40;
@@ -932,7 +932,7 @@ void __fastcall AddL3Objs(int x1, int y1, int x2, int y2)
 
 bool __fastcall WallTrapLocOk(int xp, int yp)
 {
-	return (~dFlags[xp][yp] & DFLAG_POPULATED) >> 3;
+	return (~dFlags[xp][yp] & 8u) >> 3;
 }
 
 void __cdecl AddL2Torches()
@@ -999,7 +999,7 @@ bool __fastcall TorchLocOK(int xp, int yp)
 	bool result; // al
 
 	v2 = xp;
-	if ( dFlags[v2][yp] & DFLAG_POPULATED )
+	if ( dFlags[v2][yp] & 8 )
 		result = 0;
 	else
 		result = nTrapTable[dPiece[0][yp + v2 * 112]] != 0;
@@ -1474,10 +1474,13 @@ void __cdecl InitObjects()
 	//int v4; // eax
 	//int v5; // eax
 	//int v6; // eax
+	char v7; // al
 	signed int v8; // ebx
 	unsigned char *v9; // esi
 	//int v10; // eax
+	char v11; // al
 	//int v12; // eax
+	char v13; // al
 	unsigned char *v14; // esi
 	//int v15; // eax
 	//int v16; // [esp+0h] [ebp-4h]
@@ -1493,7 +1496,7 @@ void __cdecl InitObjects()
 		GetRndSeed();
 		if ( currlevel == 9 && gbMaxPlayers == 1 )
 			AddSlainHero();
-		if ( currlevel == quests[QTYPE_BLKM]._qlevel && quests[QTYPE_BLKM]._qactive == 1 )
+		if ( currlevel == quests[1]._qlevel && quests[1]._qactive == 1 )
 			AddMushPatch();
 		if ( currlevel == 4 )
 			AddStoryBooks();
@@ -1503,14 +1506,14 @@ void __cdecl InitObjects()
 			AddStoryBooks();
 		if ( leveltype == DTYPE_CATHEDRAL )
 		{
-			//_LOBYTE(v1) = QuestStatus(QTYPE_BUTCH);
-			if ( QuestStatus(QTYPE_BUTCH) )
+			//_LOBYTE(v1) = QuestStatus(6);
+			if ( QuestStatus(6) )
 				AddTortures();
-			//_LOBYTE(v2) = QuestStatus(QTYPE_PW);
-			if ( QuestStatus(QTYPE_PW) )
+			//_LOBYTE(v2) = QuestStatus(13);
+			if ( QuestStatus(13) )
 				AddCandles();
-			//_LOBYTE(v3) = QuestStatus(QTYPE_BOL);
-			if ( QuestStatus(QTYPE_BOL) )
+			//_LOBYTE(v3) = QuestStatus(7);
+			if ( QuestStatus(7) )
 				AddObject(OBJ_SIGNCHEST, 2 * setpc_x + 26, 2 * setpc_y + 19);
 			InitRndLocBigObj(10, 15, OBJ_SARC);
 			AddL1Objs(0, 0, 112, 112);
@@ -1518,41 +1521,59 @@ void __cdecl InitObjects()
 		}
 		if ( leveltype == DTYPE_CATACOMBS )
 		{
-			//_LOBYTE(v4) = QuestStatus(QTYPE_INFRA);
-			if ( QuestStatus(QTYPE_INFRA) )
+			//_LOBYTE(v4) = QuestStatus(0);
+			if ( QuestStatus(0) )
 				InitRndLocObj5x5(1, 1, OBJ_STAND);
-			//_LOBYTE(v5) = QuestStatus(QTYPE_BONE);
-			if ( QuestStatus(QTYPE_BONE) )
+			//_LOBYTE(v5) = QuestStatus(14);
+			if ( QuestStatus(14) )
 				InitRndLocObj5x5(1, 1, OBJ_BOOK2R);
 			AddL2Objs(0, 0, 112, 112);
 			AddL2Torches();
-			//_LOBYTE(v6) = QuestStatus(QTYPE_BLIND);
-			if ( QuestStatus(QTYPE_BLIND) )
+			//_LOBYTE(v6) = QuestStatus(8);
+			if ( QuestStatus(8) )
 			{
-				if ( plr[myplr]._pClass == PC_WARRIOR ) {
-					v8 = QUEST_BLINDING;
-				} else if ( plr[myplr]._pClass == PC_ROGUE ) {
-					v8 = QUEST_RBLINDING;
-				} else if ( plr[myplr]._pClass == PC_SORCERER ) {
-					v8 = QUEST_MBLINDING;
+				v7 = plr[myplr]._pClass;
+				if ( v7 )
+				{
+					if ( v7 == 1 )
+					{
+						v8 = QUEST_RBLINDING;
+					}
+					else
+					{
+						v8 = QUEST_MBLINDING;
+					}
 				}
-				quests[QTYPE_BLIND]._qmsg = v8;
+				else
+				{
+					v8 = QUEST_BLINDING;
+				}
+				quests[8]._qmsg = v8;
 				AddBookLever(0, 0, 112, 112, setpc_x, setpc_y, setpc_w + setpc_x + 1, setpc_h + setpc_y + 1, v8);
 				v9 = LoadFileInMem("Levels\\L2Data\\Blind2.DUN", 0);
 				LoadMapObjs(v9, 2 * setpc_x, 2 * setpc_y);
 				mem_free_dbg(v9);
 			}
-			//_LOBYTE(v10) = QuestStatus(QTYPE_BLOOD);
-			if ( QuestStatus(QTYPE_BLOOD) )
+			//_LOBYTE(v10) = QuestStatus(9);
+			if ( QuestStatus(9) )
 			{
-				if ( plr[myplr]._pClass == PC_WARRIOR ) {
-					v8 = QUEST_BLOODY;
-				} else if ( plr[myplr]._pClass == PC_ROGUE ) {
-					v8 = QUEST_RBLOODY;
-				} else if ( plr[myplr]._pClass == PC_SORCERER ) {
-					v8 = QUEST_MBLOODY;
+				v11 = plr[myplr]._pClass;
+				if ( v11 )
+				{
+					if ( v11 == 1 )
+					{
+						v8 = QUEST_RBLOODY;
+					}
+					else if ( v11 == 2 )
+					{
+						v8 = QUEST_MBLOODY;
+					}
 				}
-				quests[QTYPE_BLOOD]._qmsg = v8;
+				else
+				{
+					v8 = QUEST_BLOODY;
+				}
+				quests[9]._qmsg = v8;
 				AddBookLever(0, 0, 112, 112, setpc_x, setpc_y + 3, setpc_x + 2, setpc_y + 7, v8);
 				AddObject(OBJ_PEDISTAL, 2 * setpc_x + 25, 2 * setpc_y + 32);
 			}
@@ -1565,24 +1586,33 @@ void __cdecl InitObjects()
 		}
 		if ( leveltype == DTYPE_HELL )
 		{
-			//_LOBYTE(v12) = QuestStatus(QTYPE_WARLRD);
-			if ( QuestStatus(QTYPE_WARLRD) )
+			//_LOBYTE(v12) = QuestStatus(11);
+			if ( QuestStatus(11) )
 			{
-				if ( plr[myplr]._pClass == PC_WARRIOR ) {
-					v8 = QUEST_BLOODWAR;
-				} else if ( plr[myplr]._pClass == PC_ROGUE ) {
-					v8 = QUEST_RBLOODWAR;
-				} else if ( plr[myplr]._pClass == PC_SORCERER ) {
-					v8 = QUEST_MBLOODWAR;
+				v13 = plr[myplr]._pClass;
+				if ( v13 )
+				{
+					if ( v13 == 1 )
+					{
+						v8 = QUEST_RBLOODWAR;
+					}
+					else if ( v13 == 2 )
+					{
+						v8 = QUEST_MBLOODWAR;
+					}
 				}
-				quests[QTYPE_WARLRD]._qmsg = v8;
+				else
+				{
+					v8 = QUEST_BLOODWAR;
+				}
+				quests[11]._qmsg = v8;
 				AddBookLever(0, 0, 112, 112, setpc_x, setpc_y, setpc_x + setpc_w, setpc_y + setpc_h, v8);
 				v14 = LoadFileInMem("Levels\\L4Data\\Warlord.DUN", 0);
 				LoadMapObjs(v14, 2 * setpc_x, 2 * setpc_y);
 				mem_free_dbg(v14);
 			}
-			//_LOBYTE(v15) = QuestStatus(QTYPE_VB);
-			if ( QuestStatus(QTYPE_VB) && gbMaxPlayers == 1 )
+			//_LOBYTE(v15) = QuestStatus(15);
+			if ( QuestStatus(15) && gbMaxPlayers == 1 )
 				AddLazStand();
 			InitRndBarrels();
 			AddL4Goodies();
@@ -2115,6 +2145,7 @@ void __fastcall AddVilebook(int i)
 			object[i]._oAnimFrame = 4;
 	}
 }
+// 5CCB10: using guessed type char setlvlnum;
 // 5CF31D: using guessed type char setlevel;
 
 void __fastcall AddMagicCircle(int i)
@@ -2535,8 +2566,8 @@ void __fastcall Obj_Circle(int i)
 			v6 = object[v1]._oVar2;
 			object[v1]._oVar6 = 4;
 			ObjChangeMapResync(object[v1]._oVar1, v6, object[v1]._oVar3, v5);
-			if ( quests[QTYPE_VB]._qactive == 2 )
-				quests[QTYPE_VB]._qvar1 = 4;
+			if ( quests[15]._qactive == 2 )
+				quests[15]._qvar1 = 4;
 			AddMissile(plr[myplr].WorldX, plr[myplr].WorldY, 35, 46, plr[myplr]._pdir, 3, 0, myplr, 0, 0);
 			track_repeat_walk(0);
 			sgbMouseDown = 0;
@@ -2805,6 +2836,7 @@ void __fastcall Obj_BCrossDamage(int i)
 	bool v2; // zf
 	int v3; // ecx
 	int v4; // edx
+	char v5; // al
 	int v6; // ecx
 	int damage[4]; // [esp+4h] [ebp-18h]
 	int v8; // [esp+18h] [ebp-4h]
@@ -2826,21 +2858,33 @@ void __fastcall Obj_BCrossDamage(int i)
 			v4 = damage[(unsigned char)leveltype-1];
 			plr[v1]._pHitPoints -= v4;
 			plr[v1]._pHPBase -= v4;
-			if ( plr[v1]._pHitPoints >> 6 <= 0 )
+			if ( (signed int)(plr[v1]._pHitPoints & 0xFFFFFFC0) <= 0 )
 			{
 				SyncPlrKill(myplr, 0);
-				drawhpflag = TRUE;
+LABEL_15:
+				drawhpflag = 1;
 				return;
 			}
-			if ( plr[myplr]._pClass == PC_WARRIOR ) {
+			v5 = plr[v1]._pClass;
+			if ( v5 )
+			{
+				if ( v5 == 1 )
+				{
+					v6 = PS_ROGUE68;
+				}
+				else
+				{
+					if ( v5 != 2 )
+						goto LABEL_15;
+					v6 = PS_MAGE68;
+				}
+			}
+			else
+			{
 				v6 = PS_WARR68;
-			} else if ( plr[myplr]._pClass == PC_ROGUE ) {
-				v6 = PS_ROGUE68;
-			} else if ( plr[myplr]._pClass == PC_SORCERER ) {
-				v6 = PS_MAGE68;
 			}
 			PlaySfxLoc(v6, plr[v1].WorldX, plr[v1].WorldY);
-			drawhpflag = TRUE;
+			goto LABEL_15;
 		}
 	}
 }
@@ -3315,7 +3359,7 @@ void __fastcall OperateL1RDoor(int pnum, int oi, unsigned char sendflag)
 				return;
 			}
 			if ( v9 == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_CLOSEDOOR, param1);
+				NetSendCmdParam1(1u, CMD_CLOSEDOOR, param1);
 			v7 = object[v3]._oVar1;
 			object[v3]._oVar4 = 0;
 			object[v3]._oSelFlag = 3;
@@ -3337,7 +3381,7 @@ void __fastcall OperateL1RDoor(int pnum, int oi, unsigned char sendflag)
 		else
 		{
 			if ( pnum == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_OPENDOOR, oi);
+				NetSendCmdParam1(1u, CMD_OPENDOOR, oi);
 			if ( !deltaload )
 				PlaySfxLoc(IS_DOOROPEN, object[v3]._ox, object[v3]._oy);
 			ObjSetMicro(v5, v6, 395);
@@ -3387,7 +3431,7 @@ void __fastcall OperateL1LDoor(int pnum, int oi, unsigned char sendflag)
 				return;
 			}
 			if ( v9 == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_CLOSEDOOR, param1);
+				NetSendCmdParam1(1u, CMD_CLOSEDOOR, param1);
 			v7 = object[v3]._oVar1;
 			object[v3]._oVar4 = 0;
 			object[v3]._oSelFlag = 3;
@@ -3409,7 +3453,7 @@ void __fastcall OperateL1LDoor(int pnum, int oi, unsigned char sendflag)
 		else
 		{
 			if ( pnum == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_OPENDOOR, oi);
+				NetSendCmdParam1(1u, CMD_OPENDOOR, oi);
 			if ( !deltaload )
 				PlaySfxLoc(IS_DOOROPEN, object[v3]._ox, object[v3]._oy);
 			if ( object[v3]._oVar1 == 214 )
@@ -3459,7 +3503,7 @@ void __fastcall OperateL2RDoor(int pnum, int oi, unsigned char sendflag)
 				return;
 			}
 			if ( v7 == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_CLOSEDOOR, param1);
+				NetSendCmdParam1(1u, CMD_CLOSEDOOR, param1);
 			object[v3]._oVar4 = 0;
 			object[v3]._oSelFlag = 3;
 			ObjSetMicro(v8, v5, 540);
@@ -3469,7 +3513,7 @@ void __fastcall OperateL2RDoor(int pnum, int oi, unsigned char sendflag)
 		else
 		{
 			if ( pnum == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_OPENDOOR, oi);
+				NetSendCmdParam1(1u, CMD_OPENDOOR, oi);
 			if ( !deltaload )
 				PlaySfxLoc(IS_DOOROPEN, object[v3]._ox, object[v3]._oy);
 			ObjSetMicro(v8, v5, 17);
@@ -3513,7 +3557,7 @@ void __fastcall OperateL2LDoor(int pnum, int oi, unsigned char sendflag)
 				return;
 			}
 			if ( v7 == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_CLOSEDOOR, param1);
+				NetSendCmdParam1(1u, CMD_CLOSEDOOR, param1);
 			object[v3]._oVar4 = 0;
 			object[v3]._oSelFlag = 3;
 			ObjSetMicro(v8, v5, 538);
@@ -3523,7 +3567,7 @@ void __fastcall OperateL2LDoor(int pnum, int oi, unsigned char sendflag)
 		else
 		{
 			if ( pnum == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_OPENDOOR, oi);
+				NetSendCmdParam1(1u, CMD_OPENDOOR, oi);
 			if ( !deltaload )
 				PlaySfxLoc(IS_DOOROPEN, object[v3]._ox, object[v3]._oy);
 			ObjSetMicro(v8, v5, 13);
@@ -3567,7 +3611,7 @@ void __fastcall OperateL3RDoor(int pnum, int oi, unsigned char sendflag)
 				return;
 			}
 			if ( v7 == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_CLOSEDOOR, param1);
+				NetSendCmdParam1(1u, CMD_CLOSEDOOR, param1);
 			object[v3]._oVar4 = 0;
 			object[v3]._oSelFlag = 3;
 			ObjSetMicro(v8, v5, 534);
@@ -3577,7 +3621,7 @@ void __fastcall OperateL3RDoor(int pnum, int oi, unsigned char sendflag)
 		else
 		{
 			if ( pnum == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_OPENDOOR, oi);
+				NetSendCmdParam1(1u, CMD_OPENDOOR, oi);
 			if ( !deltaload )
 				PlaySfxLoc(IS_DOOROPEN, object[v3]._ox, object[v3]._oy);
 			ObjSetMicro(v8, v5, 541);
@@ -3621,7 +3665,7 @@ void __fastcall OperateL3LDoor(int pnum, int oi, unsigned char sendflag)
 				return;
 			}
 			if ( v7 == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_CLOSEDOOR, param1);
+				NetSendCmdParam1(1u, CMD_CLOSEDOOR, param1);
 			object[v3]._oVar4 = 0;
 			object[v3]._oSelFlag = 3;
 			ObjSetMicro(v8, v5, 531);
@@ -3631,7 +3675,7 @@ void __fastcall OperateL3LDoor(int pnum, int oi, unsigned char sendflag)
 		else
 		{
 			if ( pnum == myplr && sendflag )
-				NetSendCmdParam1(TRUE, CMD_OPENDOOR, oi);
+				NetSendCmdParam1(1u, CMD_OPENDOOR, oi);
 			if ( !deltaload )
 				PlaySfxLoc(IS_DOOROPEN, object[v3]._ox, object[v3]._oy);
 			ObjSetMicro(v8, v5, 538);
@@ -3963,23 +4007,31 @@ void __fastcall OperateLever(int pnum, int i)
 LABEL_17:
 			ObjChangeMap(object[v2]._oVar1, object[v2]._oVar2, object[v2]._oVar3, object[v2]._oVar4);
 		if ( v8 == myplr )
-			NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, param1);
+			NetSendCmdParam1(0, CMD_OPERATEOBJ, param1);
 	}
 }
 // 676190: using guessed type int deltaload;
 
 void __fastcall OperateBook(int pnum, int i)
 {
+	int esi1; // esi
+	int v3; // edx
 	signed int v4; // ecx
 	int v5; // eax
 	bool v6; // zf
+	int v7; // ecx
+	int *v8; // eax
 	int j; // esi
+	int v10; // [esp+Ch] [ebp-14h]
 	signed int v11; // [esp+10h] [ebp-10h]
 	signed int v1; // [esp+14h] [ebp-Ch]
 	signed int v2; // [esp+18h] [ebp-8h]
 	int v14; // [esp+1Ch] [ebp-4h]
 
-	if ( !object[i]._oSelFlag )
+	esi1 = i;
+	v3 = pnum;
+	v10 = pnum;
+	if ( !object[esi1]._oSelFlag )
 		return;
 	if ( !setlevel || setlvlnum != SL_VILEBETRAYER )
 		goto LABEL_17;
@@ -4011,34 +4063,41 @@ void __fastcall OperateBook(int pnum, int i)
 			if ( v4 )
 			{
 				++object[dObject[35][36]-1]._oVar5; // ++objectavail[30 * dObject[35][36] + 123]; /* fix */
-				AddMissile(plr[pnum].WorldX, plr[pnum].WorldY, v1, v2, plr[pnum]._pdir, MIS_RNDTELEPORT, 0, pnum, 0, 0);
+				AddMissile(plr[v3].WorldX, plr[v3].WorldY, v1, v2, plr[v3]._pdir, MIS_RNDTELEPORT, 0, v3, 0, 0);
 				v11 = 1;
 				v4 = 0;
 			}
 			if ( ++v14 >= nobjects )
 				break;
+			v3 = v10;
 		}
 		if ( v11 )
 		{
+			v3 = v10;
 LABEL_17:
-			++object[i]._oAnimFrame;
+			++object[esi1]._oAnimFrame;
 			v6 = setlevel == 0;
-			object[i]._oSelFlag = 0;
+			object[esi1]._oSelFlag = 0;
 			if ( !v6 )
 			{
-				if ( setlvlnum == SL_BONECHAMB ) {
-					plr[myplr]._pMemSpells |= (__int64)1 << (SPL_GUARDIAN - 1);
-					if ( plr[pnum]._pSplLvl[SPL_GUARDIAN] < 15 )
-						plr[myplr]._pSplLvl[SPL_GUARDIAN]++;
-					quests[QTYPE_BONE]._qactive = 3;
+				if ( setlvlnum == SL_BONECHAMB )
+				{
+					v7 = 21720 * myplr;
+					v8 = plr[myplr]._pMemSpells;
+					*((_BYTE *)v8 + 1) |= 0x10u;
+					v8[1] = v8[1];
+					if ( plr[v3]._pSplLvl[SPL_GUARDIAN] < 15 )
+						++plr[0]._pSplLvl[v7 + SPL_GUARDIAN];
+					quests[14]._qactive = 3;
 					if ( !deltaload )
-						PlaySfxLoc(IS_QUESTDN, object[i]._ox, object[i]._oy);
-					InitDiabloMsg(43);
+						PlaySfxLoc(IS_QUESTDN, object[esi1]._ox, object[esi1]._oy);
+					_LOBYTE(v7) = 43;
+					InitDiabloMsg(v7);
 					AddMissile(
 						plr[myplr].WorldX,
 						plr[myplr].WorldY,
-						object[i]._ox - 2,
-						object[i]._oy - 4,
+						object[esi1]._ox - 2,
+						object[esi1]._oy - 4,
 						plr[myplr]._pdir,
 						MIS_GUARDIAN,
 						0,
@@ -4051,10 +4110,10 @@ LABEL_17:
 					if ( setlvlnum == SL_VILEBETRAYER )
 					{
 						ObjChangeMapResync(
-							object[i]._oVar1,
-							object[i]._oVar2,
-							object[i]._oVar3,
-							object[i]._oVar4);
+							object[esi1]._oVar1,
+							object[esi1]._oVar2,
+							object[esi1]._oVar3,
+							object[esi1]._oVar4);
 						for ( j = 0; j < nobjects; ++j )
 							SyncObjectAnim(objectactive[j]);
 					}
@@ -4064,6 +4123,7 @@ LABEL_17:
 		}
 	}
 }
+// 5CCB10: using guessed type char setlvlnum;
 // 5CF31D: using guessed type char setlevel;
 // 676190: using guessed type int deltaload;
 
@@ -4091,27 +4151,27 @@ void __fastcall OperateBookLever(int pnum, int i)
 	if ( object[i]._oSelFlag && !qtextflag )
 	{
 		v5 = object[v2]._otype;
-		if ( v5 == OBJ_BLINDBOOK && !quests[QTYPE_BLIND]._qvar1 )
+		if ( v5 == OBJ_BLINDBOOK && !quests[8]._qvar1 )
 		{
-			quests[QTYPE_BLIND]._qactive = 2;
-			quests[QTYPE_BLIND]._qlog = 1;
-			quests[QTYPE_BLIND]._qvar1 = 1;
+			quests[8]._qactive = 2;
+			quests[8]._qlog = 1;
+			quests[8]._qvar1 = 1;
 		}
-		if ( v5 == OBJ_BLOODBOOK && !quests[QTYPE_BLOOD]._qvar1 )
+		if ( v5 == OBJ_BLOODBOOK && !quests[9]._qvar1 )
 		{
-			quests[QTYPE_BLOOD]._qactive = 2;
-			quests[QTYPE_BLOOD]._qlog = 1;
-			quests[QTYPE_BLOOD]._qvar1 = 1;
+			quests[9]._qactive = 2;
+			quests[9]._qlog = 1;
+			quests[9]._qvar1 = 1;
 			SpawnQuestItem(21, 2 * setpc_x + 19, 2 * setpc_y + 26, 0, 1);
 			SpawnQuestItem(21, 2 * setpc_x + 31, 2 * setpc_y + 26, 0, 1);
 			SpawnQuestItem(21, 2 * setpc_x + 25, 2 * setpc_y + 33, 0, 1);
 		}
 		v6 = object[v2]._otype;
-		if ( v6 == OBJ_STEELTOME && !quests[QTYPE_WARLRD]._qvar1 )
+		if ( v6 == OBJ_STEELTOME && !quests[11]._qvar1 )
 		{
-			quests[QTYPE_WARLRD]._qactive = 2;
-			quests[QTYPE_WARLRD]._qlog = 1;
-			quests[QTYPE_WARLRD]._qvar1 = 1;
+			quests[11]._qactive = 2;
+			quests[11]._qlog = 1;
+			quests[11]._qvar1 = 1;
 		}
 		if ( object[v2]._oAnimFrame != object[v2]._oVar6 )
 		{
@@ -4134,7 +4194,7 @@ void __fastcall OperateBookLever(int pnum, int i)
 		object[v2]._oAnimFrame = object[v2]._oVar6;
 		InitQTextMsg(v12);
 		if ( v13 == myplr )
-			NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, param1);
+			NetSendCmdParam1(0, CMD_OPERATEOBJ, param1);
 	}
 }
 // 5A5590: using guessed type char TransVal;
@@ -4144,6 +4204,7 @@ void __fastcall OperateSChambBk(int pnum, int i)
 {
 	int v2; // esi
 	int j; // edi
+	char v4; // al
 	signed int v5; // ecx
 	//int speech_id; // [esp+4h] [ebp-4h]
 
@@ -4157,19 +4218,30 @@ void __fastcall OperateSChambBk(int pnum, int i)
 				SyncObjectAnim(objectactive[j]);
 		}
 		object[v2]._oAnimFrame = object[v2]._oVar6;
-		if ( quests[QTYPE_BONE]._qactive == 1 )
+		if ( quests[14]._qactive == 1 )
 		{
-			quests[QTYPE_BONE]._qactive = 2;
-			quests[QTYPE_BONE]._qlog = 1;
+			quests[14]._qactive = 2;
+			quests[14]._qlog = 1;
 		}
-		if ( plr[myplr]._pClass == PC_WARRIOR ) {
+		v4 = plr[myplr]._pClass;
+		if ( v4 )
+		{
+			if ( v4 == 1 )
+			{
+				v5 = QUEST_RBONER;
+			}
+			else
+			{
+				v5 = QUEST_MBONER;
+				//if ( v4 != 2 )
+					//v5 = speech_id;
+			}
+		}
+		else
+		{
 			v5 = QUEST_BONER;
-		} else if ( plr[myplr]._pClass == PC_ROGUE ) {
-			v5 = QUEST_RBONER;
-		} else if ( plr[myplr]._pClass == PC_SORCERER ) {
-			v5 = QUEST_MBONER;
 		}
-		quests[QTYPE_BONE]._qmsg = v5;
+		quests[14]._qmsg = v5;
 		InitQTextMsg(v5);
 	}
 }
@@ -4261,7 +4333,7 @@ LABEL_25:
 			object[v3]._oTrapFlag = 0;
 LABEL_26:
 			if ( param1 == myplr )
-				NetSendCmdParam2(FALSE, CMD_PLROPOBJ, param1, param2);
+				NetSendCmdParam2(0, CMD_PLROPOBJ, param1, param2);
 			return;
 		}
 	}
@@ -4273,20 +4345,32 @@ void __fastcall OperateMushPatch(int pnum, int i)
 {
 	int v2; // esi
 	bool v3; // zf
+	char v4; // al
 	int v5; // ecx
 	int xx; // [esp+8h] [ebp-8h]
 	int yy; // [esp+Ch] [ebp-4h]
 
-	if ( quests[QTYPE_BLKM]._qactive != 2 || quests[QTYPE_BLKM]._qvar1 < QS_TOMEGIVEN )
+	if ( quests[1]._qactive != 2 || quests[1]._qvar1 < 2u )
 	{
 		if ( !deltaload && pnum == myplr )
 		{
-			if ( plr[myplr]._pClass == PC_WARRIOR ) {
+			v4 = plr[myplr]._pClass;
+			if ( v4 )
+			{
+				if ( v4 == 1 )
+				{
+					v5 = PS_ROGUE13;
+				}
+				else
+				{
+					if ( v4 != 2 )
+						return;
+					v5 = PS_MAGE13;
+				}
+			}
+			else
+			{
 				v5 = PS_WARR13;
-			} else if ( plr[myplr]._pClass == PC_ROGUE ) {
-				v5 = PS_ROGUE13;
-			} else if ( plr[myplr]._pClass == PC_SORCERER ) {
-				v5 = PS_MAGE13;
 			}
 			PlaySFX(v5);
 		}
@@ -4304,8 +4388,8 @@ void __fastcall OperateMushPatch(int pnum, int i)
 			if ( v3 )
 			{
 				GetSuperItemLoc(object[v2]._ox, object[v2]._oy, &xx, &yy);
-				SpawnQuestItem(IDI_MUSHROOM, xx, yy, 0, 0);
-				quests[QTYPE_BLKM]._qvar1 = QS_MUSHSPAWNED;
+				SpawnQuestItem(17, xx, yy, 0, 0);
+				quests[1]._qvar1 = 3;
 			}
 		}
 	}
@@ -4314,12 +4398,14 @@ void __fastcall OperateMushPatch(int pnum, int i)
 
 void __fastcall OperateInnSignChest(int pnum, int i)
 {
+	char v2; // al
+	int v3; // ecx
 	int v4; // esi
 	bool v5; // zf
 	int xx; // [esp+8h] [ebp-8h]
 	int yy; // [esp+Ch] [ebp-4h]
 
-	if ( quests[QTYPE_BOL]._qvar1 == 2 )
+	if ( quests[7]._qvar1 == 2 )
 	{
 		v4 = i;
 		if ( object[i]._oSelFlag )
@@ -4335,17 +4421,23 @@ void __fastcall OperateInnSignChest(int pnum, int i)
 				SpawnQuestItem(IDI_BANNER, xx, yy, 0, 0);
 			}
 		}
-	} else if ( !deltaload && pnum == myplr ) {
-		switch ( plr[myplr]._pClass ) {
-			case PC_WARRIOR:
-				PlaySFX(PS_WARR24);
-				break;
-			case PC_ROGUE:
-				PlaySFX(PS_ROGUE24);
-				break;
-			case PC_SORCERER:
-				PlaySFX(PS_MAGE24);
-				break;
+	}
+	else if ( !deltaload && pnum == myplr )
+	{
+		v2 = plr[myplr]._pClass;
+		switch ( v2 )
+		{
+			case UI_WARRIOR:
+				v3 = PS_WARR24;
+LABEL_8:
+				PlaySFX(v3);
+				return;
+			case UI_ROGUE:
+				v3 = PS_ROGUE24;
+				goto LABEL_8;
+			case UI_SORCERER:
+				v3 = PS_MAGE24;
+				goto LABEL_8;
 		}
 	}
 }
@@ -4357,6 +4449,7 @@ void __fastcall OperateSlainHero(int pnum, int i, unsigned char sendmsg)
 	int v4; // esi
 	int v5; // eax
 	bool v6; // zf
+	char v7; // cl
 	int v8; // ecx
 
 	v3 = i;
@@ -4366,21 +4459,33 @@ void __fastcall OperateSlainHero(int pnum, int i, unsigned char sendmsg)
 	{
 		v6 = deltaload == 0;
 		object[v5]._oSelFlag = 0;
-		if ( v6 ) {
-			if ( plr[pnum]._pClass == PC_WARRIOR ) {
-				CreateMagicItem(object[v5]._ox, object[v5]._oy, 9, ICURS_BREAST_PLATE, 0, 1);
+		if ( v6 )
+		{
+			v7 = plr[pnum]._pClass;
+			if ( v7 )
+			{
+				if ( v7 == 1 )
+				{
+					CreateMagicItem(object[v5]._ox, object[v5]._oy, 3, 119, 0, 1);
+					v8 = PS_ROGUE9;
+				}
+				else
+				{
+					if ( v7 != 2 )
+						goto LABEL_10;
+					CreateSpellBook(object[v5]._ox, object[v5]._oy, 3, 0, 1);
+					v8 = PS_MAGE9;
+				}
+			}
+			else
+			{
+				CreateMagicItem(object[v5]._ox, object[v5]._oy, 9, 153, 0, 1);
 				v8 = PS_WARR9;
-			} else if ( plr[pnum]._pClass == PC_ROGUE ) {
-				CreateMagicItem(object[v5]._ox, object[v5]._oy, 3, ICURS_LONG_WAR_BOW, 0, 1);
-				v8 = PS_ROGUE9;
-			} else if ( plr[pnum]._pClass == PC_SORCERER ) {
-				CreateSpellBook(object[v5]._ox, object[v5]._oy, 3, 0, 1);
-				v8 = PS_MAGE9;
 			}
 			PlaySfxLoc(v8, plr[myplr].WorldX, plr[myplr].WorldY);
-
+LABEL_10:
 			if ( v4 == myplr )
-				NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v3);
+				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 			return;
 		}
 	}
@@ -4467,7 +4572,7 @@ void __fastcall OperateSarc(int pnum, int i, unsigned char sendmsg)
 			if ( object[v4]._oVar1 >= 8 )
 				SpawnSkeleton(object[v4]._oVar2, object[v4]._ox, object[v4]._oy);
 			if ( v7 == myplr )
-				NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v3);
+				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 		}
 		else
 		{
@@ -4717,16 +4822,21 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 	int *v49; // ecx
 	int *v50; // eax
 	signed int v51; // ecx
-	__int64 v52; // edi
+	signed int v52; // edi
 	int v53; // esi
+	int v54; // ebx
+	int v55; // eax
 	bool v56; // zf
-	__int64 v57; // ebx
+	signed int v57; // ebx
+	unsigned int v58; // edi
 	signed int v59; // edx
 	int v60; // ebx
 	char *v61; // esi
 	int j; // edi
 	int v63; // esi
 	int v64; // eax
+	int *v65; // eax
+	int v66; // edx
 	char v67; // al
 	char v68; // al
 	int v69; // esi
@@ -4753,6 +4863,8 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 	int v91; // esi
 	int v92; // eax
 	int v93; // edx
+	int *v94; // eax
+	int v95; // edx
 	char v96; // al
 	char v97; // al
 	int v98; // esi
@@ -4770,6 +4882,8 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 	int v110; // eax
 	_BYTE *v111; // eax
 	signed int v112; // edx
+	int *v113; // eax
+	int v114; // edx
 	char v115; // al
 	char v116; // al
 	int v117; // esi
@@ -4792,6 +4906,7 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 	int v135; // edi
 	int v136; // esi
 	unsigned short param2; // [esp+Ch] [ebp-18h]
+	int v138; // [esp+14h] [ebp-10h]
 	signed int v139; // [esp+1Ch] [ebp-8h]
 	int *v140; // [esp+1Ch] [ebp-8h]
 	signed int v141; // [esp+1Ch] [ebp-8h]
@@ -4878,7 +4993,7 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 					return;
 				v13 = arglist;
 				v14 = 7;
-				v15 = &plr[arglist].InvBody[INVLOC_HEAD]._itype;
+				v15 = &plr[arglist].InvBody[0]._itype;
 				v7 = 7;
 				do
 				{
@@ -4890,7 +5005,7 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 				while ( v7 );
 				if ( v12 <= 0 )
 					goto LABEL_47;
-				v16 = &plr[v13].InvBody[INVLOC_HEAD]._iMaxDur;
+				v16 = &plr[v13].InvBody[0]._iMaxDur;
 				do
 				{
 					if ( *(v16 - 58) != -1 )
@@ -4916,7 +5031,7 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 				while ( 1 )
 				{
 					v18 = 0;
-					v19 = &plr[v13].InvBody[INVLOC_HEAD]._iMaxDur;
+					v19 = &plr[v13].InvBody[0]._iMaxDur;
 					v20 = 7;
 					do
 					{
@@ -4937,9 +5052,9 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 						goto LABEL_47;
 					v21 = random(0, 7);
 					v7 = v13 * 21720 + 368 * v21;
-					if ( *(int *)((char *)&plr[0].InvBody[INVLOC_HEAD]._itype + v7) != -1 )
+					if ( *(int *)((char *)&plr[0].InvBody[0]._itype + v7) != -1 )
 					{
-						v7 = *(int *)((char *)&plr[0].InvBody[INVLOC_HEAD]._iMaxDur + v7);
+						v7 = *(int *)((char *)&plr[0].InvBody[0]._iMaxDur + v7);
 						if ( v7 != 255 )
 						{
 							if ( v7 )
@@ -4948,8 +5063,8 @@ void __fastcall OperateShrine(int pnum, int i, int sType)
 					}
 				}
 				v22 = 368 * v21 + v13 * 21720;
-				v23 = (int *)((char *)&plr[0].InvBody[INVLOC_HEAD]._iDurability + v22);
-				v7 = (int)&plr[0].InvBody[INVLOC_HEAD]._iMaxDur + v22;
+				v23 = (int *)((char *)&plr[0].InvBody[0]._iDurability + v22);
+				v7 = (int)&plr[0].InvBody[0]._iMaxDur + v22;
 				*v23 -= 20;
 				v24 = *v23;
 				*(_DWORD *)v7 -= 20;
@@ -4967,39 +5082,39 @@ LABEL_47:
 				if ( arglist != myplr )
 					goto LABEL_280;
 				v26 = arglist;
-				if ( plr[arglist].InvBody[INVLOC_HEAD]._itype != ITYPE_NONE )
-					plr[v26].InvBody[INVLOC_HEAD]._iAC += 2;
-				if ( plr[v26].InvBody[INVLOC_CHEST]._itype != ITYPE_NONE )
-					plr[v26].InvBody[INVLOC_CHEST]._iAC += 2;
-				v27 = plr[v26].InvBody[INVLOC_HAND_LEFT]._itype;
+				if ( plr[arglist].InvBody[0]._itype != ITYPE_NONE )
+					plr[v26].InvBody[0]._iAC += 2;
+				if ( plr[v26].InvBody[6]._itype != ITYPE_NONE )
+					plr[v26].InvBody[6]._iAC += 2;
+				v27 = plr[v26].InvBody[4]._itype;
 				if ( v27 != ITYPE_NONE )
 				{
 					if ( v27 == ITYPE_SHIELD )
 					{
-						plr[v26].InvBody[INVLOC_HAND_LEFT]._iAC += 2;
+						plr[v26].InvBody[4]._iAC += 2;
 					}
 					else
 					{
-						v28 = plr[v26].InvBody[INVLOC_HAND_LEFT]._iMinDam;
-						v29 = &plr[v26].InvBody[INVLOC_HAND_LEFT]._iMaxDam;
+						v28 = plr[v26].InvBody[4]._iMinDam;
+						v29 = &plr[v26].InvBody[4]._iMaxDam;
 						--*v29;
-						if ( plr[v26].InvBody[INVLOC_HAND_LEFT]._iMaxDam < v28 )
+						if ( plr[v26].InvBody[4]._iMaxDam < v28 )
 							*v29 = v28;
 					}
 				}
-				v7 = plr[v26].InvBody[INVLOC_HAND_RIGHT]._itype;
+				v7 = plr[v26].InvBody[5]._itype;
 				if ( v7 != ITYPE_NONE )
 				{
 					if ( v7 == ITYPE_SHIELD )
 					{
-						plr[v26].InvBody[INVLOC_HAND_RIGHT]._iAC += 2;
+						plr[v26].InvBody[5]._iAC += 2;
 					}
 					else
 					{
-						v30 = plr[v26].InvBody[INVLOC_HAND_RIGHT]._iMinDam;
-						v7 = (int)&plr[v26].InvBody[INVLOC_HAND_RIGHT]._iMaxDam;
+						v30 = plr[v26].InvBody[5]._iMinDam;
+						v7 = (int)&plr[v26].InvBody[5]._iMaxDam;
 						--*(_DWORD *)v7;
-						if ( plr[v26].InvBody[INVLOC_HAND_RIGHT]._iMaxDam < v30 )
+						if ( plr[v26].InvBody[5]._iMaxDam < v30 )
 							*(_DWORD *)v7 = v30;
 					}
 				}
@@ -5014,12 +5129,12 @@ LABEL_47:
 				if ( arglist != myplr )
 					goto LABEL_280;
 				v34 = arglist;
-				v35 = plr[arglist].InvBody[INVLOC_HAND_LEFT]._itype;
+				v35 = plr[arglist].InvBody[4]._itype;
 				if ( v35 != ITYPE_NONE && v35 != ITYPE_SHIELD )
-					++plr[v34].InvBody[INVLOC_HAND_LEFT]._iMaxDam;
-				v7 = plr[v34].InvBody[INVLOC_HAND_RIGHT]._itype;
+					++plr[v34].InvBody[4]._iMaxDam;
+				v7 = plr[v34].InvBody[5]._itype;
 				if ( v7 != ITYPE_NONE && v7 != ITYPE_SHIELD )
-					++plr[v34].InvBody[INVLOC_HAND_RIGHT]._iMaxDam;
+					++plr[v34].InvBody[5]._iMaxDam;
 				v36 = 0;
 				if ( plr[v34]._pNumInv > 0 )
 				{
@@ -5061,7 +5176,7 @@ LABEL_47:
 				if ( arglist != myplr )
 					goto LABEL_280;
 				v38 = arglist;
-				v39 = &plr[arglist].InvBody[INVLOC_HEAD]._iMaxCharges;
+				v39 = &plr[arglist].InvBody[0]._iMaxCharges;
 				v40 = 7;
 				do
 				{
@@ -5085,7 +5200,7 @@ LABEL_47:
 					while ( v41 < plr[v38]._pNumInv );
 				}
 				v43 = &plr[v38].SpdList[0]._iMaxCharges;
-				v44 = MAXBELTITEMS;
+				v44 = 8;
 				do
 				{
 					if ( *(v43 - 56) == 10 )
@@ -5102,7 +5217,7 @@ LABEL_47:
 				if ( arglist != myplr )
 					goto LABEL_280;
 				v45 = arglist;
-				v46 = &plr[arglist].InvBody[INVLOC_HEAD]._iDurability;
+				v46 = &plr[arglist].InvBody[0]._iDurability;
 				v47 = 7;
 				do
 				{
@@ -5124,7 +5239,7 @@ LABEL_47:
 					while ( v48 < plr[v45]._pNumInv );
 				}
 				v50 = &plr[v45].SpdList[0]._iDurability;
-				v51 = MAXBELTITEMS;
+				v51 = 8;
 				do
 				{
 					*v50 = v50[1];
@@ -5138,37 +5253,47 @@ LABEL_47:
 				if ( v5 || arglist != myplr )
 					return;
 				sfx_ida = 0;
+				v138 = 0;
 				v52 = 1;
 				v53 = arglist;
-				v139 = MAX_SPELLS;
+				v54 = plr[arglist]._pMemSpells[1];
+				v139 = 37;
 				do
 				{
-					if ( v52 & plr[arglist]._pMemSpells )
+					v7 = v138 & v54;
+					if ( v138 & v54 | v52 & plr[arglist]._pMemSpells[0] )
 						++sfx_ida;
+					v55 = __PAIR__((unsigned int)v138, v52) >> 31;
 					v52 *= 2;
 					v56 = v139-- == 1;
+					v138 = v55;
 				}
 				while ( !v56 );
 				v57 = 1;
 				if ( sfx_ida > 1 )
 				{
+					v58 = 0;
 					v59 = 1;
 					do
 					{
-						if ( v57 & plr[v53]._pMemSpells ) {
+						v7 = v58 & plr[v53]._pMemSpells[1];
+						if ( v7 | v57 & plr[v53]._pMemSpells[0] )
+						{
 							v7 = (int)&plr[v53]._pSplLvl[v59];
 							if ( *(_BYTE *)v7 < 15 )
 								++*(_BYTE *)v7;
 						}
+						v58 = __PAIR__(v58, v57) >> 31;
 						v57 *= 2;
 						++v59;
 					}
-					while ( v59 <= MAX_SPELLS );
+					while ( v59 <= 37 );
 					do
 					{
-						v60 = random(0, MAX_SPELLS);
+						v60 = random(0, 37);
+						v7 = v60;
 					}
-					while ( !(plr[v53]._pMemSpells & ((__int64)1 << v60)) );
+					while ( !(plr[v53]._pMemSpells[1] & ((unsigned __int64)((__int64)1 << v60) >> 32) | plr[v53]._pMemSpells[0] & (unsigned int)((__int64)1 << v60)) );
 					v61 = &plr[v53]._pSplLvl[v60 + 1];
 					if ( *v61 < 2 )
 						*v61 = 0;
@@ -5201,13 +5326,16 @@ LABEL_47:
 				if ( v5 || arglist != myplr )
 					return;
 				v7 = 21720 * arglist;
-				plr[arglist]._pMemSpells |= (__int64)1 << (SPL_FIREBOLT - 1);
-				v67 = plr[arglist]._pSplLvl[SPL_FIREBOLT];
+				v65 = plr[arglist]._pMemSpells;
+				v66 = plr[arglist]._pMemSpells[1];
+				*v65 |= 1u;
+				v65[1] = v66;
+				v67 = plr[arglist]._pSplLvl[1];
 				if ( v67 < 15 )
-					plr[0]._pSplLvl[v7 + SPL_FIREBOLT] = v67 + 1;
-				v68 = plr[0]._pSplLvl[v7 + SPL_FIREBOLT];
+					plr[0]._pSplLvl[v7 + 1] = v67 + 1;
+				v68 = plr[0]._pSplLvl[v7 + 1];
 				if ( v68 < 15 )
-					plr[0]._pSplLvl[v7 + SPL_FIREBOLT] = v68 + 1;
+					plr[0]._pSplLvl[v7 + 1] = v68 + 1;
 				v69 = *(int *)((char *)&plr[0]._pMaxManaBase + v7);
 				v70 = *(int *)((char *)&plr[0]._pManaBase + v7);
 				v71 = *(int *)((char *)&plr[0]._pMana + v7) - v70;
@@ -5296,7 +5424,7 @@ LABEL_47:
 					while ( sfx_idb < plr[v78]._pNumInv );
 				}
 				v82 = &plr[v78].SpdList[0]._iMiscId;
-				v141 = MAXBELTITEMS;
+				v141 = 8;
 				sfx_idc = &plr[v78].SpdList[0]._iMiscId;
 				do
 				{
@@ -5369,7 +5497,7 @@ LABEL_47:
 					v89 = random(159, 112);
 					v91 = v89;
 					v92 = random(159, 112);
-					if ( ++v88 > MAXDUNX * MAXDUNY )
+					if ( ++v88 > 12544 )
 						break;
 					v7 = v92 + 112 * v91;
 					v93 = v92 + 112 * v91;
@@ -5394,13 +5522,16 @@ LABEL_47:
 				if ( v5 || arglist != myplr )
 					return;
 				v7 = 21720 * arglist;
-				plr[arglist]._pMemSpells |= (__int64)1 << (SPL_CBOLT - 1);
-				v96 = plr[arglist]._pSplLvl[SPL_CBOLT];
+				v94 = plr[arglist]._pMemSpells;
+				v95 = plr[arglist]._pMemSpells[1];
+				*((_BYTE *)v94 + 3) |= 0x20u;
+				v94[1] = v95;
+				v96 = plr[arglist]._pSplLvl[30];
 				if ( v96 < 15 )
-					plr[0]._pSplLvl[v7 + SPL_CBOLT] = v96 + 1;
-				v97 = plr[0]._pSplLvl[v7 + SPL_CBOLT];
+					plr[0]._pSplLvl[v7 + 30] = v96 + 1;
+				v97 = plr[0]._pSplLvl[v7 + 30];
 				if ( v97 < 15 )
-					plr[0]._pSplLvl[v7 + SPL_CBOLT] = v97 + 1;
+					plr[0]._pSplLvl[v7 + 30] = v97 + 1;
 				v98 = *(int *)((char *)&plr[0]._pMaxManaBase + v7);
 				v99 = *(int *)((char *)&plr[0]._pManaBase + v7);
 				v100 = *(int *)((char *)&plr[0]._pMana + v7) - v99;
@@ -5414,12 +5545,12 @@ LABEL_47:
 				*(int *)((char *)&plr[0]._pMaxManaBase + v7) = v98 - v101;
 				v105 = v104 - v101;
 				*(int *)((char *)&plr[0]._pMaxMana + v7) = v105;
-				if ( sfx_idf >> 6 <= 0 )
+				if ( (signed int)(sfx_idf & 0xFFFFFFC0) <= 0 )
 				{
 					*(int *)((char *)&plr[0]._pManaBase + v7) = 0;
 					*(int *)((char *)&plr[0]._pMana + v7) = v100;
 				}
-				if ( v105 >> 6 <= 0 )
+				if ( (signed int)(v105 & 0xFFFFFFC0) <= 0 )
 				{
 					*(int *)((char *)&plr[0]._pMaxManaBase + v7) = 0;
 					*(int *)((char *)&plr[0]._pMaxMana + v7) = v102;
@@ -5520,13 +5651,16 @@ LABEL_47:
 				if ( v5 || arglist != myplr )
 					return;
 				v7 = 21720 * arglist;
-				plr[arglist]._pMemSpells |= (__int64)1 << (SPL_HBOLT - 1);
-				v115 = plr[arglist]._pSplLvl[SPL_HBOLT];
+				v113 = plr[arglist]._pMemSpells;
+				v114 = plr[arglist]._pMemSpells[1];
+				*((_BYTE *)v113 + 3) |= 0x40u;
+				v113[1] = v114;
+				v115 = plr[arglist]._pSplLvl[31];
 				if ( v115 < 15 )
-					plr[0]._pSplLvl[v7 + SPL_HBOLT] = v115 + 1;
-				v116 = plr[0]._pSplLvl[v7 + SPL_HBOLT];
+					plr[0]._pSplLvl[v7 + 31] = v115 + 1;
+				v116 = plr[0]._pSplLvl[v7 + 31];
 				if ( v116 < 15 )
-					plr[0]._pSplLvl[v7 + SPL_HBOLT] = v116 + 1;
+					plr[0]._pSplLvl[v7 + 31] = v116 + 1;
 				v117 = *(int *)((char *)&plr[0]._pMaxManaBase + v7);
 				v118 = *(int *)((char *)&plr[0]._pManaBase + v7);
 				v119 = *(int *)((char *)&plr[0]._pMana + v7) - v118;
@@ -5540,12 +5674,12 @@ LABEL_47:
 				*(int *)((char *)&plr[0]._pMaxManaBase + v7) = v117 - v120;
 				v124 = v123 - v120;
 				*(int *)((char *)&plr[0]._pMaxMana + v7) = v124;
-				if ( sfx_idg >> 6 <= 0 )
+				if ( (signed int)(sfx_idg & 0xFFFFFFC0) <= 0 )
 				{
 					*(int *)((char *)&plr[0]._pManaBase + v7) = 0;
 					*(int *)((char *)&plr[0]._pMana + v7) = v119;
 				}
-				if ( v124 >> 6 <= 0 )
+				if ( (signed int)(v124 & 0xFFFFFFC0) <= 0 )
 				{
 					*(int *)((char *)&plr[0]._pMaxManaBase + v7) = 0;
 					*(int *)((char *)&plr[0]._pMaxMana + v7) = v121;
@@ -5556,7 +5690,7 @@ LABEL_47:
 				if ( v5 || arglist != myplr )
 					return;
 				v125 = arglist;
-				v126 = &plr[arglist].InvBody[INVLOC_HEAD]._iIdentified;
+				v126 = &plr[arglist].InvBody[0]._iIdentified;
 				v127 = 7;
 				do
 				{
@@ -5580,7 +5714,7 @@ LABEL_47:
 					while ( v128 < plr[v125]._pNumInv );
 				}
 				v130 = &plr[v125].SpdList[0]._iIdentified;
-				v131 = MAXBELTITEMS;
+				v131 = 8;
 				do
 				{
 					if ( *((_BYTE *)v130 + 4) && !*v130 )
@@ -5651,7 +5785,7 @@ LABEL_280:
 				CalcPlrInv(arglist, 1u);
 				drawpanflag = 255;
 				if ( arglist == myplr )
-					NetSendCmdParam2(FALSE, CMD_PLROPOBJ, arglist, param2);
+					NetSendCmdParam2(0, CMD_PLROPOBJ, arglist, param2);
 				return;
 			}
 		}
@@ -5693,7 +5827,7 @@ void __fastcall OperateSkelBook(int pnum, int i, unsigned char sendmsg)
 			else
 				CreateTypeItem(v8, v9, 0, ITYPE_MISC, 24, sendmsg, 0);
 			if ( v10 == myplr )
-				NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v3);
+				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 		}
 	}
 }
@@ -5721,8 +5855,8 @@ void __fastcall OperateBookCase(int pnum, int i, unsigned char sendmsg)
 		{
 			SetRndSeed(object[v5]._oRndSeed);
 			CreateTypeItem(object[v5]._ox, object[v5]._oy, 0, ITYPE_MISC, 24, sendmsg, 0);
-			//_LOBYTE(v7) = QuestStatus(QTYPE_ZHAR);
-			if ( QuestStatus(QTYPE_ZHAR)
+			//_LOBYTE(v7) = QuestStatus(3);
+			if ( QuestStatus(3)
 			  && monster[4].mName == UniqMonst[2].mName
 			  && monster[4]._msquelch == -1
 			  && monster[4]._mhitpoints )
@@ -5733,7 +5867,7 @@ void __fastcall OperateBookCase(int pnum, int i, unsigned char sendmsg)
 				monster[4]._mmode = MM_TALK;
 			}
 			if ( v4 == myplr )
-				NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v3);
+				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 		}
 	}
 }
@@ -5760,7 +5894,7 @@ void __fastcall OperateDecap(int pnum, int i, unsigned char sendmsg)
 			SetRndSeed(object[v4]._oRndSeed);
 			CreateRndItem(object[v4]._ox, object[v4]._oy, 0, sendmsg, 0);
 			if ( v5 == myplr )
-				NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v3);
+				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 		}
 	}
 }
@@ -5815,7 +5949,7 @@ void __fastcall OperateArmorStand(int pnum, int i, unsigned char sendmsg)
 			CreateTypeItem(object[v4]._ox, object[v4]._oy, 1u, v9, 0, v10, 0);
 LABEL_15:
 			if ( v11 == myplr )
-				NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v3);
+				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 			return;
 		}
 	}
@@ -5992,7 +6126,7 @@ LABEL_38:
 					2 * (unsigned char)leveltype);
 				v5 = 1;
 				if ( v4 == myplr )
-					NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v2);
+					NetSendCmdParam1(0, CMD_OPERATEOBJ, v2);
 			}
 			break;
 		default:
@@ -6049,7 +6183,7 @@ LABEL_38:
 				CheckStats(v4);
 				v5 = 1;
 				if ( v4 == myplr )
-					NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, param1);
+					NetSendCmdParam1(0, CMD_OPERATEOBJ, param1);
 			}
 			break;
 	}
@@ -6086,22 +6220,19 @@ void __fastcall OperateWeaponRack(int pnum, int i, unsigned char sendmsg)
 		v7 = v6 - 1;
 		if ( !v7 )
 		{
-			//v13 = ITYPE_AXE;
-            v13 = ITYPE_GOLD;
+			v13 = ITYPE_AXE;
 			goto LABEL_7;
 		}
 		v8 = v7 - 1;
 		if ( !v8 )
 		{
-			//v13 = ITYPE_BOW;
-            v13 = ITYPE_GOLD;
+			v13 = ITYPE_BOW;
 			goto LABEL_7;
 		}
 		if ( v8 == 1 )
 		{
-			//v13 = ITYPE_MACE;
-            v13 = ITYPE_GOLD;
-                LABEL_7:
+			v13 = ITYPE_MACE;
+LABEL_7:
 			v9 = v13;
 			goto LABEL_12;
 		}
@@ -6109,8 +6240,7 @@ void __fastcall OperateWeaponRack(int pnum, int i, unsigned char sendmsg)
 	}
 	else
 	{
-		//v9 = ITYPE_SWORD;
-         v9 = ITYPE_GOLD;
+		v9 = ITYPE_SWORD;
 	}
 LABEL_12:
 	++object[v4]._oAnimFrame;
@@ -6125,7 +6255,7 @@ LABEL_12:
 		else
 			CreateTypeItem(v11, v12, 1u, v9, 0, sendmsg, 0);
 		if ( v14 == myplr )
-			NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v3);
+			NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 	}
 }
 // 5BB1ED: using guessed type char leveltype;
@@ -6147,7 +6277,7 @@ void __fastcall OperateStoryBook(int pnum, int i)
 		object[v3]._oAnimFrame = object[v3]._oVar4;
 		PlaySfxLoc(IS_ISCROL, v5, v4);
 		InitQTextMsg(object[v3]._oVar2);
-		NetSendCmdParam1(FALSE, CMD_OPERATEOBJ, v2);
+		NetSendCmdParam1(0, CMD_OPERATEOBJ, v2);
 	}
 }
 // 646D00: using guessed type char qtextflag;
@@ -6173,7 +6303,7 @@ void __fastcall OperateLazStand(int pnum, int i)
 // 646D00: using guessed type char qtextflag;
 // 676190: using guessed type int deltaload;
 
-void __fastcall OperateObject(int pnum, int i, BOOL TeleFlag)
+void __fastcall OperateObject(int pnum, int i, unsigned char TeleFlag)
 {
 	int v3; // esi
 	int v4; // edi
@@ -6505,7 +6635,7 @@ void __fastcall BreakCrux(int i)
 	object[v1]._oAnimFlag = 1;
 	object[v1]._oAnimFrame = 1;
 	object[v1]._oAnimDelay = 1;
-	object[v1]._oSolidFlag = TRUE;
+	object[v1]._oSolidFlag = 1;
 	object[v1]._oMissFlag = 1;
 	if ( v2 <= 0 )
 		goto LABEL_15;
@@ -6575,7 +6705,7 @@ void __fastcall BreakBarrel(int pnum, int i, int dam, unsigned char forcebreak, 
 			object[v5]._oAnimFlag = 1;
 			object[v5]._oAnimFrame = 1;
 			object[v5]._oAnimDelay = 1;
-			object[v5]._oSolidFlag = FALSE;
+			object[v5]._oSolidFlag = 0;
 			object[v5]._oMissFlag = 1;
 			object[v5]._oSelFlag = 0;
 			object[v5]._oPreFlag = 1;
@@ -6639,7 +6769,7 @@ void __fastcall BreakBarrel(int pnum, int i, int dam, unsigned char forcebreak, 
 						SpawnSkeleton(object[v5]._oVar4, object[v5]._ox, object[v5]._oy);
 				}
 				if ( param1 == myplr )
-					NetSendCmdParam2(FALSE, CMD_BREAKOBJ, param1, param2);
+					NetSendCmdParam2(0, CMD_BREAKOBJ, param1, param2);
 			}
 			else
 			{
@@ -7125,7 +7255,7 @@ void __fastcall GetObjectStr(int i)
 			break;
 		case OBJ_WARWEAP:
 		case OBJ_WEAPONRACK:
-			strcpy(infostr, "You see hidden gold...");
+			strcpy(infostr, "Weapon Rack");
 			break;
 		case OBJ_MUSHPATCH:
 			strcpy(infostr, "Mushroom Patch");
@@ -7139,13 +7269,16 @@ void __fastcall GetObjectStr(int i)
 		default:
 			break;
 	}
-	if ( plr[myplr]._pClass == PC_ROGUE ) {
-		if ( object[v1]._oTrapFlag ) {
+	if ( _LOBYTE(plr[myplr]._pClass) == 1 )
+	{
+		if ( object[v1]._oTrapFlag )
+		{
 			sprintf(tempstr, "Trapped %s", infostr);
 			strcpy(infostr, tempstr);
-			infoclr = COL_RED;
+			_LOBYTE(infoclr) = 2;
 		}
 	}
 }
 // 4B883C: using guessed type int infoclr;
+// 5CCB10: using guessed type char setlvlnum;
 // 5CF31D: using guessed type char setlevel;

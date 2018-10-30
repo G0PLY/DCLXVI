@@ -2,19 +2,21 @@
 #ifndef __PLRMSG_H__
 #define __PLRMSG_H__
 
-extern _plrmsg plr_msgs[PMSG_COUNT];
+extern int plrmsg_ticks; // weak
+extern char plr_msg_slot; // weak
+extern _plrmsg plr_msgs[8];
 
-void __fastcall plrmsg_delay(BOOL delay);
-char *__fastcall ErrorPlrMsg(const char *pszMsg);
-size_t EventPlrMsg(const char *pszFmt, ...);
+void __fastcall plrmsg_delay(int a1);
+char *__fastcall ErrorPlrMsg(char *pszMsg);
+size_t EventPlrMsg(char *pszFmt, ...);
 void __fastcall SendPlrMsg(int pnum, const char *pszStr);
 void __cdecl ClearPlrMsg();
 void __cdecl InitPlrMsg();
 void __cdecl DrawPlrMsg();
-void __fastcall PrintPlrMsg(unsigned int x, unsigned int y, unsigned int width, const char *str, unsigned char just);
+void __fastcall PrintPlrMsg(int no, int x, int y, char *str, int just);
 
 /* rdata */
 
-extern const char text_color_from_player_num[MAX_PLRS+1];
+extern const char text_color_from_player_num[5];
 
 #endif /* __PLRMSG_H__ */

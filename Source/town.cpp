@@ -120,7 +120,7 @@ void __fastcall town_draw_clipped_e_flag(void *buffer, int x, int y, int sx, int
 		level_cel_block = *(unsigned short *)&v6[2 * v7 + 2];
 		if ( v9 )
 			drawLowerScreen(a1 + 32);
-		a1 -= 768 * 32;
+		a1 -= 24576;
 		v7 += 2;
 	}
 	while ( v7 < 12 );
@@ -168,7 +168,7 @@ void __fastcall town_draw_clipped_town(void *unused, int x, int y, int sx, int s
 		v11 = sx - item[v10]._iAnimWidth2;
 		if ( v9 == pcursitem )
 			CelDrawHdrClrHL(
-				ICOL_BLUE,
+				181,
 				v11,
 				sy,
 				(char *)item[v10]._iAnimData,
@@ -178,7 +178,7 @@ void __fastcall town_draw_clipped_town(void *unused, int x, int y, int sx, int s
 				8);
 		Cel2DrawHdrOnly(v11, sy, (char *)item[v10]._iAnimData, item[v10]._iAnimFrame, item[v10]._iAnimWidth, 0, 8);
 	}
-	if ( dFlags[0][v7] & DFLAG_MONSTER )
+	if ( dFlags[0][v7] & 0x10 )
 	{
 		v12 = -1 - dMonster[x][y-1]; // -1 - *(&dword_52D204 + v7); /* check */
 		v13 = sx - towner[v12]._tAnimWidth2;
@@ -212,7 +212,7 @@ void __fastcall town_draw_clipped_town(void *unused, int x, int y, int sx, int s
 				8);
 		Cel2DrawHdrOnly(v17, sy, (char *)towner[v16]._tAnimData, towner[v16]._tAnimFrame, towner[v16]._tAnimWidth, 0, 8);
 	}
-	if ( dFlags[0][v7] & DFLAG_PLAYER )
+	if ( dFlags[0][v7] & 0x20 )
 	{
 		v18 = -1 - dPlayer[x][y-1]; // -1 - *((_BYTE *)&themeLoc[49].height + v7 + 3);
 		v19 = v18;
@@ -225,7 +225,7 @@ void __fastcall town_draw_clipped_town(void *unused, int x, int y, int sx, int s
 			town_draw_clipped_e_flag(v27 - 64, xa - 1, y + 1, sx - 64, sy);
 		v7 = v29;
 	}
-	if ( dFlags[0][v7] & DFLAG_DEAD_PLAYER )
+	if ( dFlags[0][v7] & 4 )
 		DrawDeadPlayer(xa, y, sx, sy, 0, 8, 1);
 	v22 = dPlayer[0][v7];
 	if ( v22 > 0 )
@@ -241,7 +241,7 @@ void __fastcall town_draw_clipped_town(void *unused, int x, int y, int sx, int s
 			town_draw_clipped_e_flag(v27 - 64, xa - 1, y + 1, sx - 64, sy);
 		v7 = v29;
 	}
-	if ( dFlags[0][v7] & DFLAG_MISSILE )
+	if ( dFlags[0][v7] & 1 )
 		DrawClippedMissile(xa, y, sx, sy, 0, 8, 0);
 }
 // 4B8CC0: using guessed type char pcursitem;
@@ -292,7 +292,7 @@ void __fastcall town_draw_lower(int x, int y, int sx, int sy, int a5, int some_f
 				if ( v9 )
 					drawLowerScreen(a1);
 				v25 += 2;
-				a1 -= 768 * 32;
+				a1 -= 24576;
 			}
 			while ( v25 < 17 );
 			town_draw_clipped_town((char *)gpBuffer + *v7 + sx, xa, ya, sx, sy, 0);
@@ -320,7 +320,7 @@ void __fastcall town_draw_lower(int x, int y, int sx, int sy, int a5, int some_f
 		a1a = v10;
 		do
 		{
-			if ( y >= 0 && y < 112 && v12 >= 0 && v12 < MAXDUNX * MAXDUNY && (level_cel_block = dPiece[0][v12 + y]) != 0 )
+			if ( y >= 0 && y < 112 && v12 >= 0 && v12 < 12544 && (level_cel_block = dPiece[0][v12 + y]) != 0 )
 			{
 				v13 = (unsigned char *)gpBuffer + *v11 + sx;
 				v14 = (char *)dpiece_defs_map_1 + 32 * gendung_get_dpiece_num_from_coord(xa, ya);
@@ -336,7 +336,7 @@ void __fastcall town_draw_lower(int x, int y, int sx, int sy, int a5, int some_f
 					if ( v16 )
 						drawLowerScreen(v13 + 32);
 					v26 += 2;
-					v13 -= 768 * 32;
+					v13 -= 24576;
 				}
 				while ( v26 < 16 );
 				town_draw_clipped_town((char *)gpBuffer + *v11 + sx, xa, ya, sx, sy, 1);
@@ -372,7 +372,7 @@ void __fastcall town_draw_lower(int x, int y, int sx, int sy, int a5, int some_f
 				if ( v21 )
 					drawLowerScreen(v19);
 				v27 += 2;
-				v19 -= 768 * 32;
+				v19 -= 24576;
 			}
 			while ( v27 < 16 );
 			town_draw_clipped_town((char *)gpBuffer + *v18 + sx, xa, ya, sx, sy, 0);
@@ -400,7 +400,7 @@ void __fastcall town_draw_clipped_e_flag_2(void *buffer, int x, int y, int a4, i
 	xa = x;
 	v12 = buffer;
 	if ( a4 )
-		v8 = (unsigned char *)buffer + 768 * 32 * a4;
+		v8 = (unsigned char *)buffer + 24576 * a4;
 	else
 		v8 = (unsigned char *)buffer;
 	a4a = 0;
@@ -418,7 +418,7 @@ void __fastcall town_draw_clipped_e_flag_2(void *buffer, int x, int y, int a4, i
 			if ( v11 )
 				drawLowerScreen(v8 + 32);
 		}
-		v8 -= 768 * 32;
+		v8 -= 24576;
 		++a4a;
 		v9 += 2;
 	}
@@ -468,7 +468,7 @@ void __fastcall town_draw_clipped_town_2(int x, int y, int a3, int a4, int a5, i
 		v13 = sx - item[v12]._iAnimWidth2;
 		if ( v11 == pcursitem )
 			CelDrawHdrClrHL(
-				ICOL_BLUE,
+				181,
 				v13,
 				sy,
 				(char *)item[v12]._iAnimData,
@@ -478,7 +478,7 @@ void __fastcall town_draw_clipped_town_2(int x, int y, int a3, int a4, int a5, i
 				8);
 		Cel2DrawHdrOnly(v13, sy, (char *)item[v12]._iAnimData, item[v12]._iAnimFrame, item[v12]._iAnimWidth, a5, 8);
 	}
-	if ( dFlags[0][v9] & DFLAG_MONSTER )
+	if ( dFlags[0][v9] & 0x10 )
 	{
 		v14 = -1 - dMonster[x][y-1]; // -1 - *(&dword_52D204 + v9); /* check */
 		v15 = sx - towner[v14]._tAnimWidth2;
@@ -512,7 +512,7 @@ void __fastcall town_draw_clipped_town_2(int x, int y, int a3, int a4, int a5, i
 				8);
 		Cel2DrawHdrOnly(v19, sy, (char *)towner[v18]._tAnimData, towner[v18]._tAnimFrame, towner[v18]._tAnimWidth, a5, 8);
 	}
-	if ( dFlags[0][v9] & DFLAG_PLAYER )
+	if ( dFlags[0][v9] & 0x20 )
 	{
 		v20 = -1 - dPlayer[x][y-1]; // -1 - *((_BYTE *)&themeLoc[49].height + v9 + 3);
 		v21 = v20;
@@ -525,7 +525,7 @@ void __fastcall town_draw_clipped_town_2(int x, int y, int a3, int a4, int a5, i
 			town_draw_clipped_e_flag_2((void *)(v29 - 64), xa - 1, a3 + 1, a4, a5, sx - 64, sy);
 		v9 = v31;
 	}
-	if ( dFlags[0][v9] & DFLAG_DEAD_PLAYER )
+	if ( dFlags[0][v9] & 4 )
 		DrawDeadPlayer(xa, a3, sx, sy, a5, 8, 1);
 	v24 = dPlayer[0][v9];
 	if ( v24 > 0 )
@@ -541,7 +541,7 @@ void __fastcall town_draw_clipped_town_2(int x, int y, int a3, int a4, int a5, i
 			town_draw_clipped_e_flag_2((void *)(v29 - 64), xa - 1, a3 + 1, a4, a5, sx - 64, sy);
 		v9 = v31;
 	}
-	if ( dFlags[0][v9] & DFLAG_MISSILE )
+	if ( dFlags[0][v9] & 1 )
 		DrawClippedMissile(xa, a3, sx, sy, a5, 8, 0);
 }
 // 4B8CC0: using guessed type char pcursitem;
@@ -605,7 +605,7 @@ void __fastcall town_draw_lower_2(int x, int y, int sx, int sy, int a5, int a6, 
 						if ( level_cel_block )
 							drawLowerScreen(a1);
 					}
-					a1 -= 768 * 32;
+					a1 -= 24576;
 					++sxa;
 					v10 = v23 + 2;
 					v23 += 2;
@@ -636,9 +636,9 @@ LABEL_18:
 		v24 = v12;
 		do
 		{
-			if ( ya >= 0 && ya < 112 && v14 >= 0 && v14 < MAXDUNX * MAXDUNY && (level_cel_block = dPiece[0][v14 + ya]) != 0 )
+			if ( ya >= 0 && ya < 112 && v14 >= 0 && v14 < 12544 && (level_cel_block = dPiece[0][v14 + ya]) != 0 )
 			{
-				a1a = (unsigned char *)gpBuffer + *v13 + v11 - 768 * 32;
+				a1a = (unsigned char *)gpBuffer + *v13 + v11 - 24576;
 				sxb = 0;
 				v15 = &dpiece_defs_map_1[0][0][16 * gendung_get_dpiece_num_from_coord(xa, ya) + 3];
 				do
@@ -654,7 +654,7 @@ LABEL_18:
 						if ( v17 )
 							drawLowerScreen(a1a + 32);
 					}
-					a1a -= 768 * 32;
+					a1a -= 24576;
 					++sxb;
 					v15 += 2;
 				}
@@ -683,7 +683,7 @@ LABEL_18:
 		if ( ya >= 0 && ya < 112 && xa >= 0 && xa < 112 && (level_cel_block = dPiece[0][ya + 112 * xa]) != 0 )
 		{
 			v20 = &screen_y_times_768[v8];
-			a1b = (unsigned char *)gpBuffer + *v20 + v11 - 768 * 32;
+			a1b = (unsigned char *)gpBuffer + *v20 + v11 - 24576;
 			sxc = 0;
 			v21 = &dpiece_defs_map_1[0][0][16 * gendung_get_dpiece_num_from_coord(xa, ya) + 2];
 			do
@@ -695,7 +695,7 @@ LABEL_18:
 					if ( v22 )
 						drawLowerScreen(a1b);
 				}
-				a1b -= 768 * 32;
+				a1b -= 24576;
 				++sxc;
 				v21 += 2;
 			}
@@ -739,7 +739,7 @@ void __fastcall town_draw_e_flag(void *buffer, int x, int y, int a4, int dir, in
 			if ( v11 )
 				drawUpperScreen(a1 + 32);
 		}
-		a1 -= 768 * 32;
+		a1 -= 24576;
 		++v9;
 	}
 	while ( v9 < 7 );
@@ -760,10 +760,10 @@ void __fastcall town_draw_town_all(void *buffer, int x, int y, int a4, int dir, 
 		id = dItem[x][y] - 1;
 		xx = sx - item[id]._iAnimWidth2;
 		if ( id == pcursitem )
-			CelDecodeClr(ICOL_BLUE, xx, sy, (char *)item[id]._iAnimData, item[id]._iAnimFrame, item[id]._iAnimWidth, 0, dir);
+			CelDecodeClr(181, xx, sy, (char *)item[id]._iAnimData, item[id]._iAnimFrame, item[id]._iAnimWidth, 0, dir);
 		CelDrawHdrOnly(xx, sy, (char *)item[id]._iAnimData, item[id]._iAnimFrame, item[id]._iAnimWidth, 0, dir);
 	}
-	if ( dFlags[x][y] & DFLAG_MONSTER )
+	if ( dFlags[x][y] & 0x10 )
 	{
 		id = -1 - dMonster[x][y-1]; // -1 - *(&dword_52D204 + v9); /* check */
 		xx = sx - towner[id]._tAnimWidth2;
@@ -779,7 +779,7 @@ void __fastcall town_draw_town_all(void *buffer, int x, int y, int a4, int dir, 
 			CelDecodeClr(166, xx, sy, (char *)towner[id]._tAnimData, towner[id]._tAnimFrame, towner[id]._tAnimWidth, 0, dir);
 		CelDrawHdrOnly(xx, sy, (char *)towner[id]._tAnimData, towner[id]._tAnimFrame, towner[id]._tAnimWidth, 0, dir);
 	}
-	if ( dFlags[x][y] & DFLAG_PLAYER )
+	if ( dFlags[x][y] & 0x20 )
 	{
 		id = -1 - dPlayer[x][y-1]; // -1 - *((_BYTE *)&themeLoc[49].height + v9 + 3);
 		yy = sy + plr[id]._pyoff;
@@ -790,7 +790,7 @@ void __fastcall town_draw_town_all(void *buffer, int x, int y, int a4, int dir, 
 		if ( some_flag && plr[id]._peflag )
 			town_draw_e_flag((char *)buffer - 64, x - 1, y + 1, a4, dir, sx - 64, sy);
 	}
-	if ( dFlags[x][y] & DFLAG_DEAD_PLAYER )
+	if ( dFlags[x][y] & 4 )
 		DrawDeadPlayer(x, y, sx, sy, 0, dir, 0);
 	if ( dPlayer[x][y] > 0 )
 	{
@@ -803,7 +803,7 @@ void __fastcall town_draw_town_all(void *buffer, int x, int y, int a4, int dir, 
 		if ( some_flag && plr[id]._peflag )
 			town_draw_e_flag((char *)buffer - 64, x - 1, y + 1, a4, dir, sx - 64, sy);
 	}
-	if ( dFlags[x][y] & DFLAG_MISSILE )
+	if ( dFlags[x][y] & 1 )
 		DrawMissile(x, y, sx, sy, 0, dir, 0);
 }
 // 4B8CC0: using guessed type char pcursitem;
@@ -901,7 +901,7 @@ LABEL_19:
 		a5a = 112 * xa;
 		do
 		{
-			if ( v7 < 0 || v7 >= 112 || v15 < 0 || v15 >= MAXDUNX * MAXDUNY )
+			if ( v7 < 0 || v7 >= 112 || v15 < 0 || v15 >= 12544 )
 			{
 				v17 = gpBuffer;
 			}
@@ -929,7 +929,7 @@ LABEL_19:
 							if ( v21 )
 								drawUpperScreen(v18 + 32);
 						}
-						v18 -= 768 * 32;
+						v18 -= 24576;
 						++sxb;
 					}
 					while ( sxb < 7 );
@@ -978,7 +978,7 @@ LABEL_36:
 						if ( v26 )
 							drawUpperScreen(v24);
 					}
-					v24 -= 768 * 32;
+					v24 -= 24576;
 					++sxc;
 				}
 				while ( sxc < 7 );
@@ -1563,7 +1563,7 @@ void __cdecl T_Pass3()
 	pSector = LoadFileInMem("Levels\\TownData\\Sector4s.DUN", 0);
 	T_FillSector(P3Tiles, pSector, 0, 0, 23, 23);
 	mem_free_dbg(pSector);
-	if ( gbMaxPlayers != 1 )
+	/*if ( gbMaxPlayers == 1 )
 	{
 		if ( !(plr[myplr].pTownWarps & 1) )
 		{
@@ -1583,8 +1583,8 @@ void __cdecl T_Pass3()
 			}
 			while ( xx < 46 );
 		}
-	}
-	if ( quests[QTYPE_PW]._qactive != 3 && quests[QTYPE_PW]._qactive )
+	}*/
+	if ( quests[13]._qactive != 3 && quests[13]._qactive )
 		T_FillTile(P3Tiles, 60, 70, 342);
 	else
 		T_FillTile(P3Tiles, 60, 70, 71);

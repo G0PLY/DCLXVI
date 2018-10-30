@@ -20,7 +20,7 @@ const int init_inf = 0x7F800000; // weak
 /* data */
 
 char gszVersionNumber[260] = "internal version unknown";
-char gszProductName[260] = "DemonStrate DCLXVI 1.03alpha by G0PLY.     Made using Devilution by GalaXyHaXz.";
+char gszProductName[260] = "DemonStrate DCLXVI 1.04alpha by G0PLY.     Made using Devilution by GalaXyHaXz.";
 
 struct init_cpp_init
 {
@@ -280,7 +280,7 @@ void __cdecl init_archives()
 #ifdef COPYPROT
 		if ( diabdat_mpq )
 			break;
-		UiCopyProtError(&v1);
+		UiCopyProtError((int)&v1);
 		if ( v1 == COPYPROT_CANCEL )
 			FileErrDlg("diabdat.mpq");
 	}
@@ -518,7 +518,7 @@ LRESULT __stdcall WindowProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	return result;
 }
 
-WNDPROC __fastcall SetWindowProc(WNDPROC NewProc)
+WNDPROC __stdcall SetWindowProc(WNDPROC NewProc)
 {
 	WNDPROC OldProc; // eax
 

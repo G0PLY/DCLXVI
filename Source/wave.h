@@ -2,20 +2,29 @@
 #ifndef __WAVE_H__
 #define __WAVE_H__
 
-BOOL __fastcall WCloseFile(HANDLE file);
-LONG __fastcall WGetFileSize(HANDLE hsFile, DWORD *lpFileSizeHigh);
-void __fastcall WGetFileArchive(HANDLE hsFile, unsigned int *retry, const char *FileName);
-BOOL __fastcall WOpenFile(const char *FileName, HANDLE *phsFile, BOOL mayNotExist);
-void __fastcall WReadFile(HANDLE hsFile, LPVOID buf, DWORD to_read);
+extern int wave_cpp_init_value; // weak
+//int dword_6ABB9C; // weak
+
+void __cdecl wave_cpp_init();
+bool __fastcall WCloseFile(void *file);
+int __fastcall WGetFileSize(HANDLE hsFile, unsigned long *a2);
+void __fastcall WGetFileArchive(HANDLE hsFile, int *a2, char *dwInitParam);
+int __fastcall WOpenFile(char *dwInitParam, HANDLE *phsFile, int a3);
+char __fastcall WReadFile(HANDLE hsFile, char *buf, int a3);
 int __fastcall WSetFilePointer(HANDLE file1, int offset, HANDLE file2, int whence);
-BOOL __fastcall LoadWaveFormat(HANDLE hsFile, WAVEFORMATEX *pwfx);
-void *__fastcall AllocateMemFile(HANDLE hsFile, MEMFILE *pMemFile, DWORD dwPos);
+int __fastcall LoadWaveFormat(HANDLE hsFile, WAVEFORMATEX *pwfx);
+void *__fastcall AllocateMemFile(HANDLE hsFile, MEMFILE *pMemFile, unsigned int dwPos);
 void __fastcall FreeMemFile(MEMFILE *pMemFile);
-BOOL __fastcall ReadWaveFile(MEMFILE *pMemFile, WAVEFORMATEX *pwfx, CKINFO *chunk);
-BOOL __fastcall ReadMemFile(MEMFILE *pMemFile, void *lpBuf, size_t length);
+int __fastcall ReadWaveFile(MEMFILE *pMemFile, WAVEFORMATEX *pwfx, int *a3);
+int __fastcall ReadMemFile(MEMFILE *pMemFile, void *lpBuf, size_t a3);
 void __fastcall FillMemFile(MEMFILE *pMemFile);
-int __fastcall SeekMemFile(MEMFILE *pMemFile, LONG lDist, DWORD dwMethod);
-BOOL __fastcall ReadWaveSection(MEMFILE *pMemFile, DWORD id, CKINFO *chunk);
-void *__fastcall LoadWaveFile(HANDLE hsFile, WAVEFORMATEX *pwfx, CKINFO *chunk);
+int __fastcall SeekMemFile(MEMFILE *pMemFile, unsigned int lDist, int dwMethod);
+int __fastcall ReadWaveSection(MEMFILE *pMemFile, int a2, int *a3);
+void *__fastcall LoadWaveFile(HANDLE hsFile, WAVEFORMATEX *pwfx, int *a3);
+void __fastcall j_engine_mem_free(void *ptr);
+
+/* rdata */
+
+extern const int wave_inf; // weak
 
 #endif /* __WAVE_H__ */

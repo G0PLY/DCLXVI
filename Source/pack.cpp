@@ -16,7 +16,7 @@ struct pack_cpp_init
 // 47F168: using guessed type int pack_inf;
 // 67D7C8: using guessed type int pack_cpp_init_value;
 
-void __fastcall PackPlayer(PkPlayerStruct *pPack, int pnum, BOOL manashield)
+void __fastcall PackPlayer(PkPlayerStruct *pPack, int pnum, bool manashield)
 {
 	PlayerStruct *pPlayer; // edi
 	int i; // [esp+8h] [ebp-Ch]
@@ -47,9 +47,10 @@ void __fastcall PackPlayer(PkPlayerStruct *pPack, int pnum, BOOL manashield)
 	pPack->pMaxHPBase = pPlayer->_pMaxHPBase;
 	pPack->pManaBase = pPlayer->_pManaBase;
 	pPack->pMaxManaBase = pPlayer->_pMaxManaBase;
-	pPack->pMemSpells = pPlayer->_pMemSpells;
+	pPack->pMemSpells = pPlayer->_pMemSpells[0];
+	pPack->pMemSpells2 = pPlayer->_pMemSpells[1];
 
-	for(i = 0; i < MAX_SPELLS; i++)
+	for(i = 0; i < 37; i++)
 		pPack->pSplLvl[i] = pPlayer->_pSplLvl[i];
 
 	pki = pPack->InvBody;
@@ -71,7 +72,7 @@ void __fastcall PackPlayer(PkPlayerStruct *pPack, int pnum, BOOL manashield)
 	pki = pPack->SpdList;
 	pi = pPlayer->SpdList;
 
-	for(i = 0; i < MAXBELTITEMS; i++)
+	for(i = 0; i < 8; i++)
 		PackItem(pki++, pi++);
 
 	pPack->pDiabloKillLevel = pPlayer->pDiabloKillLevel;
@@ -168,9 +169,9 @@ void __fastcall UnPackPlayer(PkPlayerStruct *pPack, int pnum, bool killok)
 	pPlayer->_ptargy = (unsigned char)pPack->targy;
 	pPlayer->plrlevel = (unsigned char)pPack->plrlevel;
 	ClrPlrPath(pnum);
-	pPlayer->destAction = ACTION_NONE;
+	pPlayer->destAction = -1;
 	strcpy(pPlayer->_pName, pPack->pName);
-	pPlayer->_pClass = pPack->pClass;
+	_LOBYTE(pPlayer->_pClass) = pPack->pClass;
 	InitPlayer(pnum, TRUE);
 	pPlayer->_pBaseStr = (unsigned char)pPack->pBaseStr;
 	pPlayer->_pStrength = (unsigned char)pPack->pBaseStr;
@@ -195,9 +196,10 @@ void __fastcall UnPackPlayer(PkPlayerStruct *pPack, int pnum, bool killok)
 	}
 	pPlayer->_pMaxManaBase = pPack->pMaxManaBase;
 	pPlayer->_pManaBase = pPack->pManaBase;
-	pPlayer->_pMemSpells = pPack->pMemSpells;
+	pPlayer->_pMemSpells[0] = pPack->pMemSpells;
+	pPlayer->_pMemSpells[1] = pPack->pMemSpells2;
 
-	for(i = 0; i < MAX_SPELLS; i++)
+	for(i = 0; i < 37; i++)
 		pPlayer->_pSplLvl[i] = pPack->pSplLvl[i];
 
 	pki = pPack->InvBody;
@@ -221,7 +223,7 @@ void __fastcall UnPackPlayer(PkPlayerStruct *pPack, int pnum, bool killok)
 	pki = pPack->SpdList;
 	pi = pPlayer->SpdList;
 
-	for(i = 0; i < MAXBELTITEMS; i++)
+	for(i = 0; i < 8; i++)
 		UnPackItem(pki++, pi++);
 
 	if ( pnum == myplr )

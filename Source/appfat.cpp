@@ -214,7 +214,6 @@ void TermMsg(char *pszFmt, ...)
 	FreeDlg();
 	if ( pszFmt )
 		MsgBox(pszFmt, arglist);
-	va_end(arglist);
 	init_cleanup(0);
 	exit(1);
 }
@@ -255,7 +254,6 @@ void DrawDlg(char *pszFmt, ...)
 
 	va_start(arglist, pszFmt);
 	wvsprintf(text, pszFmt, arglist);
-	va_end(arglist);
 	SDrawMessageBox(text, "Diablo", MB_TASKMODAL|MB_ICONEXCLAMATION);
 }
 
@@ -388,9 +386,9 @@ void __fastcall ErrOkDlg(int template_id, int error_code, char *log_file_path, i
 	DialogBoxParam(ghInst, MAKEINTRESOURCE(v6), ghMainWnd, (DLGPROC)FuncDlg, (LPARAM)dwInitParam);
 }
 
-void __fastcall FileErrDlg(const char *error)
+void __fastcall FileErrDlg(char *error)
 {
-	const char *v1; // esi
+	char *v1; // esi
 
 	v1 = error;
 	FreeDlg();
@@ -412,7 +410,7 @@ void __fastcall DiskFreeDlg(char *error)
 	TermMsg(0);
 }
 
-BOOL __cdecl InsertCDDlg()
+bool __cdecl InsertCDDlg()
 {
 	int v0; // edi
 

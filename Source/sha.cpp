@@ -82,9 +82,9 @@ void __fastcall SHA1ProcessMessageBlock(SHA1Context *context)
 
 	qmemcpy(W, context->buffer, 0x40u);
 
-	for(i = 16; i < 80; i++)
+	for(i = 0; i < 64; i++)
 	{
-		W[i] = W[i-16] ^ W[i-14] ^ W[i-8] ^ W[i-3];
+		W[i+16] = W[i] ^ W[i+2] ^ W[i+8] ^ W[i+13];
 	}
 
 	A = context->state[0];

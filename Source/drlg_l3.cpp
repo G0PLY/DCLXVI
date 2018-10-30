@@ -267,7 +267,7 @@ int __cdecl DRLG_L3Anvil()
 			v11 = L3ANVIL[v7];
 			if ( v11 )
 				dungeon[0][v9] = v11;
-			dflags[0][v9] |= DFLAG_EXPLORED;
+			dflags[0][v9] |= 0x80u;
 			++v7;
 			v9 += 40;
 			--v10;
@@ -522,7 +522,7 @@ void __fastcall DRLG_L3(int entry)
 				DRLG_L3CreateBlock(x1, y1 + 12, 2, 2);
 				DRLG_L3CreateBlock(x1, y1 + 10, 2, 3);
 
-				if ( QuestStatus(QTYPE_ANVIL) )
+				if ( QuestStatus(10) )
 				{
 					x2 = random(0, 10) + 10;
 					y2 = random(0, 10);
@@ -584,7 +584,7 @@ LABEL_23:
 				goto LABEL_22;
 			}
 LABEL_24:
-			if ( !QuestStatus(QTYPE_ANVIL) )
+			if ( !QuestStatus(10) )
 				break;
 			genok = DRLG_L3Anvil();
 		}
@@ -604,7 +604,7 @@ LABEL_24:
 	FixL3HallofHeroes();
 	DRLG_L3River();
 
-	if ( QuestStatus(QTYPE_ANVIL) )
+	if ( QuestStatus(10) )
 	{
 		dungeon[setpc_x + 7][setpc_y + 5] = 7;
 		dungeon[setpc_x + 8][setpc_y + 5] = 7;
