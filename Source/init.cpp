@@ -20,7 +20,7 @@ const int init_inf = 0x7F800000; // weak
 /* data */
 
 char gszVersionNumber[260] = "internal version unknown";
-char gszProductName[260] = "DemonStrate DCLXVI 1.04alpha by G0PLY.     Made using Devilution by GalaXyHaXz.";
+char gszProductName[260] = "DemonStrate DCLXVI v1.00beta by G0PLY.  Made using Devilution by GalaXyHaXz.";
 
 struct init_cpp_init
 {

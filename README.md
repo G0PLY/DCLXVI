@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------
-DemonStrate DCLXVI Alpha Version 1.04a 
+DemonStrate DCLXVI Beta Version 1.00b 
 =======
 
 (You will need a Diablo CD to use this)
@@ -9,7 +9,7 @@ Diablo 1 DCLXVI Mod, made using Devilution by GalaXyHaXz.
 =======
 --------------------------------------------------------------------------------------------------
 
-Prebuilt Version: Download DCLXVI_104a.zip
+Prebuilt Version: Download DCLXVI_1b.zip
 
 Needed for Prebuilt or Source to work; 
 
@@ -50,19 +50,19 @@ Increased exp rates,
 
 Removed free refill of health and mana for leveling up,
 
-Removed full potions from shopkeepers permanent listing,
-
 Removed elixer potions from shopkeepers listing,
 
 Increased monster difficulty, 
 
 Modified weapon and armor requirements, 
 
+Weapon racks drop gold (temp fix on a bug),
+
 Removed item drop on death (multiplayer),
 
 Removed half gold dropped on death (multiplayer)
 
-Monsters more difficult in multiplayer vs singleplayer.
+Monsters more difficult in multiplayer vs singleplayer (mid mp nm is ~lv 16 sp).
 
 --------------------------------------------------------------------------------------------------
 Using devilution-0.4 

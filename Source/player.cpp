@@ -3881,8 +3881,8 @@ void __cdecl ValidatePlayer()
 		TermMsg("ValidatePlayer: illegal player %d", myplr);
 	v1 = myplr;
 	v2 = &plr[myplr]._pLevel;
-	if ( *v2 > 50 )
-		*v2 = 50;
+	if ( *v2 > 99 )
+		*v2 = 99;
 	v3 = plr[v1]._pNextExper;
 	if ( plr[v1]._pExperience > v3 )
 		plr[v1]._pExperience = v3;

@@ -379,11 +379,11 @@ ItemDataStruct AllItemsList[157] =
   { IDROP_REGULAR, ICLASS_ARMOR, ILOC_ONEHAND, 132, 5u, UITYPE_GOTHSHIELD, "Tower Shield", "Shield", 20, 50, 0, 0, 12, 20, 82u, 0u, 0u, ISPL_NONE, IMISC_STAFF, SPL_NULL, 0, 850, 1200 },
   { IDROP_REGULAR, ICLASS_ARMOR, ILOC_ONEHAND, 148, 5u, UITYPE_GOTHSHIELD, "Gothic Shield", "Shield", 23, 60, 0, 0, 14, 18, 96u, 0u, 0u, ISPL_NONE, IMISC_STAFF, SPL_NULL, 0, 2300, 2700 },
   { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 32, 0u, UITYPE_NONE, "Potion of Healing", NULL, 1, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_HEAL, SPL_NULL, 1, 50, 50 },
-  { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 35, 0u, UITYPE_NONE, "Potion of Full Healing", NULL, 1, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_FULLHEAL, SPL_NULL, 1, 150, 150 },
+  { IDROP_DOUBLE, ICLASS_MISC, ILOC_UNEQUIPABLE, 35, 0u, UITYPE_NONE, "Potion of Full Healing", NULL, 1, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_FULLHEAL, SPL_NULL, 1, 150, 150 },
   { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 39, 0u, UITYPE_NONE, "Potion of Mana", NULL, 1, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_MANA, SPL_NULL, 1, 50, 50 },
-  { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 0, 0u, UITYPE_NONE, "Potion of Full Mana", NULL, 1, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_FULLMANA, SPL_NULL, 1, 150, 150 },
-  { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 37, 0u, UITYPE_NONE, "Potion of Rejuvenation", NULL, 3, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_REJUV, SPL_NULL, 1, 120, 120 },
-  { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 33, 0u, UITYPE_NONE, "Potion of Full Rejuvenation", NULL, 7, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_FULLREJUV, SPL_NULL, 1, 600, 600 },
+  { IDROP_DOUBLE, ICLASS_MISC, ILOC_UNEQUIPABLE, 0, 0u, UITYPE_NONE, "Potion of Full Mana", NULL, 1, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_FULLMANA, SPL_NULL, 1, 150, 150 },
+  { IDROP_DOUBLE, ICLASS_MISC, ILOC_UNEQUIPABLE, 37, 0u, UITYPE_NONE, "Potion of Rejuvenation", NULL, 3, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_REJUV, SPL_NULL, 1, 120, 120 },
+  { IDROP_DOUBLE, ICLASS_MISC, ILOC_UNEQUIPABLE, 33, 0u, UITYPE_NONE, "Potion of Full Rejuvenation", NULL, 7, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_FULLREJUV, SPL_NULL, 1, 600, 600 },
   { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 38, 0u, UITYPE_NONE, "Elixir of Strength", NULL, 15, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_ELIXSTR, SPL_NULL, 1, 5000, 5000 },
   { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 34, 0u, UITYPE_NONE, "Elixir of Magic", NULL, 15, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_ELIXMAG, SPL_NULL, 1, 5000, 5000 },
   { IDROP_REGULAR, ICLASS_MISC, ILOC_UNEQUIPABLE, 36, 0u, UITYPE_NONE, "Elixir of Dexterity", NULL, 15, 0, 0, 0, 0, 0, 0u, 0u, 0u, ISPL_NONE, IMISC_ELIXDEX, SPL_NULL, 1, 5000, 5000 },
@@ -5007,28 +5007,32 @@ bool __fastcall WitchItemOk(int i)
 	unsigned char v3; // dl
 	int v4; // edx
 	int v5; // ecx
-
+       
 	rv = 0;
 	v3 = AllItemsList[i].itype;
-	if ( !v3 )
+        if (!v3)
+            if (v3 == IMISC_ELIXSTR)
+                if (v3 == IMISC_ELIXMAG)
+                    if (v3 == IMISC_ELIXDEX)
+                        if (v3 == IMISC_ELIXVIT)
 		rv = 1;
-	if ( v3 == ITYPE_STAFF )
+        if (v3 == ITYPE_STAFF)
 		rv = 1;
 	v4 = AllItemsList[i].iMiscId;
-	if ( v4 == IMISC_MANA )
+        if (v4 == IMISC_MANA)
 		rv = 0;
-	//if ( v4 == IMISC_FULLMANA )
-	//	rv = 0;
-	//if ( v4 == IMISC_FULLHEAL )
-	//	rv = 0;
-	if ( v4 == IMISC_HEAL )
+	if ( v4 == IMISC_FULLMANA )
+		rv = 0;
+	if ( v4 == IMISC_FULLHEAL )
+		rv = 0;
+        if (v4 == IMISC_HEAL)
 		rv = 0;
 	v5 = AllItemsList[i].iSpell;
-	if ( v5 == SPL_TOWN )
+        if (v5 == SPL_TOWN)
 		rv = 0;
-	if ( v5 == SPL_RESURRECT && gbMaxPlayers == 1 )
+        if (v5 == SPL_RESURRECT)
 		rv = 0;
-	if ( v5 == SPL_HEALOTHER && gbMaxPlayers == 1 )
+        if (v5 == SPL_HEALOTHER)
 		rv = 0;
 	return rv;
 }
@@ -5138,7 +5142,7 @@ void __fastcall SpawnWitch(int lvl)
 	qmemcpy(witchitem, item, sizeof(ItemStruct));
 	witchitem[0]._iCreateInfo = lvl;
 	witchitem[0]._iStatFlag = 1;
-	//GetItemAttrs(0, IDI_FULLMANA, 1);
+	GetItemAttrs(0, IDI_FULLMANA, 1);
 	qmemcpy(&witchitem[1], item, sizeof(ItemStruct));
 	witchitem[1]._iCreateInfo = lvl;
 	witchitem[1]._iStatFlag = 1;
@@ -5277,20 +5281,20 @@ LABEL_13:
 	//if ( v3 == IMISC_ELIXVIT )
 	//	result = 1;
 LABEL_21:
-//	if ( v3 == IMISC_FULLHEAL )
-	//	result = 1;
+	if ( v3 == IMISC_FULLHEAL )
+		result = 1;
 	if ( v3 == IMISC_REJUV )
 		result = 1;
 	if ( v3 == IMISC_FULLREJUV )
 		result = 1;
 	if ( v3 == IMISC_HEAL )
 		result = 0;
-	//if ( v3 == IMISC_FULLHEAL )
-	//	result = 0;
+	if ( v3 == IMISC_FULLHEAL )
+		result = 0;
 	if ( v3 == IMISC_MANA )
 		result = 0;
-	//if ( v3 == IMISC_FULLMANA )
-	//	return 0;
+	if ( v3 == IMISC_FULLMANA )
+		return 0;
 	return result;
 }
 // 679660: using guessed type char gbMaxPlayers;
@@ -5373,7 +5377,7 @@ void __fastcall SpawnHealer(int lvl)
 	qmemcpy(healitem, item, sizeof(ItemStruct));
 	healitem[0]._iCreateInfo = lvl;
 	healitem[0]._iStatFlag = 1;
-	//GetItemAttrs(0, IDI_FULLHEAL, 1);
+	GetItemAttrs(0, IDI_FULLHEAL, 1);
 	qmemcpy(&healitem[1], item, sizeof(ItemStruct));
 	healitem[1]._iCreateInfo = lvl;
 	healitem[1]._iStatFlag = 1;
@@ -5468,8 +5472,8 @@ void __fastcall RecreateWitchItem(int ii, int idx, int lvl, int iseed)
 	int itype; // edi
 	int iblvl; // eax
 
-	//if (idx == IDI_MANA || idx == IDI_FULLMANA || idx == IDI_PORTAL) {
-	if (idx == IDI_MANA || idx == IDI_PORTAL) {
+	if (idx == IDI_MANA || idx == IDI_FULLMANA || idx == IDI_PORTAL) {
+	//if (idx == IDI_MANA || idx == IDI_PORTAL) {
 		GetItemAttrs(ii, idx, lvl);
 	}
 	else
@@ -5490,8 +5494,8 @@ void __fastcall RecreateWitchItem(int ii, int idx, int lvl, int iseed)
 
 void __fastcall RecreateHealerItem(int ii, int idx, int lvl, int iseed)
 {
-	//if (idx != IDI_HEAL && idx != IDI_FULLHEAL && idx != IDI_RESURRECT) {
-	if (idx != IDI_HEAL && idx != IDI_RESURRECT) {
+	if (idx != IDI_HEAL && idx != IDI_FULLHEAL && idx != IDI_RESURRECT) {
+	//if (idx != IDI_HEAL && idx != IDI_RESURRECT) {
 		SetRndSeed(iseed);
 		idx = RndHealerItem(lvl) - 1;
 	}

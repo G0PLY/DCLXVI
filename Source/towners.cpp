@@ -100,8 +100,8 @@ char AnimOrder[6][148] =
 		3, -1
 	}
 };
-int TownCowX[3] = { 58, 56, 59 };
-int TownCowY[3] = { 16, 14, 20 };
+int TownCowX[3] = { 58, 73, 80 };
+int TownCowY[3] = { 16, 47, 19 };
 int TownCowDir[3] = { 1, 3, 4 };
 int cowoffx[8] = { -1, 0, -1, -1, -1, 0, -1, -1 };
 int cowoffy[8] = { -1, -1, -1, 0, -1, -1, -1, 0 };

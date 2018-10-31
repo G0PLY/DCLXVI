@@ -6220,19 +6220,22 @@ void __fastcall OperateWeaponRack(int pnum, int i, unsigned char sendmsg)
 		v7 = v6 - 1;
 		if ( !v7 )
 		{
-			v13 = ITYPE_AXE;
+			//v13 = ITYPE_AXE;
+                    v13 = ITYPE_GOLD;
 			goto LABEL_7;
 		}
 		v8 = v7 - 1;
 		if ( !v8 )
 		{
-			v13 = ITYPE_BOW;
+			//v13 = ITYPE_BOW;
+                    v13 = ITYPE_GOLD;
 			goto LABEL_7;
 		}
 		if ( v8 == 1 )
 		{
-			v13 = ITYPE_MACE;
-LABEL_7:
+			//v13 = ITYPE_MACE;
+                    v13 = ITYPE_GOLD;
+                LABEL_7:
 			v9 = v13;
 			goto LABEL_12;
 		}
@@ -6240,7 +6243,8 @@ LABEL_7:
 	}
 	else
 	{
-		v9 = ITYPE_SWORD;
+		//v9 = ITYPE_SWORD;
+            v9 = ITYPE_GOLD;
 	}
 LABEL_12:
 	++object[v4]._oAnimFrame;
@@ -7255,7 +7259,7 @@ void __fastcall GetObjectStr(int i)
 			break;
 		case OBJ_WARWEAP:
 		case OBJ_WEAPONRACK:
-			strcpy(infostr, "Weapon Rack");
+			strcpy(infostr, "You see hidden gold...");
 			break;
 		case OBJ_MUSHPATCH:
 			strcpy(infostr, "Mushroom Patch");
