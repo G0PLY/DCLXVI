@@ -4457,6 +4457,27 @@ void __fastcall OperateSlainHero(int pnum, int i, unsigned char sendmsg)
 	v5 = i;
 	if ( object[i]._oSelFlag )
 	{
+            unsigned short v3; // bp
+            int v4;            // esi
+            int v5;            // edi
+            int *v6;           // eax
+            bool v7;           // zf
+
+            v3 = i;
+            v4 = i;
+            v5 = pnum;
+            v6 = (int *)&object[i]._oSelFlag;
+            if (*(_BYTE *)v6) {
+                v7 = deltaload == 0;
+                *(_BYTE *)v6 = 0;
+                if (v7) {
+                    SetRndSeed(object[v4]._oRndSeed);
+                    CreateRndItem(object[v4]._ox, object[v4]._oy, 0, sendmsg, 0);
+                    if (v5 == myplr)
+                        NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
+                }
+            }
+            /*
 		v6 = deltaload == 0;
 		object[v5]._oSelFlag = 0;
 		if ( v6 )
@@ -4487,7 +4508,7 @@ LABEL_10:
 			if ( v4 == myplr )
 				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 			return;
-		}
+		}*/
 	}
 }
 // 676190: using guessed type int deltaload;
@@ -5897,7 +5918,8 @@ void __fastcall OperateDecap(int pnum, int i, unsigned char sendmsg)
 				NetSendCmdParam1(0, CMD_OPERATEOBJ, v3);
 		}
 	}
-}
+	}
+
 // 676190: using guessed type int deltaload;
 
 void __fastcall OperateArmorStand(int pnum, int i, unsigned char sendmsg)
