@@ -9,7 +9,8 @@ Diablo 1 DCLXVI Mod, made using Devilution by GalaXyHaXz.
 =======
 --------------------------------------------------------------------------------------------------
 
-Prebuilt Version: Download DCLXVI_1b.zip
+Prebuilt Version: 
+Download DCLXVI_1b.zip or DCLXVI_1b.7z
 
 Needed for Prebuilt or Source to work; 
 
@@ -56,7 +57,7 @@ Increased monster difficulty,
 
 Modified weapon and armor requirements, 
 
-Weapon racks drop gold (temp fix on a bug),
+Weapon racks and slain heros only drop gold (temp fix on a bug),
 
 Removed item drop on death (multiplayer),
 
