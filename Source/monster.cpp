@@ -763,22 +763,10 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 		monster[i]._mFlags |= 4u;
 		monster[i]._mmode = MM_SATTACK;
 	}
-	/*if (currlevel == 1) {
-	  //monster[i].mLevel += 7;
-	  monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
-	  monster[i]._mhitpoints = monster[i]._mmaxhp;
-	  monster[i].mHit += 20;
-	  monster[i].mHit2 += 20;
-	  monster[i].mMinDamage = 1 * monster[i].mMinDamage;
-	  monster[i].mMaxDamage = 1 * monster[i].mMaxDamage;
-	  monster[i].mMinDamage2 = 1 * monster[i].mMinDamage2;
-	  monster[i].mMaxDamage2 = 1 * monster[i].mMaxDamage2;
-	  monster[i].mArmorClass += 2;
-  }*/
+
 	if (gnDifficulty == DIFF_NORMAL && gbMaxPlayers == 1) {
 
 		if (currlevel == 1) {
-			// monster[i].mLevel += 1;
 			monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 25;
@@ -990,12 +978,9 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 			monster[i].mArmorClass += 80;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
-	}
-
-	if (gnDifficulty == DIFF_NORMAL && gbMaxPlayers != 1) {
+	}else if (gnDifficulty == DIFF_NORMAL && gbMaxPlayers != 1) {
 
 		if (currlevel == 1) {
-			// monster[i].mLevel += 1;
 			monster[i]._mmaxhp = 1 * monster[i]._mmaxhp;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 25;
@@ -1214,19 +1199,7 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 			monster[i].mMaxDamage2 = 2 * (monster[i].mMaxDamage2 + 1);
 			monster[i].mArmorClass += 50;
 		}
-	}
-	if (gnDifficulty == DIFF_NIGHTMARE) {
-		//monster[i].mLevel += 15;
-		//monster[i].mHit += 85;
-		//monster[i].mHit2 += 85;
-		//monster[i]._mmaxhp = 3 * monster[i]._mmaxhp + 64;
-		//monster[i]._mhitpoints = monster[i]._mmaxhp;
-		//monster[i].mExp = 2 * (monster[i].mExp + 1000);
-		//monster[i].mMinDamage = 2 * (monster[i].mMinDamage + 2);
-		//monster[i].mMaxDamage = 2 * (monster[i].mMaxDamage + 2);
-		//monster[i].mMinDamage2 = 2 * (monster[i].mMinDamage2 + 2);
-		//monster[i].mMaxDamage2 = 2 * (monster[i].mMaxDamage2 + 2);
-		//monster[i].mArmorClass += 50;
+	}else if (gnDifficulty == DIFF_NIGHTMARE) {
 
 		if (currlevel == 1) {
 			 monster[i].mLevel += 15;
@@ -1457,32 +1430,18 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 			monster[i].mArmorClass += 80;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
-	}
-
-	if (gnDifficulty == DIFF_HELL) {
-		//monster[i].mLevel += 30;
-		//monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 192;
-		//monster[i]._mhitpoints = monster[i]._mmaxhp;
-		//monster[i].mHit += 120;
-		//monster[i].mHit2 += 120;
-		//monster[i].mExp = 4 * (monster[i].mExp + 1000);
-		//monster[i].mMinDamage = 4 * monster[i].mMinDamage + 6;
-		//monster[i].mMaxDamage = 4 * monster[i].mMaxDamage + 6;
-		//monster[i].mMinDamage2 = 4 * monster[i].mMinDamage2 + 6;
-		//monster[i].mMaxDamage2 = 4 * monster[i].mMaxDamage2 + 6;
-		//monster[i].mArmorClass += 80;
-		//monster[i].mMagicRes = monst->MData->mMagicRes2;
+	}else if (gnDifficulty == DIFF_HELL) {
 		if (currlevel == 1) {
 			monster[i].mLevel += 30;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 256;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 512;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 120;
 			monster[i].mHit2 += 120;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 4 * (monster[i].mMinDamage + 6);
-			monster[i].mMaxDamage = 4 * (monster[i].mMaxDamage + 6);
-			monster[i].mMinDamage2 = 4 * (monster[i].mMinDamage2 + 6);
-			monster[i].mMaxDamage2 = 4 * (monster[i].mMaxDamage2 + 6);
+			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 8);
+			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 8);
+			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 8);
+			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 8);
 			monster[i].mArmorClass += 80;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 
@@ -1490,135 +1449,135 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 
 		if (currlevel == 2) {
 			monster[i].mLevel += 31;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 256;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 512;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 120;
 			monster[i].mHit2 += 120;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 4 * (monster[i].mMinDamage + 6);
-			monster[i].mMaxDamage = 4 * (monster[i].mMaxDamage + 6);
-			monster[i].mMinDamage2 = 4 * (monster[i].mMinDamage2 + 6);
-			monster[i].mMaxDamage2 = 4 * (monster[i].mMaxDamage2 + 6);
+			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 8);
+			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 8);
+			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 8);
+			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 8);
 			monster[i].mArmorClass += 80;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 3) {
 			monster[i].mLevel += 32;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 256;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 512;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 125;
 			monster[i].mHit2 += 125;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 5 * (monster[i].mMinDamage + 4);
-			monster[i].mMaxDamage = 5 * (monster[i].mMaxDamage + 4);
-			monster[i].mMinDamage2 = 5 * (monster[i].mMinDamage2 + 4);
-			monster[i].mMaxDamage2 = 5 * (monster[i].mMaxDamage2 + 4);
+			monster[i].mMinDamage = 7 * (monster[i].mMinDamage + 6);
+			monster[i].mMaxDamage = 7 * (monster[i].mMaxDamage + 6);
+			monster[i].mMinDamage2 = 7 * (monster[i].mMinDamage2 + 6);
+			monster[i].mMaxDamage2 = 7 * (monster[i].mMaxDamage2 + 6);
 			monster[i].mArmorClass += 80;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 4) {
 			monster[i].mLevel += 33;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 256;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 512;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 125;
 			monster[i].mHit2 += 125;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 5 * (monster[i].mMinDamage + 5);
-			monster[i].mMaxDamage = 5 * (monster[i].mMaxDamage + 4);
-			monster[i].mMinDamage2 = 5 * (monster[i].mMinDamage2 + 5);
-			monster[i].mMaxDamage2 = 5 * (monster[i].mMaxDamage2 + 4);
+			monster[i].mMinDamage = 7 * (monster[i].mMinDamage + 7);
+			monster[i].mMaxDamage = 7 * (monster[i].mMaxDamage + 6);
+			monster[i].mMinDamage2 = 7 * (monster[i].mMinDamage2 + 7);
+			monster[i].mMaxDamage2 = 7 * (monster[i].mMaxDamage2 + 6);
 			monster[i].mArmorClass += 85;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 5) {
 			monster[i].mLevel += 34;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 256;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 512;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 130;
 			monster[i].mHit2 += 130;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 5 * (monster[i].mMinDamage + 5);
-			monster[i].mMaxDamage = 5 * (monster[i].mMaxDamage + 5);
-			monster[i].mMinDamage2 = 5 * (monster[i].mMinDamage2 + 5);
-			monster[i].mMaxDamage2 = 5 * (monster[i].mMaxDamage2 + 5);
+			monster[i].mMinDamage = 7 * (monster[i].mMinDamage + 7);
+			monster[i].mMaxDamage = 7 * (monster[i].mMaxDamage + 7);
+			monster[i].mMinDamage2 = 7 * (monster[i].mMinDamage2 + 7);
+			monster[i].mMaxDamage2 = 7 * (monster[i].mMaxDamage2 + 7);
 			monster[i].mArmorClass += 85;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 6) {
 			monster[i].mLevel += 35;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 320;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 130;
 			monster[i].mHit2 += 130;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 5 * (monster[i].mMinDamage + 6);
-			monster[i].mMaxDamage = 5 * (monster[i].mMaxDamage + 5);
-			monster[i].mMinDamage2 = 5 * (monster[i].mMinDamage2 + 6);
-			monster[i].mMaxDamage2 = 5 * (monster[i].mMaxDamage2 + 5);
+			monster[i].mMinDamage = 7 * (monster[i].mMinDamage + 8);
+			monster[i].mMaxDamage = 7 * (monster[i].mMaxDamage + 7);
+			monster[i].mMinDamage2 = 7 * (monster[i].mMinDamage2 + 8);
+			monster[i].mMaxDamage2 = 7 * (monster[i].mMaxDamage2 + 7);
 			monster[i].mArmorClass += 90;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 7) {
 			monster[i].mLevel += 36;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 320;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 135;
 			monster[i].mHit2 += 135;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 5 * (monster[i].mMinDamage + 6);
-			monster[i].mMaxDamage = 5 * (monster[i].mMaxDamage + 6);
-			monster[i].mMinDamage2 = 5 * (monster[i].mMinDamage2 + 6);
-			monster[i].mMaxDamage2 = 5 * (monster[i].mMaxDamage2 + 6);
+			monster[i].mMinDamage = 7 * (monster[i].mMinDamage + 8);
+			monster[i].mMaxDamage = 7 * (monster[i].mMaxDamage + 8);
+			monster[i].mMinDamage2 = 7 * (monster[i].mMinDamage2 + 8);
+			monster[i].mMaxDamage2 = 7 * (monster[i].mMaxDamage2 + 8);
 			monster[i].mArmorClass += 90;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 8) {
 			monster[i].mLevel += 37;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 320;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 135;
 			monster[i].mHit2 += 135;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 5 * (monster[i].mMinDamage + 7);
-			monster[i].mMaxDamage = 5 * (monster[i].mMaxDamage + 6);
-			monster[i].mMinDamage2 = 5 * (monster[i].mMinDamage2 + 7);
-			monster[i].mMaxDamage2 = 5 * (monster[i].mMaxDamage2 + 6);
+			monster[i].mMinDamage = 7 * (monster[i].mMinDamage + 9);
+			monster[i].mMaxDamage = 7 * (monster[i].mMaxDamage + 8);
+			monster[i].mMinDamage2 = 7 * (monster[i].mMinDamage2 + 9);
+			monster[i].mMaxDamage2 = 7 * (monster[i].mMaxDamage2 + 8);
 			monster[i].mArmorClass += 95;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 9) {
 			monster[i].mLevel += 38;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 320;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 140;
 			monster[i].mHit2 += 140;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 5 * (monster[i].mMinDamage + 7);
-			monster[i].mMaxDamage = 5 * (monster[i].mMaxDamage + 7);
-			monster[i].mMinDamage2 = 5 * (monster[i].mMinDamage2 + 7);
-			monster[i].mMaxDamage2 = 5 * (monster[i].mMaxDamage2 + 7);
+			monster[i].mMinDamage = 7 * (monster[i].mMinDamage + 9);
+			monster[i].mMaxDamage = 7 * (monster[i].mMaxDamage + 9);
+			monster[i].mMinDamage2 = 7 * (monster[i].mMinDamage2 + 9);
+			monster[i].mMaxDamage2 = 7 * (monster[i].mMaxDamage2 + 9);
 			monster[i].mArmorClass += 95;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 10) {
 			monster[i].mLevel += 39;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 320;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 140;
 			monster[i].mHit2 += 140;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 4);
-			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 4);
-			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 4);
-			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 4);
+			monster[i].mMinDamage = 8 * (monster[i].mMinDamage + 6);
+			monster[i].mMaxDamage = 8 * (monster[i].mMaxDamage + 6);
+			monster[i].mMinDamage2 = 8 * (monster[i].mMinDamage2 + 6);
+			monster[i].mMaxDamage2 = 8 * (monster[i].mMaxDamage2 + 6);
 			monster[i].mArmorClass += 100;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 
@@ -1626,90 +1585,90 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 
 		if (currlevel == 11) {
 			monster[i].mLevel += 40;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 384;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 145;
 			monster[i].mHit2 += 145;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 5);
-			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 4);
-			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 5);
-			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 4);
+			monster[i].mMinDamage = 8 * (monster[i].mMinDamage + 7);
+			monster[i].mMaxDamage = 8 * (monster[i].mMaxDamage + 6);
+			monster[i].mMinDamage2 = 8 * (monster[i].mMinDamage2 + 7);
+			monster[i].mMaxDamage2 = 8 * (monster[i].mMaxDamage2 + 6);
 			monster[i].mArmorClass += 100;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 12) {
 			monster[i].mLevel += 41;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 384;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 145;
 			monster[i].mHit2 += 145;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 5);
-			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 5);
-			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 5);
-			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 5);
+			monster[i].mMinDamage = 8 * (monster[i].mMinDamage + 7);
+			monster[i].mMaxDamage = 8 * (monster[i].mMaxDamage + 7);
+			monster[i].mMinDamage2 = 8 * (monster[i].mMinDamage2 + 7);
+			monster[i].mMaxDamage2 = 8 * (monster[i].mMaxDamage2 + 7);
 			monster[i].mArmorClass += 105;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 13) {
 			monster[i].mLevel += 42;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 384;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 150;
 			monster[i].mHit2 += 150;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 6);
-			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 5);
-			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 6);
-			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 5);
+			monster[i].mMinDamage = 8 * (monster[i].mMinDamage + 8);
+			monster[i].mMaxDamage = 8 * (monster[i].mMaxDamage + 7);
+			monster[i].mMinDamage2 = 8 * (monster[i].mMinDamage2 + 8);
+			monster[i].mMaxDamage2 = 8 * (monster[i].mMaxDamage2 + 7);
 			monster[i].mArmorClass += 105;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 14) {
 			monster[i].mLevel += 43;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 384;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 150;
 			monster[i].mHit2 += 150;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 6);
-			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 6);
-			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 6);
-			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 6);
+			monster[i].mMinDamage = 8 * (monster[i].mMinDamage + 8);
+			monster[i].mMaxDamage = 8 * (monster[i].mMaxDamage + 8);
+			monster[i].mMinDamage2 = 8 * (monster[i].mMinDamage2 + 8);
+			monster[i].mMaxDamage2 = 8 * (monster[i].mMaxDamage2 + 8);
 			monster[i].mArmorClass += 110;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 15) {
 			monster[i].mLevel += 44;
-			monster[i]._mmaxhp = 4 * monster[i]._mmaxhp + 384;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 768;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 155;
 			monster[i].mHit2 += 155;
 			monster[i].mExp = 4 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 7);
-			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 6);
-			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 7);
-			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 6);
+			monster[i].mMinDamage = 8 * (monster[i].mMinDamage + 9);
+			monster[i].mMaxDamage = 8 * (monster[i].mMaxDamage + 8);
+			monster[i].mMinDamage2 = 8 * (monster[i].mMinDamage2 + 9);
+			monster[i].mMaxDamage2 = 8 * (monster[i].mMaxDamage2 + 8);
 			monster[i].mArmorClass += 110;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 		}
 
 		if (currlevel == 16) {
 			monster[i].mLevel += 45;
-			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 448;
+			monster[i]._mmaxhp = 5 * monster[i]._mmaxhp + 896;
 			monster[i]._mhitpoints = monster[i]._mmaxhp;
 			monster[i].mHit += 155;
 			monster[i].mHit2 += 155;
 			monster[i].mExp = 6 * (monster[i].mExp + 1000);
-			monster[i].mMinDamage = 6 * (monster[i].mMinDamage + 7);
-			monster[i].mMaxDamage = 6 * (monster[i].mMaxDamage + 7);
-			monster[i].mMinDamage2 = 6 * (monster[i].mMinDamage2 + 7);
-			monster[i].mMaxDamage2 = 6 * (monster[i].mMaxDamage2 + 7);
+			monster[i].mMinDamage = 8 * (monster[i].mMinDamage + 9);
+			monster[i].mMaxDamage = 8 * (monster[i].mMaxDamage + 9);
+			monster[i].mMinDamage2 = 8 * (monster[i].mMinDamage2 + 9);
+			monster[i].mMaxDamage2 = 8 * (monster[i].mMaxDamage2 + 9);
 			monster[i].mArmorClass += 110;
 			monster[i].mMagicRes = monst->MData->mMagicRes2;
 
@@ -1717,30 +1676,6 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 	}
 
 }
-
-/*
-if (gnDifficulty == DIFF_NIGHTMARE) {
-    Monst->mLevel += 15;
-    Monst->_mmaxhp = 3 * Monst->_mmaxhp + 64;
-    Monst->_mhitpoints = Monst->_mmaxhp;
-    Monst->mExp = 2 * (Monst->mExp + 1000);
-    Monst->mMinDamage = 2 * (Monst->mMinDamage + 2);
-    Monst->mMaxDamage = 2 * (Monst->mMaxDamage + 2);
-    Monst->mMinDamage2 = 2 * (Monst->mMinDamage2 + 2);
-    Monst->mMaxDamage2 = 2 * (Monst->mMaxDamage2 + 2);
-}
-
-if (gnDifficulty == DIFF_HELL) {
-    Monst->mLevel += 30;
-    Monst->_mmaxhp = 4 * Monst->_mmaxhp + 192;
-    Monst->_mhitpoints = Monst->_mmaxhp;
-    Monst->mExp = 4 * (Monst->mExp + 1000);
-    Monst->mMinDamage = 4 * Monst->mMinDamage + 6;
-    Monst->mMaxDamage = 4 * Monst->mMaxDamage + 6;
-    Monst->mMinDamage2 = 4 * Monst->mMinDamage2 + 6;
-    Monst->mMaxDamage2 = 4 * Monst->mMaxDamage2 + 6;
-}
-*/
 
 void __cdecl ClrAllMonsters()
 {
