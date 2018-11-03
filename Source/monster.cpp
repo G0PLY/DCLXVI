@@ -1718,6 +1718,29 @@ void __fastcall InitMonster(int i, int rd, int mtype, int x, int y)
 
 }
 
+/*
+if (gnDifficulty == DIFF_NIGHTMARE) {
+    Monst->mLevel += 15;
+    Monst->_mmaxhp = 3 * Monst->_mmaxhp + 64;
+    Monst->_mhitpoints = Monst->_mmaxhp;
+    Monst->mExp = 2 * (Monst->mExp + 1000);
+    Monst->mMinDamage = 2 * (Monst->mMinDamage + 2);
+    Monst->mMaxDamage = 2 * (Monst->mMaxDamage + 2);
+    Monst->mMinDamage2 = 2 * (Monst->mMinDamage2 + 2);
+    Monst->mMaxDamage2 = 2 * (Monst->mMaxDamage2 + 2);
+}
+
+if (gnDifficulty == DIFF_HELL) {
+    Monst->mLevel += 30;
+    Monst->_mmaxhp = 4 * Monst->_mmaxhp + 192;
+    Monst->_mhitpoints = Monst->_mmaxhp;
+    Monst->mExp = 4 * (Monst->mExp + 1000);
+    Monst->mMinDamage = 4 * Monst->mMinDamage + 6;
+    Monst->mMaxDamage = 4 * Monst->mMaxDamage + 6;
+    Monst->mMinDamage2 = 4 * Monst->mMinDamage2 + 6;
+    Monst->mMaxDamage2 = 4 * Monst->mMaxDamage2 + 6;
+}
+*/
 
 void __cdecl ClrAllMonsters()
 {
@@ -1983,29 +2006,6 @@ void __fastcall PlaceUniqueMonst(int uniqindex, int miniontype, int unpackfilesi
 		}
 	}
 
-	if ( gnDifficulty == DIFF_NIGHTMARE )
-	{
-		Monst->mLevel += 15;
-		Monst->_mmaxhp = 3 * Monst->_mmaxhp + 64;
-		Monst->_mhitpoints = Monst->_mmaxhp;
-		Monst->mExp = 2 * (Monst->mExp + 1000);
-		Monst->mMinDamage = 2 * (Monst->mMinDamage + 2);
-		Monst->mMaxDamage = 2 * (Monst->mMaxDamage + 2);
-		Monst->mMinDamage2 = 2 * (Monst->mMinDamage2 + 2);
-		Monst->mMaxDamage2 = 2 * (Monst->mMaxDamage2 + 2);
-	}
-
-	if ( gnDifficulty == DIFF_HELL )
-	{
-		Monst->mLevel += 30;
-		Monst->_mmaxhp = 4 * Monst->_mmaxhp + 192;
-		Monst->_mhitpoints = Monst->_mmaxhp;
-		Monst->mExp = 4 * (Monst->mExp + 1000);
-		Monst->mMinDamage = 4 * Monst->mMinDamage + 6;
-		Monst->mMaxDamage = 4 * Monst->mMaxDamage + 6;
-		Monst->mMinDamage2 = 4 * Monst->mMinDamage2 + 6;
-		Monst->mMaxDamage2 = 4 * Monst->mMaxDamage2 + 6;
-	}
 
 	sprintf(filestr, "Monsters\\Monsters\\%s.TRN", Uniq->mMode);
 	LoadFileWithMem(filestr, &pLightTbl[256 * (uniquetrans + 19)]);
@@ -8011,8 +8011,8 @@ void __fastcall MAI_Lazhelp(int i)
 		if ( _LOBYTE(monster[v2]._mgoal) == 1 )
 			MAI_Succ(ia);
 		monster[v2]._mdir = v5;
-		if ( monster[v2]._mmode == MM_STAND )
-			monster[v2]._mAnimData = monster[v2].MType->Anims[0].Frames[v5];
+		//if ( monster[v2]._mmode == MM_STAND )
+			//monster[v2]._mAnimData = monster[v2].MType->Anims[0].Frames[v5];
 	}
 }
 // 679660: using guessed type char gbMaxPlayers;

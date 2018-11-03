@@ -20,7 +20,7 @@ const int init_inf = 0x7F800000; // weak
 /* data */
 
 char gszVersionNumber[260] = "internal version unknown";
-char gszProductName[260] = "DemonStrate DCLXVI v1.00beta by G0PLY.  Made using Devilution by GalaXyHaXz.";
+char gszProductName[260] = "DCLXVI v1.01beta by G0PLY.     Made using Devilution by GalaXyHaXz.";
 
 struct init_cpp_init
 {
@@ -188,8 +188,8 @@ void __fastcall init_create_window(int nCmdShow)
 	wcex.hIcon = LoadIcon(ghInst, MAKEINTRESOURCE(IDI_ICON1));
 	wcex.hCursor = LoadCursor(0, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-	wcex.lpszMenuName = "DIABLO";
-	wcex.lpszClassName = "DIABLO";
+	wcex.lpszMenuName = "DCLXVI";
+	wcex.lpszClassName = "DCLXVI";
 	wcex.hIconSm = (HICON)LoadImage(ghInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, LR_DEFAULTCOLOR);
 	if ( !RegisterClassEx(&wcex) )
 		TermMsg("Unable to register window class");
@@ -201,7 +201,7 @@ void __fastcall init_create_window(int nCmdShow)
 		nHeight = GetSystemMetrics(SM_CYSCREEN);
 	else
 		nHeight = 480;
-	hWnd = CreateWindowEx(0, "DIABLO", "DIABLO", WS_POPUP, 0, 0, nWidth, nHeight, NULL, NULL, ghInst, NULL);
+	hWnd = CreateWindowEx(0, "DCLXVI", "DCLXVI", WS_POPUP, 0, 0, nWidth, nHeight, NULL, NULL, ghInst, NULL);
 	if ( !hWnd )
 		TermMsg("Unable to create main window");
 	ShowWindow(hWnd, SW_SHOWNORMAL); // nCmdShow used only in beta: ShowWindow(hWnd, nCmdShow)

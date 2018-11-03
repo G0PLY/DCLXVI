@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------
-DemonStrate DCLXVI Beta Version 1.00b 
+DemonStrate DCLXVI Beta Version 1.01b 
 =======
 
 (You will need a Diablo CD to use this)
@@ -10,7 +10,7 @@ Diablo 1 DCLXVI Mod, made using Devilution by GalaXyHaXz.
 --------------------------------------------------------------------------------------------------
 
 Prebuilt Version: 
-Download DCLXVI_1b.zip or DCLXVI_1b.7z
+Download DCLXVI_101b.zip or DCLXVI_101b.7z
 
 Needed for Prebuilt or Source to work; 
 
@@ -56,8 +56,6 @@ Removed elixer potions from shopkeepers listing,
 Increased monster difficulty, 
 
 Modified weapon and armor requirements, 
-
-Weapon racks and slain heros only drop gold (temp fix on a bug),
 
 Removed item drop on death (multiplayer),
 
