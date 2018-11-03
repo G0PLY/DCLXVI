@@ -23,7 +23,7 @@ DIABDAT.MPQ diabloui.dll SMACKW32.DLL STANDARD.snp Storm.dll (from Diablo CD)
 For multiplayer on LAN download ipxwrapper.
 
 --------------------------------------------------------------------------------------------------
-DemonStrate DCLXVI Features: 
+DCLXVI Features: 
 =======
 --------------------------------------------------------------------------------------------------
 
