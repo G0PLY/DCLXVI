@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------
-DCLXVI Beta Version 1.01b 
+DCLXVI Beta Version 1.02b 
 =======
 
 (You will need a Diablo CD to use this)
@@ -10,7 +10,7 @@ Diablo 1 DCLXVI Mod, made using Devilution by GalaXyHaXz.
 --------------------------------------------------------------------------------------------------
 
 Prebuilt Version: 
-Download DCLXVI_101b.zip or DCLXVI_101b.7z
+Download DCLXVI_102b.zip or DCLXVI_102b.7z
 
 Needed for Prebuilt or Source to work; 
 
@@ -59,9 +59,7 @@ Modified weapon and armor requirements,
 
 Removed item drop on death (multiplayer),
 
-Removed half gold dropped on death (multiplayer)
-
-Monsters more difficult in multiplayer vs singleplayer (mid mp nm is ~lv 16 sp).
+Removed half gold dropped on death (multiplayer).
 
 --------------------------------------------------------------------------------------------------
 Using devilution-0.4 
